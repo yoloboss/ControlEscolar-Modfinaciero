@@ -17,7 +17,7 @@
   <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" />
   <link href="{{asset('/css/now-ui-kit.css?v=1.2.0')}}" rel="stylesheet" />
 </head>
-<body>
+<body class="@yield('body-class')">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
     <div class="container">
@@ -28,10 +28,10 @@
           <span class="button-bar"></span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-header">Dropdown header</a>
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-header">Opciones</a>
+          <a class="dropdown-item" href="#">Alumnos</a>
+          <a class="dropdown-item" href="#">Niveles educativos</a>
+          <a class="dropdown-item" href="#">Ciclos Escolares</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Separated link</a>
           <div class="dropdown-divider"></div>
@@ -39,8 +39,8 @@
         </div>
       </div>
       <div class="navbar-translate">
-        <a class="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
-          Now Ui Kit
+        <a class="navbar-brand" href="" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
+          Servicios Financieros
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar top-bar"></span>
@@ -50,30 +50,32 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../assets/img/blurred-image-1.jpg">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">Back to Kit</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/creativetimofficial/now-ui-kit/issues">Have an issue?</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
-              <i class="fab fa-twitter"></i>
-              <p class="d-lg-none d-xl-none">Twitter</p>
+    @guest
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrate') }}</a>
+        </li>
+    @else
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} <span class="caret"></span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
-              <i class="fab fa-facebook-square"></i>
-              <p class="d-lg-none d-xl-none">Facebook</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-              <i class="fab fa-instagram"></i>
-              <p class="d-lg-none d-xl-none">Instagram</p>
-            </a>
-          </li>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </li>
+    @endguest
         </ul>
       </div>
     </div>
