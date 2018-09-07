@@ -5861,7 +5861,7 @@ img {
   min-height: 100vh;
   max-height: 999px;
   padding: 0;
-  color: #FFFFFF;
+  color: #000000;
   position: relative;
   overflow: hidden;
 }
