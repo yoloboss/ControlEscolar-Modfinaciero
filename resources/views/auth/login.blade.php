@@ -68,7 +68,7 @@
       <script>
         document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
       </script>, Designed by
-      <a href="https://www.invisionapp.com" target="_blank">ACADEP</a>
+      <a href="http://acadep.com/wp/" target="_blank">ACADEP</a>
     </div>
   </div>
 </footer>

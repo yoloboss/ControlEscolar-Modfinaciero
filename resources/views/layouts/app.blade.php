@@ -19,7 +19,7 @@
 </head>
 <body class="@yield('body-class')">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="350">
+  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="300">
     <div class="container">
       <div class="dropdown button-dropdown">
         <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
