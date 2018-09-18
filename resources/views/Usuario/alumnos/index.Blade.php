@@ -39,7 +39,7 @@
     				        <tbody>
                   @foreach($students as $student)
         				    <tr>
-            				  <td class="text-center">1</td>
+            				  <td class="text-center">{{ $student->id}}</td>
             				    <td>{{ $student->apellido_P}} </td>
             				    <td>{{ $student->apellido_M}}</td>
             				    <td>{{ $student->nombre}}</td>
@@ -50,12 +50,9 @@
                         <td>{{ $student->Telefono_p}}</td>
             				    <td class="text-right">{{ $student->baja}}</td>
             				    <td class="td-actions text-right">
-               			 		<button type="button" rel="tooltip" class="btn btn-info">
-                    				<i class="now-ui-icons users_single-02"></i>
-                				</button>
-                				<button type="button" rel="tooltip" class="btn btn-success">
+                				<a href="{{url('/Usuario/alumno/'.$student->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
                     				<i class="now-ui-icons ui-2_settings-90"></i>
-                				</button>
+                				</a>
                 				<button type="button" rel="tooltip" class="btn btn-danger">
                     				<i class="now-ui-icons ui-1_simple-remove"></i>
                 				</button>
