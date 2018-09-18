@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('menu');
 
 Route::get('/Usuario/alumno/','Alumnocontroller@index'); //ver alumnos
 Route::get('/Usuario/alumno/resgistrar','Alumnocontroller@create');//ver formulario de alumno
-//Route::post('/Usuario/alumno/','Alumnocontroller@store')//guardar nuevo registro
+Route::post('/Usuario/alumno/','Alumnocontroller@store');//guardar nuevo registro
 
-Route::get('/Usuario/Nivel/','nivelcontroller@index'); //ver alumnos
-Route::get('/Usuario/Nivel/resgistrar','nivelcontroller@create');//ver formulario de 
+Route::get('/Usuario/Nivel/','nivelcontroller@index'); //ver niveles escolares
+Route::get('/Usuario/Nivel/resgistrar','nivelcontroller@create');//ver formulario de niveles escolares

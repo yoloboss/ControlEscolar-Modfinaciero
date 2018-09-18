@@ -35,45 +35,28 @@
           </div>
         <div class="card-body ">
           <div class="tab-content text-center">
-              <div class="tab-pane active" id="datos_g">
-                  <div class="form-row">
-                    <form class="form-horizontal">
-                      <fieldset>
-                    <!-- Form Name -->
-                        <legend>Form Name</legend>
-
-                      <!-- Text input-->
-                          <div class="form-group">
-                            <label class="col-md-8 control-label" for="textinput">Text Input</label>  
-                            <div class="col-md-8">
-                              <input id="textinput" name="textinput" type="text" placeholder="placeholder" class="form-control input-md">
-                              <span class="help-block">help</span>  
-                            </div>
-                          </div>
-
-                        <!-- Select Basic -->
-                          <div class="form-group">
-                            <label class="col-md-8 control-label" for="selectbasic">Select Basic</label>
-                            <div class="col-md-8">
-                              <select id="selectbasic" name="selectbasic" class="form-control">
-                              <option value="1">Option one</option>
-                              <option value="2">Option two</option>
-                              </select>
-                            </div>
-                          </div>
-                        <!-- Select Multiple -->
-                          <div class="form-group">
-                            <label class="col-md-8 control-label" for="selectmultiple">Select Multiple</label>
-                            <div class="col-md-8">
-                              <select id="selectmultiple" name="selectmultiple" class="form-control" multiple="multiple">
-                              <option value="1">Option one</option>
-                              <option value="2">Option two</option>
-                              </select>
-                            </div>
-                          </div>
-                      </fieldset>
-                    </form>
-                  </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Nivel escolar</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Primaria">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Grado</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Grupo</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Turno</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>T.M</option>
+                    <option>T.V</option>
+                  </select>
               </div>
               <button type="submit" class="btn btn-primary">Registrar</button>
           </div>

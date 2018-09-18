@@ -23,21 +23,23 @@ class CreateStudentsTable extends Migration
             $table->string('estado');
             $table->string('Nacionalidad');
             $table->string('telefono');
-            $table->string('direccion');
+            $table->text('direccion');
             $table->string('colonia');
-            $table->string('c_p');
+            $table->integer('c_p');
             $table->string('numre_casa');
             $table->string('nombre_p');
             $table->string('apellidos_P');
             $table->string('direccion_p');
+            $table->string('Telefono_p');
             $table->string('nombre_m');
             $table->string('direccion_m');
             $table->string('apellidos_m');
+            $table->string('Telefono_m');
             $table->string('imagen')->nullable();
             $table->boolean('baja'); //baja logica
             
-            $table->integer('level_id')->unsigned();
-            //$table->foreign('niveledu_id')->references('id')->on('levels');
+            $table->integer('level_id')->unsigned()->nullable();
+            $table->foreign('level_id')->references('id')->on('levels');
 
             $table->timestamps();
         });

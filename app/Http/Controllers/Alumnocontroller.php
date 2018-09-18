@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\student;
 
 class Alumnocontroller extends Controller
 {
 	//ver listado de alumnos
     public function index()
     {
-    	return view('Usuario.alumnos.index'); 
+        $students = student::paginate(15);
+    	return view('Usuario.alumnos.index')->with(compact('students')); 
     }
     //crear un nuevo alumno
     public function create()
