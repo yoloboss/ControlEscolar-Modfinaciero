@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#history" data-toggle="tab">Datos Padres</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#nivel" data-toggle="tab">Nivel educativo</a>
+                        </li>
                     </ul>
                   </div>
                 </div>
@@ -87,8 +90,8 @@
                       <div class="form-group col-md-4">
                         <label for="inputState">Estatus</label>
                         <select id="inputState" name="baja" class="form-control" value="{{$student->baja}}">
-                        <option selected>Alta</option>
-                        <option>Baja</option>
+                        <option selected>1</option>
+                        <option>0</option>
                         </select>
                       </div>
                     </div>
@@ -158,11 +161,35 @@
                       </div>
                       <div class="form-group col-md-8">
                       <label for="inputEmail4">Telefono celular Madre</label>
-                        <input type="text" name="Telefono_m" class="form-control" id="inputNombre" placeholder="Telefono celular..." value="{{$student->direccion_m}}">
+                        <input type="text" name="Telefono_m" class="form-control" id="inputNombre" placeholder="Telefono celular..." value="{{$student->Telefono_m}}">
                       </div>
                     </div>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                
               </div>
+              <div class="tab-pane" id="nivel">
+                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                      <div class="fileinput-new thumbnail img-raised">
+                        <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">
+                      </div>
+                      <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                      <div>
+                        <span class="btn btn-raised btn-round btn-default btn-file">
+                            <span class="fileinput-new">Imagen de Alumno</span>
+                            <span class="fileinput-exists">cambiar</span>
+                            <input type="file" name="..." />
+                        </span>
+                          <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">nivel educativo</label>
+                        <select id="inputState" name="level_id" class="form-control" value="{{$student->level_id}}">
+                        <option>1</option>
+                        <option>0</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                  </div>
              </div>
             </div>
             </div>

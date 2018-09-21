@@ -83,11 +83,16 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Alumnos</a>
-                    <a href="https://laracasts.com">usuarios</a>
-                    <a href="https://laravel-news.com">Caja</a>
-                    <a href="https://forge.laravel.com">Ciclos escolares</a>
-                    <a href="https://github.com/laravel/laravel">Niveles</a>
+                    @auth
+                        <a href="{{ url('/Usuario/alumno/')}}">Alumnos</a>
+                        <a href="https://laracasts.com">usuarios</a>
+                        <a href="https://laravel-news.com">Caja</a>
+                        <a href="https://forge.laravel.com">Ciclos escolares</a>
+                        <a href="{{ url('/Usuario/Nivel/')}}">Niveles</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth
                 </div>
             </div>
         </div>

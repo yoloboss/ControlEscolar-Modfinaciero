@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        \Illuminate\Database\Eloquent\Model::unguard();
+        $this->call(gruopstableseeder::class);
+        $this->call(gradestableseeder::class);
+        $this->call(levelstableseeder::class);
+        $this->call(turnstableseeder::class);
+        \Illuminate\Database\Eloquent\Model::reguard();
     }
 }

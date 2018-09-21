@@ -17,7 +17,7 @@
 	<div class="section section-about-us">
   		<div class="container">
     		<div class="row">
-      			<div class="col-md-8 ml-auto mr-auto text-center">
+      			<div class="col-md-12 ml-auto mr-auto text-center">
         			 <h2 class="title">Lista de alumnos</h2>
                  <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-info">Agregar Alumno</a>
         			   <table class="table">
@@ -43,8 +43,8 @@
             				    <td>{{ $student->apellido_P}} </td>
             				    <td>{{ $student->apellido_M}}</td>
             				    <td>{{ $student->nombre}}</td>
-                        <td>null</td>
-                        <td>null</td>
+                        <td>{{ $student->level->grade ? $student->level->grade->grado :'sin grado' }}</td>
+                        <td>{{ $student->level->grade->group ? $student->level->grade->group->grupo :'sin grupo' }}</td>
                         <td>{{ $student->telefono}}</td>
                         <td>{{ $student->Telefono_p}}</td>
                         <td>{{ $student->Telefono_p}}</td>
@@ -61,13 +61,10 @@
                  @endforeach
     				        </tbody>
 					     </table>
-              {{$students->links()}}
-      			</div>
-            
-          
+
+             
+      			</div>       
     		</div>
-    		<div class="separator separator-primary"></div>
-  			</div>
 	</div>
 </div>
 @endsection

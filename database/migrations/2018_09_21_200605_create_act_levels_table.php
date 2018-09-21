@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Grade extends Migration
+class CreateActLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class Grade extends Migration
      */
     public function up()
     {
-          Schema::create('grade', function (Blueprint $table) {
+        Schema::create('act_levels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('grado');
-            $table->string('turno');
-
-            $table->integer('id_grupo')->unsigned()->nullable();
-            $table->foreign('id_grupo')->references('id')->on('groups');
+            $table->integer('level_id')->unsigned()->nullable();
+            $table->integer('grado_id')->unsigned()->nullable();
+            $table->integer('grupo_id')->unsigned()->nullable();
+            $table->integer('turno_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class Grade extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('act_levels');
     }
 }

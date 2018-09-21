@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="navbar-translate">
-        <a class="navbar-brand" href="{{ url('home')}}" rel="tooltip"  data-placement="bottom" target="_blank">
+        <a class="navbar-brand" href="{{ url('welcome')}}" rel="tooltip"  data-placement="bottom" target="_blank">
           Servicios Financieros
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">

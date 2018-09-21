@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto text-center">
           <h2 class="title">Registro de alumnos</h2>
-          <form method="post" action{{ url('/Usuario/alumno/')}}>
+          <form method="post" action{{ url('/Usuario/alumno/resgistrar')}}>
             @csrf
             <div class="card card-nav-tabs card-plain">
               <div class="card-header card-header-danger">
@@ -35,6 +35,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#history" data-toggle="tab">Datos Padres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#nivel" data-toggle="tab">Nivel educativo</a>
                         </li>
                     </ul>
                   </div>
@@ -54,7 +57,7 @@
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputPassword4">Apellido Materno</label>
-                        <input type="text" name="apellido_M" class="form-control" id="inputPassword4" placeholder="Apellido Materno">
+                        <input type="text" name="apellido_M" class="form-control" id="inputApem" placeholder="Apellido Materno">
                       </div>
                     </div>
                     <div class="form-group">
@@ -87,8 +90,8 @@
                       <div class="form-group col-md-4">
                         <label for="inputState">Estatus</label>
                         <select id="inputState" name="baja" class="form-control">
-                        <option selected>Alta</option>
-                        <option>Baja</option>
+                        <option selected>1</option>
+                        <option>0</option>
                         </select>
                       </div>
                     </div>
@@ -161,7 +164,36 @@
                         <input type="text" name="Telefono_m" class="form-control" id="inputNombre" placeholder="Telefono celular...">
                       </div>
                     </div>
-                <button type="submit" class="btn btn-primary">Registrar</button>
+              </div>
+              <div class="tab-pane" id="nivel">
+                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                      <div class="fileinput-new thumbnail img-raised">
+                        <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">
+                      </div>
+                      <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                      <div>
+                        <span class="btn btn-raised btn-round btn-default btn-file">
+                            <span class="fileinput-new">Imagen de Alumno</span>
+                            <span class="fileinput-exists">cambiar</span>
+                            <input type="file" name="..." />
+                        </span>
+                          <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                      </div>
+                    </div>
+                    @php
+                    $levels=App\level::all();
+                    @endphp
+                    <div class="form-group col-md-4">
+                        <label for="inputState">nivel educativo</label>
+                        <select id="inputState" name="level_id" class="form-control">
+                        @foreach($levels as $level)
+                        <option value="{{$level->id}}">{{$level->nivel_educativo}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                  </div>
+
               </div>
              </div>
             </div>

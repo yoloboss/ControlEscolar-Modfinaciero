@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class group extends Model
+class Turn extends Model
 {
-
+    //
 }

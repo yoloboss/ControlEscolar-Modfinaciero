@@ -36,10 +36,10 @@ class CreateStudentsTable extends Migration
             $table->string('apellidos_m');
             $table->string('Telefono_m');
             $table->string('imagen')->nullable();
-            $table->boolean('baja'); //baja logica
+            $table->string('baja'); //baja logica
             
             $table->integer('level_id')->unsigned()->nullable();
-            $table->foreign('level_id')->references('id')->on('levels');
+
 
             $table->timestamps();
         });

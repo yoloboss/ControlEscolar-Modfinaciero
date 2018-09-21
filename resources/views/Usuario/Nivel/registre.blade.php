@@ -20,48 +20,66 @@
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto text-center">
           <h2 class="title">Registro de Niveles</h2>
-          <div class="card card-nav-tabs card-plain">
-          <div class="card-header card-header-danger">
-        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-              <div class="nav-tabs-navigation">
-                <div class="nav-tabs-wrapper">
-                  <ul class="nav nav-tabs" data-tabs="tabs">
-                      <li class="nav-item">
-                          <a class="nav-link active" href="#datos_g" data-toggle="tab">Datos Generales</a>
-                      </li>
-                  </ul>
+           <form method="post" action{{ url('/Usuario/alumno/resgistrar')}}>
+            @csrf
+            <div class="card card-nav-tabs card-plain">
+              <div class="card-header card-header-danger">
+                <div class="nav-tabs-navigation">
+                  <div class="nav-tabs-wrapper">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#datos_g" data-toggle="tab">Datos Generales</a>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        <div class="card-body ">
-          <div class="tab-content text-center">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Nivel escolar</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Primaria">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Grado</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
+              @php
+                $grades=App\grade::all();
+                $groups=App\group::all();
+                $levels=App\level::all();
+                $Turns=App\Turn::all();
+                @endphp
+              <div class="card-body ">
+                <div class="tab-content text-center">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Nivel escolar</label>
+                    <select class="form-control" name="level_id" id="exampleFormControlSelect1">
+                    @foreach($levels as $level)
+                    <option value="{{$level->id}}">{{$level->nivel_educativo}}</option>
+                    @endforeach
+                    </select>
+                  </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Turno</label>
+                  <select class="form-control"  name="turno_id" id="exampleFormControlSelect1">
+                  @foreach($Turns as $Turn)
+                    <option value="{{$Turn->id}}">{{$Turn->Turno}}</option>
+                  @endforeach
                   </select>
-              </div>
+                </div>
+                <div class="form-group">
+                <label for="exampleFormControlSelect1">Grado</label>
+                  <select class="form-control" name="grado_id" id="exampleFormControlSelect1">
+                    @foreach($grades as $grade)
+                    <option value="{{$grade->id}}">{{$grade->grado}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Grupo</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
+                  <select class="form-control" name="grupo_id" id="exampleFormControlSelect1">
+                    @foreach($groups as $group)
+                    <option value="{{$group->id}}">{{$group->grupo}}</option>
+                    @endforeach
                   </select>
               </div>
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Turno</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>T.M</option>
-                    <option>T.V</option>
-                  </select>
+                  <button type="submit" class="btn btn-primary">Registrar</button>
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary">Registrar</button>
-          </div>
-        </div>
-        </div>
+            </div>
+      </form>
         </div>
       </div>
     </div>
