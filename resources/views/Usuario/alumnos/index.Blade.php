@@ -18,6 +18,8 @@
   		<div class="container">
     		<div class="row">
       			<div class="col-md-12 ml-auto mr-auto text-center">
+                <a href="{{ url('/Usuario/alumno/')}}" class="badge badge-info">Listado de alumnos</a>
+                <a href="{{ url('/Usuario/alumno/baja')}}" class="badge badge-warning">Lista de alumnos dados de baja</a>
         			 <h2 class="title">Lista de alumnos</h2>
                  <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-info">Agregar Alumno</a>
         			   <table class="table">
@@ -43,19 +45,23 @@
             				    <td>{{ $student->apellido_P}} </td>
             				    <td>{{ $student->apellido_M}}</td>
             				    <td>{{ $student->nombre}}</td>
-                        <td>{{ $student->level->grade ? $student->level->grade->grado :'sin grado' }}</td>
-                        <td>{{ $student->level->grade->group ? $student->level->grade->group->grupo :'sin grupo' }}</td>
+                        <td>{{ $student->actlevel->grade ? $student->actlevel->grade->grado :'sin grado' }}</td>
+                        <td>{{ $student->actlevel->group ? $student->actlevel->group->grupo :'sin grupo' }}</td>
                         <td>{{ $student->telefono}}</td>
                         <td>{{ $student->Telefono_p}}</td>
-                        <td>{{ $student->Telefono_p}}</td>
+                        <td>{{ $student->Telefono_m}}</td>
             				    <td class="text-right">{{ $student->baja}}</td>
             				    <td class="td-actions text-right">
                 				<a href="{{url('/Usuario/alumno/'.$student->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
                     				<i class="now-ui-icons ui-2_settings-90"></i>
                 				</a>
-                				<button type="button" rel="tooltip" class="btn btn-danger">
-                    				<i class="now-ui-icons ui-1_simple-remove"></i>
-                				</button>
+                        <FORM method="post" action="{{url('/Usuario/alumno/'.$student->id.'/eliminar')}}">
+                          @csrf
+                         <button type="submit" rel="tooltip" class="btn btn-danger">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </button> 
+                        </FORM>
+                				
             				  </td>
         				    </tr>
                  @endforeach

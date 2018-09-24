@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class student extends Model
 {
-      public function level()
+      public function ActLevel()
     {
-    	return $this-> belongsTo(level::class,'level_id');
+    	return $this-> belongsTo(ActLevel::class,'level_id');
     }
 }

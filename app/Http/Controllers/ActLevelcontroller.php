@@ -33,4 +33,10 @@ class ActLevelcontroller extends Controller
         
         return redirect('/Usuario/Nivel/');											
     }
+
+    public function edit($id)
+    {
+        $actlevel = ActLevel::find($id);
+        return view('Usuario.nivel.edit')->with(compact('actlevel'));                                                    
+    }
 }

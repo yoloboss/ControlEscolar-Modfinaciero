@@ -19,6 +19,7 @@ class CreateActLevelsTable extends Migration
             $table->integer('grado_id')->unsigned()->nullable();
             $table->integer('grupo_id')->unsigned()->nullable();
             $table->integer('turno_id')->unsigned()->nullable();
+            $table->string('eliminarlogica')->nullable();
             $table->timestamps();
         });
     }

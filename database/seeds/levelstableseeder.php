@@ -13,15 +13,12 @@ class levelstableseeder extends Seeder
     {
         DB::table('levels')->insert([
         	'nivel_educativo' => 'Primaria',
-        	'Turno' => 'T.V',
         ]);
         DB::table('levels')->insert([
         	'nivel_educativo' => 'secundaria',
-        	'Turno' => 'T.V',
         ]);
         DB::table('levels')->insert([
         	'nivel_educativo' => 'prescolar',
-        	'Turno' => 'T.V',
         ]);
         
     }

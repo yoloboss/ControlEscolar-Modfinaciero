@@ -39,7 +39,7 @@
                         <td>{{ $actlevel->grade->grado ? $actlevel->grade->grado :'sin grado' }}</td>
                         <td>{{ $actlevel->group->grupo ? $actlevel->group->grupo :'sin grupo'}}</td>
                         <td class="td-actions text-right">
-                        <a href="{{url('/Usuario/alumno/'.$actlevel->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
+                        <a href="{{url('/Usuario/Nivel/'.$actlevel->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
                             <i class="now-ui-icons ui-2_settings-90"></i>
                         </a>
                         <button type="button" rel="tooltip" class="btn btn-danger">

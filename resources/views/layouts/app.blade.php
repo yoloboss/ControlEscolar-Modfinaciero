@@ -29,8 +29,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-header">Opciones</a>
-          <a class="dropdown-item" href="#">Alumnos</a>
-          <a class="dropdown-item" href="#">Niveles educativos</a>
+          <a class="dropdown-item" href="{{ url('/Usuario/alumno/')}}">Alumnos</a>
+          <a class="dropdown-item" href="{{ url('/Usuario/Nivel/')}}">Niveles educativos</a>
           <a class="dropdown-item" href="#">Ciclos Escolares</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Separated link</a>

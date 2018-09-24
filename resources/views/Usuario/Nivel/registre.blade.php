@@ -61,9 +61,11 @@
                 <div class="form-group">
                 <label for="exampleFormControlSelect1">Grado</label>
                   <select class="form-control" name="grado_id" id="exampleFormControlSelect1">
+
                     @foreach($grades as $grade)
                     <option value="{{$grade->id}}">{{$grade->grado}}</option>
                     @endforeach
+
                   </select>
                 </div>
                 

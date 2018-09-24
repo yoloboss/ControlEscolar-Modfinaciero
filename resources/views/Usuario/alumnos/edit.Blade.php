@@ -90,8 +90,8 @@
                       <div class="form-group col-md-4">
                         <label for="inputState">Estatus</label>
                         <select id="inputState" name="baja" class="form-control" value="{{$student->baja}}">
-                        <option selected>1</option>
-                        <option>0</option>
+                        <option selected>Alta</option>
+                        <option>Baja</option>
                         </select>
                       </div>
                     </div>
@@ -181,15 +181,42 @@
                           <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                       </div>
                     </div>
-                    <div class="form-group col-md-4">
+                    @php
+                    $actlevels=App\Actlevel::all();
+                    @endphp
+                    <div class="form-group col-md-8">
                         <label for="inputState">nivel educativo</label>
-                        <select id="inputState" name="level_id" class="form-control" value="{{$student->level_id}}">
-                        <option>1</option>
-                        <option>0</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Registrar</button>
-                  </div>
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th class="text-center">ID</th>
+                              <th class="text-center">Nombre del nivel</th>
+                              <th class="text-center">Grado</th>
+                              <th class="text-center">Grupo</th>
+                              <th class="text-center">Opciones</th>
+                             </tr>
+                          </thead>
+                        <tbody>
+                        @foreach($actlevels as $actlevel)
+                        <tr>
+                          <td class="text-center">{{ $actlevel->id}}</td>
+                          <td>{{ $actlevel->level->nivel_educativo}} </td>
+                          <td>{{ $actlevel->grade->grado ? $actlevel->grade->grado :'sin grado' }}</td>
+                          <td>{{ $actlevel->group->grupo ? $actlevel->group->grupo :'sin grupo'}}</td>
+                          <td class="td-actions text-right">
+                            <input class="form-check-input" value="{{$actlevel->id}}"  name="level_id" type="radio" >
+                            <span class="form-check-sign">
+                              <span class="check" ></span>
+                            </span>
+                            <i class="now-ui-icons ui-2_settings-90"></i>
+                        </a>
+                      </td>
+                    </tr>
+                 @endforeach
+                    </tbody>
+               </table>
+               <button type="submit" class="btn btn-primary">Editar</button>
+              </div>
              </div>
             </div>
             </div>
