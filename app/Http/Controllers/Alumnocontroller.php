@@ -47,7 +47,6 @@ class Alumnocontroller extends Controller
             'colonia.required' =>'Es necesario la colonia de el alumno.',
             'c_p.required' =>'Es necesario el codigo podtal de el alumno.',
             'c_p.integer' =>'El codigo postal debe de ser numerico.',
-            'c_p.max' =>'El codigo postal debe de tener maximo 5 digitos.',
             'numre_casa.required' =>'Es necesario el numero de casa de el alumno.',
             'numre_casa.integer' =>'El numero de casa debe de ser numerico.',
             'nombre_p.required' =>'Es necesario el nombre del padre el alumno.',
@@ -80,7 +79,7 @@ class Alumnocontroller extends Controller
             'telefono'=>'required|integer|min:10',
             'direccion'=>'required',
             'colonia'=>'required',
-            'c_p'=>'required|integer|max:5',
+            'c_p'=>'required|integer',
             'numre_casa'=>'required|integer',
             'nombre_p'=>'required|alpha',
             'apellidos_P'=>'required|alpha',
@@ -122,8 +121,14 @@ class Alumnocontroller extends Controller
         $student->level_id = $request->input('level_id');
 
         //guardar imagen en el proyecto
+
+        
+
         $file =$request->file('imagen');
-        $path = public_paht() . 'img/imagenes_estudiantes';
+
+        
+
+        $path = public_path() . 'img/imagenes_estudiantes';
         $fileName = uniqid() . $file->getClientOriginalName();
         $file->move($path,$fileName);
         //guardar el nombre de la imagen en la base de datos
@@ -160,7 +165,6 @@ class Alumnocontroller extends Controller
             'colonia.required' =>'Es necesario la colonia de el alumno.',
             'c_p.required' =>'Es necesario el codigo podtal de el alumno.',
             'c_p.integer' =>'El codigo postal debe de ser numerico.',
-            'c_p.max' =>'El codigo postal debe de tener maximo 5 digitos.',
             'numre_casa.required' =>'Es necesario el numero de casa de el alumno.',
             'numre_casa.integer' =>'El numero de casa debe de ser numerico.',
             'nombre_p.required' =>'Es necesario el nombre del padre el alumno.',
@@ -193,7 +197,7 @@ class Alumnocontroller extends Controller
             'telefono'=>'required|integer|min:10',
             'direccion'=>'required',
             'colonia'=>'required',
-            'c_p'=>'required|integer|max:5',
+            'c_p'=>'required|integer',
             'numre_casa'=>'required|integer',
             'nombre_p'=>'required|alpha',
             'apellidos_P'=>'required|alpha',
@@ -234,7 +238,7 @@ class Alumnocontroller extends Controller
         $student->level_id = $request->input('level_id');
         //guardar imagen en el proyecto
         $file =$request->file('imagen');
-        $path = public_paht() . 'img/imagenes_estudiantes';
+        $path = public_path() . 'img/imagenes_estudiantes';
         $fileName = uniqid() . $file->getClientOriginalName();
         $file->move($path,$fileName);
         //guardar el nombre de la imagen en la base de datos

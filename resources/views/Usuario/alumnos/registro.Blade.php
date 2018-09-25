@@ -30,7 +30,7 @@
             </div>
           @endif
 
-          <form method="post" action{{ url('/Usuario/alumno/resgistrar')}}>
+          <form method="post" action{{ url('/Usuario/alumno/resgistrar')}} enctype="multipart/form-data">
             @csrf
             <div class="card card-nav-tabs card-plain">
               <div class="card-header card-header-danger">
@@ -185,7 +185,7 @@
                         <span class="btn btn-raised btn-round btn-default btn-file">
                             <span class="fileinput-new">Imagen de Alumno</span>
                             <span class="fileinput-exists">cambiar</span>
-                            <input type="file" name="imagen" enctype="multipart/form-data" />
+                            <input type="file" name="imagen" />
                         </span>
                           <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                       </div>

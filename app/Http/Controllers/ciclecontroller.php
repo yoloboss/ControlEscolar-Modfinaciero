@@ -10,8 +10,14 @@ class ciclecontroller extends Controller
         public function index()
     {
 
-        $cycles = cycle:::all();
+        $cycles = cycle::all();
         return view('Usuario.Ciclos.index',compact('cycles'));
+
+    }
+    public function create()
+    {
+
+        return view('Usuario.Ciclos.registro');
 
     }
 }

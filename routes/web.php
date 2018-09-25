@@ -34,4 +34,5 @@ Route::post('/Usuario/Nivel/resgistrar','ActLevelcontroller@store');
 Route::get('/Usuario/Nivel/{id}/edicion','ActLevelcontroller@edit');
 
 
-Route::get('/Usuario/ciclo escolar/','levelcontroller@index');//ver ciclos
+Route::get('/Usuario/ciclo_escolar/','ciclecontroller@index');//ver ciclos
+Route::get('/Usuario/ciclo_escolar/resgistrar','ciclecontroller@create');//crear un nuevo ciclo

@@ -31,7 +31,7 @@
           <a class="dropdown-header">Opciones</a>
           <a class="dropdown-item" href="{{ url('/Usuario/alumno/')}}">Alumnos</a>
           <a class="dropdown-item" href="{{ url('/Usuario/Nivel/')}}">Niveles educativos</a>
-          <a class="dropdown-item" href="#">Ciclos Escolares</a>
+          <a class="dropdown-item" href="{{ url('/Usuario/ciclo_escolar')}}">Ciclos Escolares</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Separated link</a>
           <div class="dropdown-divider"></div>
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="navbar-translate">
-        <a class="navbar-brand" href="{{ url('welcome')}}" rel="tooltip"  data-placement="bottom" target="_blank">
+        <a class="navbar-brand" href="{{ url('welcome')}}" rel="tooltip"  data-placement="bottom" >
           Servicios Financieros
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">

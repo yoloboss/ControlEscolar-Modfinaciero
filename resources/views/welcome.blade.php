@@ -87,7 +87,7 @@
                         <a href="{{ url('/Usuario/alumno/')}}">Alumnos</a>
                         <a href="https://laracasts.com">usuarios</a>
                         <a href="https://laravel-news.com">Caja</a>
-                        <a href="https://forge.laravel.com">Ciclos escolares</a>
+                        <a href="{{ url('/Usuario/ciclo_escolar')}}">Ciclos escolares</a>
                         <a href="{{ url('/Usuario/Nivel/')}}">Niveles</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>

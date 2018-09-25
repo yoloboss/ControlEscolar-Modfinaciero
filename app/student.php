@@ -11,7 +11,7 @@ class student extends Model
     	return $this-> belongsTo(ActLevel::class,'level_id');
     }
 
-    public function getUrlAttribure()
+    public function getUrlAttribute()
     {
     	if(substr($this->imagen, 0, 4) === "http")
     	{

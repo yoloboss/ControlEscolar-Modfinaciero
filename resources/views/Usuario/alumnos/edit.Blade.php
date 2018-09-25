@@ -18,9 +18,9 @@
   <div class="section section-about-us">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 ml-auto mr-auto text-center">
+        <div class="col-md-10 ml-auto mr-auto text-center">
           <h2 class="title">Editar de alumnos</h2>
-          <form method="post" action{{ url('/Usuario/alumno/'.$student->id.'/edicion')}}>
+          <form method="post" action="{{ url('/Usuario/alumno/'.$student->id.'/edicion')}}" enctype="multipart/form-data">
             @csrf
             <div class="card card-nav-tabs card-plain">
               <div class="card-header card-header-danger">
@@ -98,7 +98,7 @@
               </div>
               <div class="tab-pane" id="updates">
                   <div class="form-row">
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-md-12">
                       <label for="inputEmail4">Direccion</label>
                         <input type="text" name="direccion" class="form-control" id="inputNombre" placeholder="Direccion..." value="{{$student->direccion}}">
                     </div>
@@ -106,11 +106,11 @@
                       <label for="inputPassword4">Colonia</label>
                       <input type="text" name="colonia" class="form-control" id="inputApep" placeholder="Colonia..." value="{{$student->colonia}}">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                       <label for="inputPassword4">Codigo Postal</label>
                       <input type="text" name="c_p" class="form-control" id="inputPassword4" placeholder="C.P..." value="{{$student->c_p}}">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                       <label for="inputPassword4">Numero de casa</label>
                       <input type="text" name="numre_casa" class="form-control" id="inputPassword4" placeholder="# casa" value="{{$student->numre_casa}}">
                    </div>
@@ -176,15 +176,15 @@
                         <span class="btn btn-raised btn-round btn-default btn-file">
                             <span class="fileinput-new">Imagen de Alumno</span>
                             <span class="fileinput-exists">cambiar</span>
-                            <input type="file" name="imagen" enctype="multipart/form-data" />
+                            <input type="file" name="imagen" />
                         </span>
-                          <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                          <a href="" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                       </div>
                     </div>
                     @php
                     $actlevels=App\Actlevel::all();
                     @endphp
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-md-12">
                         <label for="inputState">nivel educativo</label>
                         <table class="table">
                           <thead>
