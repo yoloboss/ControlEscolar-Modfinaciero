@@ -16,7 +16,7 @@ class CreateCyclesTable extends Migration
         Schema::create('cycles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ciclo');
-            $table->boolean('status');
+            $table->string('status');
             $table->timestamps();
         });
     }

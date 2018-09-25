@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(gradestableseeder::class);
         $this->call(levelstableseeder::class);
         $this->call(turnstableseeder::class);
+        $this->call(actlevelstableseeder::class);
+        $this->call(cyclestableseeder::class);
+        $this->call(userstableseeder::class);
         \Illuminate\Database\Eloquent\Model::reguard();
     }
 }

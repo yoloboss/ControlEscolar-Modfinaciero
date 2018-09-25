@@ -32,3 +32,6 @@ Route::get('/Usuario/Nivel/','ActLevelcontroller@index'); //ver niveles escolare
 Route::get('/Usuario/Nivel/resgistrar','ActLevelcontroller@create');//ver formulario de niveles escolares
 Route::post('/Usuario/Nivel/resgistrar','ActLevelcontroller@store');
 Route::get('/Usuario/Nivel/{id}/edicion','ActLevelcontroller@edit');
+
+
+Route::get('/Usuario/ciclo escolar/','levelcontroller@index');//ver ciclos

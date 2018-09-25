@@ -10,4 +10,14 @@ class student extends Model
     {
     	return $this-> belongsTo(ActLevel::class,'level_id');
     }
+
+    public function getUrlAttribure()
+    {
+    	if(substr($this->imagen, 0, 4) === "http")
+    	{
+    		return $this->imagen;
+    	}
+    	return 'img/imagenes_estudiantes' . $this->imagen ;
+    }
+
 }

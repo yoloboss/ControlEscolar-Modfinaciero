@@ -121,6 +121,13 @@ class Alumnocontroller extends Controller
         $student->baja = $request->input('baja');
         $student->level_id = $request->input('level_id');
 
+        //guardar imagen en el proyecto
+        $file =$request->file('imagen');
+        $path = public_paht() . 'img/imagenes_estudiantes';
+        $fileName = uniqid() . $file->getClientOriginalName();
+        $file->move($path,$fileName);
+        //guardar el nombre de la imagen en la base de datos
+        $student->imagen = $fileName;
         $student->save();
 
         return redirect('/Usuario/alumno/');
@@ -225,7 +232,13 @@ class Alumnocontroller extends Controller
         $student->Telefono_m = $request->input('Telefono_m');
         $student->baja = $request->input('baja');
         $student->level_id = $request->input('level_id');
-
+        //guardar imagen en el proyecto
+        $file =$request->file('imagen');
+        $path = public_paht() . 'img/imagenes_estudiantes';
+        $fileName = uniqid() . $file->getClientOriginalName();
+        $file->move($path,$fileName);
+        //guardar el nombre de la imagen en la base de datos
+        $student->imagen = $fileName;
         $student->save();
 
         return redirect('/Usuario/alumno/');
