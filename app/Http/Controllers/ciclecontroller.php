@@ -14,6 +14,12 @@ class ciclecontroller extends Controller
         return view('Usuario.Ciclos.index',compact('cycles'));
 
     }
+        public function indexp()
+    {
+
+        return view('Usuario.Ciclos.steps');
+
+    }
     public function create()
     {
 

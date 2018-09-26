@@ -39,9 +39,9 @@
                       </td>
                       <td class="text-center">{{ $cycle->ciclo}}</td>
                       <td>{{ $cycle->status}} </td>
-                      <td class="td-actions text-right">
-                        <a href="" rel="tooltip" class="btn btn-success">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
+                      <td class="td-actions text-center">
+                        <a href="{{url('/Usuario/ciclo_escolar/pasos')}}" rel="tooltip" class="btn btn-success">
+                            <i class="now-ui-icons check-circle-07"></i>
                         </a>
                       </td>
                     </tr>

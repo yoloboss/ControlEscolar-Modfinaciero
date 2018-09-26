@@ -10,7 +10,7 @@
   		</div>
   		<div class="content-center">
     		<div class="container">
-      			<h1 class="title">Vista de alumnos</h1>
+      			<h1 class="title">Alumnos</h1>
     		</div>
   		</div>
 	</div>
@@ -22,20 +22,22 @@
                 <a href="{{ url('/Usuario/alumno/')}}" class="badge badge-info">Listado de alumnos activos</a>
                 <a href="{{ url('/Usuario/alumno/baja')}}" class="badge badge-warning">Lista de alumnos dados de baja</a>
               </div>
-        			 <h2 class="title">Lista de alumnos</h2>
-                 <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-info">Agregar Alumno</a>
+        			 <h2 class="title ">Lista de alumnos</h2>
+                  <div class="col-md-12 ml-auto mr-auto text-right">
+                    <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-success">Agregar Alumno</a>
+                  </div>
         			   <table class="table">
     					     <thead>
         					   <tr>
-            					<th class="text-center">Matricula</th>
+            					<th class="text-center">Matrícula</th>
             					<th class="text-center">Apellido Paterno</th>
             					<th class="text-center">Apellido Materno</th>
             					<th class="text-center">Nombre</th>
                       <th class="text-center">Grado</th>
                       <th class="text-center">Grupo</th>
-                      <th class="text-center">Telefono</th>
-                      <th class="text-center">Telefono Padre</th>
-                      <th class="text-center">Telefono Madre</th>
+                      <th class="text-center">Teléfono</th>
+                      <th class="text-center">Teléfono Padre</th>
+                      <th class="text-center">Teléfono Madre</th>
             					<th class="text-right">Estado</th>
             					<th class="text-left">Opciones</th>
         					   </tr>

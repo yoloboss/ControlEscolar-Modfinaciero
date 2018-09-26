@@ -17,7 +17,7 @@ class student extends Model
     	{
     		return $this->imagen;
     	}
-    	return 'img/imagenes_estudiantes' . $this->imagen ;
+    	return '/img/imagenes_estudiantes/' . $this->imagen ;
     }
 
 }
