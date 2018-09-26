@@ -39,4 +39,17 @@ class ActLevelcontroller extends Controller
         $actlevel = ActLevel::find($id);
         return view('Usuario.nivel.edit')->with(compact('actlevel'));                                                    
     }
+    public function  update(Request $request, $id)
+    {
+        $actlevel = ActLevel::find($id);
+        
+        $actlevel->level_id = $request->input('level_id');
+        $actlevel->grado_id = $request->input('grado_id');
+        $actlevel->grupo_id = $request->input('grupo_id');
+        $actlevel->turno_id = $request->input('turno_id');
+        
+        $actlevel->save();
+        
+        return redirect('/Usuario/Nivel/');                                         
+    }
 }

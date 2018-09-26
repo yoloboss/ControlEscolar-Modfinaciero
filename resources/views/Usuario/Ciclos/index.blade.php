@@ -10,7 +10,7 @@
       </div>
       <div class="content-center">
         <div class="container">
-            <h1 class="title">Niveles Educativos</h1>
+            <h1 class="title">Ciclos escolaress</h1>
         </div>
       </div>
   </div>
@@ -18,28 +18,32 @@
       <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
-              <h2 class="title">Lista de Niveles</h2>
-              <a href="{{ url('/Usuario/Nivel/resgistrar')}}" type="button" class="btn btn-info">Agregar nuevo ciclo</a>
+              <h2 class="title">Lista de ciclos escolares</h2>
+              <a href="{{ url('/Usuario/ciclo_escolar/resgistrar')}}" type="button" class="btn btn-info">Agregar nuevo ciclo</a>
                  <table class="table">
                    <thead>
                      <tr>
-                      <th class="text-center">seleccion</th>
+                      <th class="text-center">Editar</th>
                       <th class="text-center">ciclo escolar</th>
                       <th class="text-center">estatus</th>
+                      <th class="text-center">Progreso</th>
                      </tr>
                    </thead>
                     <tbody>
                   @foreach($cycles as $cycle)
                     <tr>
                       <td class="td-actions text-right">
-                        <input class="form-check-input"  type="radio" >
-                            <span class="form-check-sign">
-                              <span class="check" ></span>
-                            </span>
+                        <a href="{{url('/Usuario/ciclo_escolar/'.$cycle->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
                             <i class="now-ui-icons ui-2_settings-90"></i>
+                        </a>
                       </td>
                       <td class="text-center">{{ $cycle->ciclo}}</td>
                       <td>{{ $cycle->status}} </td>
+                      <td class="td-actions text-right">
+                        <a href="" rel="tooltip" class="btn btn-success">
+                            <i class="now-ui-icons ui-2_settings-90"></i>
+                        </a>
+                      </td>
                     </tr>
                  @endforeach
                     </tbody>

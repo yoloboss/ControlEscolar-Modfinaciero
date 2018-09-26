@@ -20,11 +20,11 @@
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto text-center">
           <h2 class="title">Registro de ciclo</h2>
-           <form method="post" action{{ url('/Usuario/ciclo_escolar/resgistrar')}}>
+           <form method="post" action="{{ url('/Usuario/ciclo_escolar/'.$cycle->id.'/edicion')}}">
             @csrf
             <div class="form-group">
               <label for="exampleFormControlInput1">Nombre del ciclo escolar</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="2018-2019" name="ciclo">
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="2018-2019" name="ciclo" value="{{$cycle->ciclo}}">
             </div>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Estatus del ciclo</label>

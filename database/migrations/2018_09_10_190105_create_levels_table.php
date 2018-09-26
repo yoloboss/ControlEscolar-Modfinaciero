@@ -17,7 +17,6 @@ class CreateLevelsTable extends Migration
             $table->increments('id');
             $table->string('nivel_educativo');
             $table->timestamps();
-            $table->string('Turno');
             
         });
     }

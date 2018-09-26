@@ -32,6 +32,7 @@
           <a class="dropdown-item" href="{{ url('/Usuario/alumno/')}}">Alumnos</a>
           <a class="dropdown-item" href="{{ url('/Usuario/Nivel/')}}">Niveles educativos</a>
           <a class="dropdown-item" href="{{ url('/Usuario/ciclo_escolar')}}">Ciclos Escolares</a>
+          <a class="dropdown-item" href="{{ url('/Usuario/concepto_pago/')}}">Conceptos de Pago</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Separated link</a>
           <div class="dropdown-divider"></div>

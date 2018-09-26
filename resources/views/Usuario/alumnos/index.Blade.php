@@ -64,7 +64,6 @@
                             <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button> 
                           </div>
-                          
                         </FORM>
             				  </td>
         				    </tr>
