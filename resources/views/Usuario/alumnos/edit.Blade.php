@@ -95,7 +95,23 @@
                         </select>
                       </div>
                     </div>
-              </div>
+                      <div class="col-md-12">
+                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail img-raised">
+                            <img src="{{$student->url}}" alt="...">
+                            </div>
+                          <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                          <div>
+                            <span class="btn btn-raised btn-round btn-default btn-file">
+                              <span class="fileinput-new">Imagen de Alumno</span>
+                              <span class="fileinput-exists">cambiar</span>
+                              <input type="file" name="imagen" />
+                            </span>
+                            <a href="" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
               <div class="tab-pane" id="updates">
                   <div class="form-row">
                     <div class="form-group col-md-12">
@@ -167,20 +183,6 @@
                 
               </div>
               <div class="tab-pane" id="nivel">
-                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                      <div class="fileinput-new thumbnail img-raised">
-                        <img src="{{$student->url}}" alt="...">
-                      </div>
-                      <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
-                      <div>
-                        <span class="btn btn-raised btn-round btn-default btn-file">
-                            <span class="fileinput-new">Imagen de Alumno</span>
-                            <span class="fileinput-exists">cambiar</span>
-                            <input type="file" name="imagen" />
-                        </span>
-                          <a href="" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-                      </div>
-                    </div>
                     @php
                     $actlevels=App\Actlevel::all();
                     @endphp

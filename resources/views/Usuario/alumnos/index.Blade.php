@@ -17,14 +17,66 @@
 	<div class="section section-about-us">
   		<div class="container">
     		<div class="row">
-      			<div class="col-md-12 ml-auto mr-auto text-center">
-              <div class="col-md-8 ml-auto mr-auto text-center">
-                <a href="{{ url('/Usuario/alumno/')}}" class="badge badge-info">Listado de alumnos activos</a>
-                <a href="{{ url('/Usuario/alumno/baja')}}" class="badge badge-warning">Lista de alumnos dados de baja</a>
+      			<div class="col-md-16 ml-auto mr-auto text-center">
+              <div class="nav-tabs-wrapper col-md-16 ml-auto mr-auto text-left">
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                  <li class="nav-item">
+                    <a href="{{ url('/Usuario/alumno/')}}" class="nav-link active" >Listado de alumnos activos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url('/Usuario/alumno/baja')}}" class="nav-link active" >Lista de alumnos dados de baja</a>
+                  </li>
+                  <br>
+                  <form method="post" action="/tomate" class="form-inline  col-md-16 ml-auto mr-auto text-left">
+                    @csrf
+                  <div class="form-group col-md-3">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre"  class="form-control" id="inputNombre"  >
+                  </div>
+                    @php
+                    $levels=App\level::all();
+                    $groups=App\group::all();
+                    $grades=App\grade::all();
+                    @endphp
+                  <div class="form-group col-md-3">
+                    <label for="exampleFormControlSelect1">Nivel educativo</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="nivel">
+                     <option value="">seleccione una Opciones</option>
+
+                      @foreach($levels as $level)
+                      <option value="{{$level->id}}">{{$level->nivel_educativo}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="exampleFormControlSelect1">grado</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="grado">
+                      <option value="">seleccione una Opciones</option>
+                      @foreach($grades as $grade)
+                      <option value="{{$grade->id}}">{{$grade->grado}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="exampleFormControlSelect1">grupo</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="grupo">
+                      <option value="">seleccione una Opciones</option>
+                      @foreach($groups as $group)
+                      <option value="{{$group->id}}">{{$group->grupo}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">buscar</button>
+                  </form>
+
+
+
+
+                </ul>
               </div>
         			 <h2 class="title ">Lista de alumnos</h2>
                   <div class="col-md-12 ml-auto mr-auto text-right">
-                    <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-success">Agregar Alumno</a>
+                    <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-success now-ui-icons ic_person_add_48px">Agregar Alumno</a>
                   </div>
         			   <table class="table">
     					     <thead>
@@ -56,17 +108,19 @@
                         <td>{{ $student->Telefono_m}}</td>
             				    <td class="text-right">{{ $student->baja}}</td>
             				    <td class="td-actions text-left">
-                        <FORM method="post" action="{{url('/Usuario/alumno/'.$student->id.'/eliminar')}}">
+                        <div class="col-md-2">
+                            <FORM method="post" action="{{url('/Usuario/alumno/'.$student->id.'/eliminar')}}">
                           @csrf
                           <div class="col-md-2 ml-auto mr-auto text-center">
                             <a href="{{url('/Usuario/alumno/'.$student->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
+                              <i class="now-ui-icons ui-2_settings-90"></i>
                             </a>  
                             <button type="submit" rel="tooltip" class="btn btn-danger">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                              <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button> 
                           </div>
                         </FORM>
+                      </div>
             				  </td>
         				    </tr>
                  @endforeach

@@ -59,15 +59,15 @@
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre"  class="form-control" id="inputNombre" placeholder="Nombre..." value="{{old('nombre')}}">
+                        <input type="text" name="nombre"  class="form-control" id="inputNombre" value="{{old('nombre')}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputPassword4">Apellido Paterno</label>
-                        <input type="text" name="apellido_P" class="form-control" id="inputApep" placeholder="Apellido Paterno" value="{{old('apellido_P')}}">
+                        <input type="text" name="apellido_P" class="form-control" id="inputApep" value="{{old('apellido_P')}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputPassword4">Apellido Materno</label>
-                        <input type="text" name="apellido_M" class="form-control" id="inputApem" placeholder="Apellido Materno" value="{{old('apellido_M')}}">
+                        <input type="text" name="apellido_M" class="form-control" id="inputApem" value="{{old('apellido_M')}}">
                       </div>
                     </div>
                     <div class="form-group">
@@ -79,7 +79,7 @@
                     </div>
                     <div class="form-group">
                       <label for="inputAddress2">Fecha de nacimiento</label>
-                      <input type="text" name="fecha_nacimineto" class="form-control" id="inputAddress2" placeholder="AA/MM/DD" value="{{old('fecha_nacimineto')}}">
+                      <input type="text" name="fecha_nacimineto" class="form-control" id="inputAddress2" placeholder="AAAA/MM/DD" value="{{old('fecha_nacimineto')}}">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
@@ -104,19 +104,19 @@
                         <option>Baja</option>
                         </select>
                       </div>
-                      <div class="form-group col-md-12">
+                      <div class="col-md-12">
                         <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                          <div class="fileinput-new thumbnail img-raised">
-                          <img src="url('{{asset('http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png')}}');" alt="...">
-                          </div>
+                            <div class="fileinput-new thumbnail img-raised">
+                            <img src="{{asset('http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png')}}" alt="...">
+                            </div>
                           <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
                           <div>
-                          <span class="btn btn-raised btn-round btn-default btn-file">
-                            <span class="fileinput-new">Fotografía del alumno</span>
-                            <span class="fileinput-exists">cambiar</span>
-                            <input type="file" name="imagen" />
-                          </span>
-                          <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Eliminar</a>
+                            <span class="btn btn-raised btn-round btn-default btn-file">
+                              <span class="fileinput-new">Imagen de Alumno</span>
+                              <span class="fileinput-exists">cambiar</span>
+                              <input type="file" name="imagen" />
+                            </span>
+                            <a href="" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                           </div>
                         </div>
                       </div>
@@ -126,19 +126,19 @@
                   <div class="form-row">
                     <div class="form-group col-md-8">
                       <label for="inputEmail4">Direccion</label>
-                        <input type="text" name="direccion" class="form-control" id="inputNombre" placeholder="Direccion..." value="{{old('direccion')}}">
+                        <input type="text" name="direccion" class="form-control" id="inputNombre" value="{{old('direccion')}}">
                     </div>
                     <div class="form-group col-md-4">
                       <label for="inputPassword4">Colonia</label>
-                      <input type="text" name="colonia" class="form-control" id="inputApep" placeholder="Colonia..." value="{{old('colonia')}}">
+                      <input type="text" name="colonia" class="form-control" id="inputApep" value="{{old('colonia')}}">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputPassword4">Código Postal</label>
-                      <input type="text" name="c_p" class="form-control" id="inputPassword4" placeholder="C.P..." value="{{old('c_p')}}">
+                      <input type="text" name="c_p" class="form-control" id="inputPassword4" value="{{old('c_p')}}">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputPassword4">Número de casa</label>
-                      <input type="text" name="numre_casa" class="form-control" id="inputPassword4" placeholder="# casa" value="{{old('numre_casa')}}">
+                      <input type="text" name="numre_casa" class="form-control" id="inputPassword4" value="{{old('numre_casa')}}">
                    </div>
                      <div class="form-group">
                       <div class="form-check">
@@ -159,19 +159,19 @@
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputEmail4">Nombre</label>
-                        <input type="text" name="nombre_p" class="form-control" id="inputNombre" placeholder="Nombre..." value="{{old('nombre_p')}}">
+                        <input type="text" name="nombre_p" class="form-control" id="inputNombre" value="{{old('nombre_p')}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputPassword4">Apellidos</label>
-                        <input type="text" name="apellidos_P" class="form-control" id="inputApep" placeholder="Apellido Paterno" value="{{old('apellidos_P')}}">
+                        <input type="text" name="apellidos_P" class="form-control" id="inputApep" value="{{old('apellidos_P')}}">
                       </div>
                       <div class="form-group col-md-8">
                       <label for="inputEmail4">Dirección</label>
-                        <input type="text" name="direccion_p" class="form-control" id="inputNombre" placeholder="Direccion..." value="{{old('direccion_p')}}">
+                        <input type="text" name="direccion_p" class="form-control" id="inputNombre" value="{{old('direccion_p')}}">
                       </div>
                       <div class="form-group col-md-8">
                       <label for="inputEmail4">Teléfono celular</label>
-                        <input type="text" name="Telefono_p" class="form-control" id="inputNombre" placeholder="Telefono celular..." value="{{old('Telefono_p')}}">
+                        <input type="text" name="Telefono_p" class="form-control" id="inputNombre" value="{{old('Telefono_p')}}">
                       </div>
                     </div>
                     <br>
@@ -181,19 +181,19 @@
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputEmail4">Nombre</label>
-                        <input type="text" name="nombre_m" class="form-control" id="inputNombre" placeholder="Nombre..." value="{{old('nombre_m')}}">
+                        <input type="text" name="nombre_m" class="form-control" id="inputNombre" value="{{old('nombre_m')}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputPassword4">Apellidos</label>
-                        <input type="text" name="apellidos_m" class="form-control" id="inputApep" placeholder="Apellido Paterno" value="{{old('apellidos_m')}}">
+                        <input type="text" name="apellidos_m" class="form-control" id="inputApep" value="{{old('apellidos_m')}}">
                       </div>
                       <div class="form-group col-md-8">
                       <label for="inputEmail4">Dirección</label>
-                        <input type="text" name="direccion_m" class="form-control" id="inputNombre" placeholder="Direccion..." value="{{old('direccion_m')}}">
+                        <input type="text" name="direccion_m" class="form-control" id="inputNombre" value="{{old('direccion_m')}}">
                       </div>
                       <div class="form-group col-md-8">
                       <label for="inputEmail4">Teléfono celular</label>
-                        <input type="text" name="Telefono_m" class="form-control" id="inputNombre" placeholder="Telefono celular..." value="{{old('Telefono_m')}}">
+                        <input type="text" name="Telefono_m" class="form-control" id="inputNombre" value="{{old('Telefono_m')}}">
                       </div>
                     </div>
               </div>

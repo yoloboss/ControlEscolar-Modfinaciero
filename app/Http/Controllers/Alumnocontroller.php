@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\student;
+use App\level;
 
 class Alumnocontroller extends Controller
 {
@@ -19,6 +20,11 @@ class Alumnocontroller extends Controller
     public function indexbaja()
     {
         $students = student::where('baja','=','Baja')->get();
+        return view('Usuario.alumnos.index',compact('students')); 
+    }
+    public function busqueda($estudiante,$nivel_activo,$nivel_educativo,$grado,$grupo)
+    {
+        $students = student::OrdenarNivel($estudiante,$nivel_activo,$nivel_educativo,$grado,$grupo);
         return view('Usuario.alumnos.index',compact('students')); 
     }
     //crear un nuevo alumno
@@ -259,6 +265,15 @@ class Alumnocontroller extends Controller
         $student->save();
 
         return back();
+    }
+
+    public function tomate(Request $request){
+
+
+
+       OrdenarNivel($request->$name, $request->$nivel,$request->$grado,$request->$grupo);
+
+        
     }
 
 }

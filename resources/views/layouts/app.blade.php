@@ -11,15 +11,15 @@
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link href="{{asset('https://fonts.googleapis.com/css?family=Montserrat:400,700,200')}}" rel="stylesheet" />
+  <link href="{{asset('https://use.fontawesome.com/releases/v5.0.6/css/all.css"')}} rel="stylesheet">
   <!-- CSS Files -->
   <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" />
   <link href="{{asset('/css/now-ui-kit.css?v=1.2.0')}}" rel="stylesheet" />
 </head>
 <body class="@yield('body-class')">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="300">
+  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="350">
     <div class="container">
       <div class="dropdown button-dropdown">
         <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">

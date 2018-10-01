@@ -20,12 +20,13 @@ Auth::routes();
 Route::get('/welcome', 'HomeController@index')->name('menu');
 
 Route::get('/Usuario/alumno/','Alumnocontroller@index');//ver todos alumnos
-Route::get('/Usuario/alumno/baja','Alumnocontroller@indexbaja'); //ver alumnos de baja
+Route::get('/Usuario/alumno/baja','Alumnocontroller@indexbaja');//ver alumnos de baja
 Route::get('/Usuario/alumno/resgistrar','Alumnocontroller@create');//ver formulario de alumno
 Route::post('/Usuario/alumno/resgistrar','Alumnocontroller@store');//guardar nuevo registro
 Route::get('/Usuario/alumno/{id}/edicion','Alumnocontroller@edit');//ver formulario de edicion de alumno
 Route::post('/Usuario/alumno/{id}/edicion','Alumnocontroller@update');//actualizar alumno
 Route::post('/Usuario/alumno/{id}/eliminar','Alumnocontroller@destroy');//eliminar alumno
+Route::post('/tomate', 'Alumnocontroller@tomate');//actualizar alumno
 
 
 Route::get('/Usuario/Nivel/','ActLevelcontroller@index'); //ver niveles escolares
