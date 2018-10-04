@@ -34,7 +34,6 @@ class studentstableseeder extends Seeder
             'Telefono_m' =>'6123568945',
             'imagen' =>'null',
             'baja' =>'Alta',
-            'level_id'=>'1',
         ]);
     }
 }

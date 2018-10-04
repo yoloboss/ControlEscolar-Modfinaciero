@@ -9,8 +9,7 @@ class ActLevelcontroller extends Controller
 {
     public function index()
     {
-
-        $actlevels = ActLevel::all();
+        $actlevels = ActLevel::where('eliminarlogica','=','Alta')->get();
         return view('Usuario.Nivel.index',compact('actlevels')); 
 
     }
@@ -51,5 +50,18 @@ class ActLevelcontroller extends Controller
         $actlevel->save();
         
         return redirect('/Usuario/Nivel/');                                         
+    }
+
+    public function destroy( $id)
+    {
+        
+        //$request->all();
+        $actlevel = ActLevel::find($id);
+        $actlevel->eliminarlogica = 'baja';
+
+
+        $actlevel->save();
+
+        return back();
     }
 }

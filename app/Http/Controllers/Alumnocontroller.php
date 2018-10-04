@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\student;
-use App\level;
+use App\Actlevel;
+use App\Student_actLevel;
 
 class Alumnocontroller extends Controller
 {
@@ -22,10 +23,60 @@ class Alumnocontroller extends Controller
         $students = student::where('baja','=','Baja')->get();
         return view('Usuario.alumnos.index',compact('students')); 
     }
-    public function busqueda($estudiante,$nivel_activo,$nivel_educativo,$grado,$grupo)
+    public function busqueda(Request $request)
     {
-        $students = student::OrdenarNivel($estudiante,$nivel_activo,$nivel_educativo,$grado,$grupo);
-        return view('Usuario.alumnos.index',compact('students')); 
+
+        $id = $request->id;
+        $nombre = $request->nombre;
+        $nivel_educativo = $request->nivel;
+        $grado = $request->grado;
+        $grupo = $request->grupo;
+
+        if(!empty($id))
+        {
+            $students = student::where('students.id',$id)->orderBy('created_at', 'desc')->get();
+        }
+        else
+        {
+        $students = student::select();
+
+
+            if($nombre)
+            {
+                $students = $students->where('students.nombre','like',"%$nombre%");
+        
+
+            }
+             if(!empty($nivel_educativo))
+            {
+
+
+                $students = \DB::table('students')->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')->get();
+
+
+               
+                
+            }
+
+            if(!empty($grado))
+            {
+                $students = $students->where('grades.grado','like',"%{$grado}%")->get();
+
+            }
+
+            if(!empty($grupo))
+            {
+                $students = $students->where('groups.grupo','like',"%{$grupo}%")->get();
+            }
+
+               
+
+            return view('Usuario.alumnos.index',compact('students')); 
+
+        
+        }
+
+        
     }
     //crear un nuevo alumno
     public function create()
@@ -72,7 +123,6 @@ class Alumnocontroller extends Controller
             'apellidos_m.required' =>'Es necesario el apellido de la madre de el alumno.',
             'apellidos_m.alpha' =>'Es necesario el apellido de la madre de el alumno sea alfabetico.',
             'baja.required' =>'Es necesario el asignar el estado de el alumno.',
-            'level_id.required' =>'Es necesario el nivel del el alumno.'
         ];
         $rules=[ 
             'nombre'=>'required|alpha',
@@ -96,13 +146,12 @@ class Alumnocontroller extends Controller
             'Telefono_m'=>'required|integer|min:10',
             'apellidos_m'=>'required|alpha',
             'baja'=>'required',
-            'level_id'=>'required',
 
         ];
         $this->validate($request,$rules,$messages);
-    	
-        //$request->all();
+    
         $student = new student();
+       
         $student->nombre = $request->input('nombre');
         $student->apellido_P = $request->input('apellido_P');
         $student->apellido_M = $request->input('apellido_M');
@@ -124,22 +173,31 @@ class Alumnocontroller extends Controller
         $student->apellidos_m = $request->input('apellidos_m');
         $student->Telefono_m = $request->input('Telefono_m');
         $student->baja = $request->input('baja');
-        $student->level_id = $request->input('level_id');
 
-        //guardar imagen en el proyecto
 
-        
 
-        $file =$request->file('imagen');
-
-        
-
+       
+       if(! $request->file == null)
+       {
+         $file =$request->file('imagen');
         $path = public_path() . 'img/imagenes_estudiantes';
         $fileName = uniqid() . $file->getClientOriginalName();
         $file->move($path,$fileName);
         //guardar el nombre de la imagen en la base de datos
         $student->imagen = $fileName;
-        $student->save();
+       }
+
+       $student->save();
+
+       
+        //guardar imagen en el proyecto
+
+
+        //guardar nivel actual del estudiante
+        $studen_actl = new Student_actLevel();
+        $studen_actl->student_id =$student->id;
+        $studen_actl->actlevel_id =$request->input('level_id');
+        $studen_actl->save();
 
         return redirect('/Usuario/alumno/');
     }
@@ -220,6 +278,8 @@ class Alumnocontroller extends Controller
         $this->validate($request,$rules,$messages);
         //$request->all();
         $student = student::find($id);
+        $actlevel = Actlevel::find($id);
+        $studen_actl = student_actLevel::find($id);
         $student->nombre = $request->input('nombre');
         $student->apellido_P = $request->input('apellido_P');
         $student->apellido_M = $request->input('apellido_M');
@@ -241,7 +301,8 @@ class Alumnocontroller extends Controller
         $student->apellidos_m = $request->input('apellidos_m');
         $student->Telefono_m = $request->input('Telefono_m');
         $student->baja = $request->input('baja');
-        $student->level_id = $request->input('level_id');
+        $studen_actl->student_id =$student->id;
+        $studen_actl->actlevel_id =$actlevel->id;
         //guardar imagen en el proyecto
         $file =$request->file('imagen');
         $path = public_path() . 'img/imagenes_estudiantes';
@@ -250,6 +311,7 @@ class Alumnocontroller extends Controller
         //guardar el nombre de la imagen en la base de datos
         $student->imagen = $fileName;
         $student->save();
+        $studen_actl->save();
 
         return redirect('/Usuario/alumno/');
     }
@@ -265,15 +327,6 @@ class Alumnocontroller extends Controller
         $student->save();
 
         return back();
-    }
-
-    public function tomate(Request $request){
-
-
-
-       OrdenarNivel($request->$name, $request->$nivel,$request->$grado,$request->$grupo);
-
-        
     }
 
 }

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActLevel extends Model
 {
+    public function student()
+    {
+        return $this-> belongsTo(student::class,'student_id');
+    }
    	public function grade()
     {
     	return $this-> belongsTo(grade::class,'grado_id');

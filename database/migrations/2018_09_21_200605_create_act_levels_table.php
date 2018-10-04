@@ -15,10 +15,15 @@ class CreateActLevelsTable extends Migration
     {
         Schema::create('act_levels', function (Blueprint $table) {
             $table->increments('id');
+            
             $table->integer('level_id')->unsigned()->nullable();
+            $table->foreign('level_id')->references('id')->on('levels');
             $table->integer('grado_id')->unsigned()->nullable();
+            $table->foreign('grado_id')->references('id')->on('grades');
             $table->integer('grupo_id')->unsigned()->nullable();
+            $table->foreign('grupo_id')->references('id')->on('groups');
             $table->integer('turno_id')->unsigned()->nullable();
+            $table->foreign('turno_id')->references('id')->on('turns');
             $table->string('eliminarlogica')->nullable();
             $table->timestamps();
         });

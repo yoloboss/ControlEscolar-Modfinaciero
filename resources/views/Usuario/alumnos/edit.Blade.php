@@ -186,6 +186,44 @@
                     @php
                     $actlevels=App\Actlevel::all();
                     @endphp
+                    <div class="form-inline col-md-12">
+                      <form method="post" action="/Usuario/alumno/busqueda" class="form-inline  col-md-16 ml-auto mr-auto text-left">
+                     {{csrf_field()}}
+                        @php
+                        $levels=App\level::all();
+                        $groups=App\group::all();
+                        $grades=App\grade::all();
+                        @endphp
+                        <div class="form-group col-md-3">
+                          <label for="exampleFormControlSelect1">Nivel educativo</label>
+                          <select class="form-control" id="exampleFormControlSelect1" name="nivel">
+                            <option value="">seleccione una Opciones</option>
+                            @foreach($levels as $level)
+                            <option value="{{$level->id}}">{{$level->nivel_educativo}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="exampleFormControlSelect1">grado</label>
+                          <select class="form-control" id="exampleFormControlSelect1" name="grado">
+                            <option value="">seleccione una Opciones</option>
+                            @foreach($grades as $grade)
+                            <option value="{{$grade->id}}">{{$grade->grado}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="exampleFormControlSelect1">grupo</label>
+                          <select class="form-control" id="exampleFormControlSelect1" name="grupo">
+                            <option value="">seleccione una Opciones</option>
+                            @foreach($groups as $group)
+                            <option value="{{$group->id}}">{{$group->grupo}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">buscar</button>
+                      </form>
+                    </div>
                     <div class="form-group col-md-12">
                         <label for="inputState">nivel educativo</label>
                         <table class="table">

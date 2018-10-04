@@ -38,7 +38,7 @@ class CreateStudentsTable extends Migration
             $table->string('imagen')->nullable();
             $table->string('baja'); //baja logica
             
-            $table->integer('level_id')->unsigned()->nullable();
+            
 
 
             $table->timestamps();

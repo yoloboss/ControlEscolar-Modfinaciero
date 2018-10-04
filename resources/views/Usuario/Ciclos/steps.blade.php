@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Ejemplo de estilos CSS en el propio documento</title>
 <style type="text/css">
-  .steps-form-2 {
+    .steps-form-2 {
     display: table;
     width: 100%;
     position: relative; }
-.steps-form-2 .steps-row-2 {
+    .steps-form-2 .steps-row-2 {
     display: table-row; }
-.steps-form-2 .steps-row-2:before {
+    .steps-form-2 .steps-row-2:before {
     top: 14px;
     bottom: 0;
     position: absolute;
@@ -18,16 +18,16 @@
     width: 100%;
     height: 2px;
     background-color: #7283a7; }
-.steps-form-2 .steps-row-2 .steps-step-2 {
+    .steps-form-2 .steps-row-2 .steps-step-2 {
     display: table-cell;
     text-align: center;
     position: relative; }
-.steps-form-2 .steps-row-2 .steps-step-2 p {
+    .steps-form-2 .steps-row-2 .steps-step-2 p {
     margin-top: 0.5rem; }
-.steps-form-2 .steps-row-2 .steps-step-2 button[disabled] {
+    .steps-form-2 .steps-row-2 .steps-step-2 button[disabled] {
     opacity: 1 !important;
     filter: alpha(opacity=100) !important; }
-.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
+    .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
     width: 70px;
     height: 70px;
     border: 2px solid #59698D;
@@ -36,13 +36,14 @@
     border-radius: 50%;
     padding: 22px 18px 15px 18px;
     margin-top: -22px; }
-.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
+    .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
     border: 2px solid #4285F4;
     color: #4285F4 !important;
     background-color: white !important; }
-.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
+    .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
     font-size: 1.7rem; }
 </style>
+<link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" />
 </head>
 <body>
 <h2 class="text-center font-bold pt-4 pb-5 mb-5"><strong>Registration form with steps</strong></h2>
@@ -142,6 +143,10 @@
         </div>
     </div>
 </form>
+  
+  <script src="{{asset('/js/core/jquery.min.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/js/core/popper.min.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('/js/steps.js')}}" type="text/javascript"></script>
 </body>
 </html>

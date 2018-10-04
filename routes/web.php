@@ -26,7 +26,7 @@ Route::post('/Usuario/alumno/resgistrar','Alumnocontroller@store');//guardar nue
 Route::get('/Usuario/alumno/{id}/edicion','Alumnocontroller@edit');//ver formulario de edicion de alumno
 Route::post('/Usuario/alumno/{id}/edicion','Alumnocontroller@update');//actualizar alumno
 Route::post('/Usuario/alumno/{id}/eliminar','Alumnocontroller@destroy');//eliminar alumno
-Route::post('/tomate', 'Alumnocontroller@tomate');//actualizar alumno
+Route::post('/Usuario/alumno/busqueda', 'Alumnocontroller@busqueda');//actualizar alumno
 
 
 Route::get('/Usuario/Nivel/','ActLevelcontroller@index'); //ver niveles escolares
@@ -34,6 +34,7 @@ Route::get('/Usuario/Nivel/resgistrar','ActLevelcontroller@create');//ver formul
 Route::post('/Usuario/Nivel/resgistrar','ActLevelcontroller@store');
 Route::get('/Usuario/Nivel/{id}/edicion','ActLevelcontroller@edit');
 Route::post('/Usuario/Nivel/{id}/edicion','ActLevelcontroller@update');
+Route::post('/Usuario/Nivel/{id}/eliminar','ActLevelcontroller@destroy');
 
 
 Route::get('/Usuario/ciclo_escolar/','ciclecontroller@index');//ver ciclos
