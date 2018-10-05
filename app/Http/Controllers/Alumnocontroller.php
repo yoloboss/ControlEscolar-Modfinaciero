@@ -47,6 +47,7 @@ class Alumnocontroller extends Controller
         
 
             }
+
              if(!empty($nivel_educativo)/* OR !empty($grado) or !empty($grupo) */)
             {
 
@@ -58,8 +59,19 @@ class Alumnocontroller extends Controller
                      ->where('Levels.nivel_educativo','like',"%$nivel_educativo%")->get()->first();
 
                      dd($students);
+            }
 
-   
+            if(!empty($grado)/* OR !empty($grado) or !empty($grupo) */)
+            {
+
+
+                $students = \DB::table('students')
+                    ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
+                    ->join('act_Levels', 'student_act_Levels.student_id', '=', 'act_Levels.id')
+                    ->join('grades', 'act_Levels.level_id', '=', 'grades.id')
+                     ->where('grades.grado','like',"%$grado%")->get()->first();
+
+                     dd($grado);
             }
 
             return view('Usuario.alumnos.index',compact('students'));   
@@ -170,12 +182,13 @@ class Alumnocontroller extends Controller
        {
         //guardar imagen en el proyecto
          $file =$request->file('imagen');
-        $path = public_path() . 'img/imagenes_estudiantes';
+        $path = public_path() . '/img/imagenes_estudiantes/';
         $fileName = uniqid() . $file->getClientOriginalName();
         $file->move($path,$fileName);
         //guardar el nombre de la imagen en la base de datos
-        $student->imagen = $fileName;
+        
        }
+       $student->imagen = $fileName;
 
        $student->save();
 
@@ -290,12 +303,13 @@ class Alumnocontroller extends Controller
         if(! $request->file == null)
        {
          $file =$request->file('imagen');
-        $path = public_path() . 'img/imagenes_estudiantes';
+        $path = public_path() . '/img/imagenes_estudiantes/';
         $fileName = uniqid() . $file->getClientOriginalName();
         $file->move($path,$fileName);
         //guardar el nombre de la imagen en la base de datos
         $student->imagen = $fileName;
        }
+       
 
        $student->save();
 

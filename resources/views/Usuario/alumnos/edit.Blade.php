@@ -24,6 +24,9 @@
             @csrf
             <div class="card card-nav-tabs card-plain">
               <div class="card-header card-header-danger">
+              <div class="text-left">
+                <a href="{{ url('/Usuario/alumno/')}}" type="button" class="btn btn-primary now-ui-icons arrows-1_minimal-left">&nbsp;Regresar</a>
+              </div>
                 <div class="nav-tabs-navigation">
                   <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
@@ -103,7 +106,6 @@
                           <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
                           <div>
                             <span class="btn btn-raised btn-round btn-default btn-file">
-                              <span class="fileinput-new">Imagen de Alumno</span>
                               <span class="fileinput-exists">cambiar</span>
                               <input type="file" name="imagen" />
                             </span>

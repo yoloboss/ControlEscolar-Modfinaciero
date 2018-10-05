@@ -73,13 +73,15 @@
                           @endforeach
                         </select>
                       </div>
-                  </form>
-
-        			 <h2 class="title ">Lista de alumnos</h2>
+              </form>
+              <div class="ml-auto mr-auto text-center">
+                <h2 class="title ">Lista de alumnos</h2>
+              </div>
+        			 
                   <div class="col-md-12 ml-auto mr-auto text-right">
                     <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-primary now-ui-icons ui-1_simple-add">&nbsp;Nuevo</a>
                   </div>
-        			   <table class="table">
+        			   <table class="table  table-condensed">
     					     <thead>
         					   <tr>
             					<th class="text-center">Matrícula</th>
@@ -92,11 +94,11 @@
                       <th class="text-center">Teléfono Padre</th>
                       <th class="text-center">Teléfono Madre</th>
             					<th class="text-right">Estado</th>
-            					<th class="text-left">Opciones</th>
+            					<th class="text-center">Opciones</th>
         					   </tr>
     					     </thead>
-    				        <tbody>
-                  @foreach($students as $student)
+    				       <tbody>
+                    @foreach($students as $student)
         				    <tr>
             				  <td class="text-left">{{ $student->id}}</td>
             				    <td class="text-center">{{ $student->apellido_P}} </td>
@@ -108,25 +110,21 @@
                         <td>{{ $student->Telefono_p}}</td>
                         <td>{{ $student->Telefono_m}}</td>
             				    <td class="text-right">{{ $student->baja}}</td>
-            				    <td class="td-actions text-left">
-                        <div class="col-md-2">
-                            <FORM method="post" action="{{url('/Usuario/alumno/'.$student->id.'/eliminar')}}">
-                          @csrf
-                          <div class="col-md-2 ml-auto mr-auto text-center">
-                            <a href="{{url('/Usuario/alumno/'.$student->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
-                              <i class="now-ui-icons ui-2_settings-90"></i>
-                            </a>  
-                            <button type="submit" rel="tooltip" class="btn btn-danger">
-                              <i class="now-ui-icons ui-1_simple-remove"></i>
-                            </button> 
-                          </div>
-                        </FORM>
-                      </div>
-            				  </td>
+            				    <td >
+                            <FORM method="post" action="{{url('/Usuario/alumno/'.$student->id.'/eliminar')}}" class="form-inline">
+                              @csrf
+                                <a href="{{url('/Usuario/alumno/'.$student->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
+                                  <i class="now-ui-icons ui-2_settings-90"></i>
+                                </a>
+                                <button type="submit" rel="tooltip" class="btn btn-danger">
+                                  <i class="now-ui-icons ui-1_simple-remove"></i>
+                                </button> 
+                            </FORM>
+            				    </td>
         				    </tr>
-                 @endforeach
-    				        </tbody>
-					     </table>
+                    @endforeach
+    				       </tbody>
+					       </table>
       			</div>       
     		</div>
 	    </div>
