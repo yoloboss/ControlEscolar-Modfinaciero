@@ -47,33 +47,22 @@ class Alumnocontroller extends Controller
         
 
             }
-             if(!empty($nivel_educativo))
+             if(!empty($nivel_educativo)/* OR !empty($grado) or !empty($grupo) */)
             {
 
 
-                $students = \DB::table('students')->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')->get();
+                $students = \DB::table('students')
+                    ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
+                    ->join('act_Levels', 'student_act_Levels.student_id', '=', 'act_Levels.id')
+                    ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
+                     ->where('Levels.nivel_educativo','like',"%$nivel_educativo%")->get()->first();
 
+                     dd($students);
 
-               
-                
+   
             }
 
-            if(!empty($grado))
-            {
-                $students = $students->where('grades.grado','like',"%{$grado}%")->get();
-
-            }
-
-            if(!empty($grupo))
-            {
-                $students = $students->where('groups.grupo','like',"%{$grupo}%")->get();
-            }
-
-               
-
-            return view('Usuario.alumnos.index',compact('students')); 
-
-        
+            return view('Usuario.alumnos.index',compact('students'));   
         }
 
         
@@ -179,6 +168,7 @@ class Alumnocontroller extends Controller
        
        if(! $request->file == null)
        {
+        //guardar imagen en el proyecto
          $file =$request->file('imagen');
         $path = public_path() . 'img/imagenes_estudiantes';
         $fileName = uniqid() . $file->getClientOriginalName();
@@ -190,9 +180,6 @@ class Alumnocontroller extends Controller
        $student->save();
 
        
-        //guardar imagen en el proyecto
-
-
         //guardar nivel actual del estudiante
         $studen_actl = new Student_actLevel();
         $studen_actl->student_id =$student->id;
@@ -278,8 +265,7 @@ class Alumnocontroller extends Controller
         $this->validate($request,$rules,$messages);
         //$request->all();
         $student = student::find($id);
-        $actlevel = Actlevel::find($id);
-        $studen_actl = student_actLevel::find($id);
+
         $student->nombre = $request->input('nombre');
         $student->apellido_P = $request->input('apellido_P');
         $student->apellido_M = $request->input('apellido_M');
@@ -301,16 +287,21 @@ class Alumnocontroller extends Controller
         $student->apellidos_m = $request->input('apellidos_m');
         $student->Telefono_m = $request->input('Telefono_m');
         $student->baja = $request->input('baja');
-        $studen_actl->student_id =$student->id;
-        $studen_actl->actlevel_id =$actlevel->id;
-        //guardar imagen en el proyecto
-        $file =$request->file('imagen');
+        if(! $request->file == null)
+       {
+         $file =$request->file('imagen');
         $path = public_path() . 'img/imagenes_estudiantes';
         $fileName = uniqid() . $file->getClientOriginalName();
         $file->move($path,$fileName);
         //guardar el nombre de la imagen en la base de datos
         $student->imagen = $fileName;
-        $student->save();
+       }
+
+       $student->save();
+
+        $studen_actl = student_actLevel::find($id);
+        $studen_actl->student_id =$student->id;
+        $studen_actl->actlevel_id =$request->input('level_id');
         $studen_actl->save();
 
         return redirect('/Usuario/alumno/');

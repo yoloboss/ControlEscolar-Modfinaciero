@@ -14,6 +14,12 @@ class ActLevelcontroller extends Controller
 
     }
 
+    public function indexbaja()
+    {
+        $actlevels = ActLevel::where('eliminarlogica','=','Baja')->get();
+        return view('Usuario.Nivel.index',compact('actlevels')); 
+    }
+
     public function create()
     {
     	return view('Usuario.nivel.registre'); 													

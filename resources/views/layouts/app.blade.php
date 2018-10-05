@@ -13,6 +13,7 @@
   <!--     Fonts and icons     -->
   <link href="{{asset('https://fonts.googleapis.com/css?family=Montserrat:400,700,200')}}" rel="stylesheet" />
   <link href="{{asset('https://use.fontawesome.com/releases/v5.0.6/css/all.css"')}} rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('/iconos/svgs"')}}">
   <!-- CSS Files -->
   <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" />
   <link href="{{asset('/css/now-ui-kit.css?v=1.2.0')}}" rel="stylesheet" />

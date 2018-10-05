@@ -6,7 +6,7 @@
 @section('content')
 <div class="wrapper">
 	<div class="page-header page-header-small">
-  		<div class="page-header-image" data-parallax="true" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
+  		<div class="page-header-image" data-parallax="false" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
   		</div>
   		<div class="content-center">
     		<div class="container">
@@ -19,8 +19,12 @@
     		<div class="row">
       			<div class="form-inline col-md-16 ml-auto mr-auto text-center">
               <div class="nav-tabs-wrapper col-md-16 ml-auto mr-auto text-left">
-                <label for="exampleFormControlSelect1">Filtrar por:</label>
+                <div>
+                  <label for="exampleFormControlSelect1">Filtrar por:</label>
+                </div>
                 <ul class="nav nav-tabs" data-tabs="tabs">
+                  <li>  
+                  </li>
                   <li class="nav-item">
                     <a href="{{ url('/Usuario/alumno/')}}" class="nav-link active" >Activos</a>
                   </li>
@@ -32,9 +36,10 @@
               </div>
               <form method="post" action="/Usuario/alumno/busqueda" class="form-inline col-md-16 ml-auto mr-auto text-left blockquote" style="margin-top :10xp !important;">
                      {{csrf_field()}}
-                      <div class="form-group col-md-3">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre"  class="form-control" id="inputNombre"  >
+                      <div class="form-group col-md-12">
+                        <label for="nombre">Nombre&nbsp;</label>
+                        <input type="text" name="nombre"  class="form-control" id="inputNombre"  >&nbsp;
+                        <button type="submit" class="btn btn-info now-ui-icons ui-1_zoom-bold"></button>
                       </div>
                       @php
                       $levels=App\level::all();
@@ -68,12 +73,11 @@
                           @endforeach
                         </select>
                       </div>
-                    <button type="submit" class="btn btn-info">buscar</button>
                   </form>
 
         			 <h2 class="title ">Lista de alumnos</h2>
                   <div class="col-md-12 ml-auto mr-auto text-right">
-                    <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-success now-ui-icons ic_person_add_48px">Agregar Alumno</a>
+                    <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-primary now-ui-icons ui-1_simple-add">&nbsp;Nuevo</a>
                   </div>
         			   <table class="table">
     					     <thead>

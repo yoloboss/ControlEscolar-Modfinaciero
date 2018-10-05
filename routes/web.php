@@ -30,6 +30,7 @@ Route::post('/Usuario/alumno/busqueda', 'Alumnocontroller@busqueda');//actualiza
 
 
 Route::get('/Usuario/Nivel/','ActLevelcontroller@index'); //ver niveles escolares
+Route::get('/Usuario/Nivel/baja','ActLevelcontroller@indexbaja');
 Route::get('/Usuario/Nivel/resgistrar','ActLevelcontroller@create');//ver formulario de niveles escolares
 Route::post('/Usuario/Nivel/resgistrar','ActLevelcontroller@store');
 Route::get('/Usuario/Nivel/{id}/edicion','ActLevelcontroller@edit');
