@@ -18,9 +18,13 @@
       <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
-              <h2 class="title">Lista de conceptos de pago</h2>
-              <a href="{{ url('/Usuario/concepto_pago/resgistrar')}}" type="button" class="btn btn-info">Agregar concepto de pago</a>
-                 <table class="table">
+              <div>
+                <h2 class="title">Lista de conceptos de pago</h2>
+              </div>
+              <div class="col-md-12 ml-auto mr-auto text-right">
+                <a href="{{ url('/Usuario/concepto_pago/resgistrar')}}" type="button" class="btn btn-primary now-ui-icons ui-1_simple-add">&nbsp;concepto de pago</a>
+              </div>
+                 <table class="table table-condensed">
                    <thead>
                      <tr>
                       <th class="text-center">Nombre</th>
@@ -38,16 +42,14 @@
                       <td>{{ $concept->precio}} </td>
                       <td>{{ $concept->status}} </td>
                       <td class="td-actions text-right">
-                        <FORM method="post" action="{{url('/Usuario/concepto_pago/'.$concept->id.'/eliminar')}}">
+                        <FORM method="post" action="{{url('/Usuario/concepto_pago/'.$concept->id.'/eliminar')}}" class="form-inline">
                           @csrf
-                          <div class="col-md-2 ml-auto mr-auto text-center">
                             <a href="{{url('/Usuario/concepto_pago/'.$concept->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
                             <i class="now-ui-icons ui-2_settings-90"></i>
                             </a>  
                             <button type="submit" rel="tooltip" class="btn btn-danger">
                             <i class="now-ui-icons ui-1_simple-remove"></i>
-                            </button> 
-                          </div>
+                            </button>
                         </FORM>
                       </td>
                     </tr>

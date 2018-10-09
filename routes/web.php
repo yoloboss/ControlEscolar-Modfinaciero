@@ -27,6 +27,7 @@ Route::get('/Usuario/alumno/{id}/edicion','Alumnocontroller@edit');//ver formula
 Route::post('/Usuario/alumno/{id}/edicion','Alumnocontroller@update');//actualizar alumno
 Route::post('/Usuario/alumno/{id}/eliminar','Alumnocontroller@destroy');//eliminar alumno
 Route::post('/Usuario/alumno/busqueda', 'Alumnocontroller@busqueda');//actualizar alumno
+Route::post('/Usuario/alumno/{id}/eliminar/imagen','Alumnocontroller@destroyimagen');
 
 
 Route::get('/Usuario/Nivel/','ActLevelcontroller@index'); //ver niveles escolares

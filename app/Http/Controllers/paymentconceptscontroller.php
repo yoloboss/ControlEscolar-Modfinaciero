@@ -31,7 +31,7 @@ class paymentconceptscontroller extends Controller
         $concept->concepto = $request->input('concepto');
         $concept->status = $request->input('status');
         $concept->save();
-        return redirect('/Usuario/concepto_pago/resgistrar');
+        return redirect('/Usuario/concepto_pago/');
 
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\student;
 use App\Actlevel;
 use App\Student_actLevel;
+use File;
 
 class Alumnocontroller extends Controller
 {
@@ -178,17 +179,20 @@ class Alumnocontroller extends Controller
 
 
        
-       if(! $request->file == null)
+       if(! $request->file)
        {
         //guardar imagen en el proyecto
          $file =$request->file('imagen');
         $path = public_path() . '/img/imagenes_estudiantes/';
         $fileName = uniqid() . $file->getClientOriginalName();
-        $file->move($path,$fileName);
+        $moved= $file->move($path,$fileName);
         //guardar el nombre de la imagen en la base de datos
         
        }
-       $student->imagen = $fileName;
+       if($moved){
+        $student->imagen = $fileName;
+       }
+       
 
        $student->save();
 
@@ -300,20 +304,21 @@ class Alumnocontroller extends Controller
         $student->apellidos_m = $request->input('apellidos_m');
         $student->Telefono_m = $request->input('Telefono_m');
         $student->baja = $request->input('baja');
-        if(! $request->file == null)
+        if(! $request->file )
        {
-         $file =$request->file('imagen');
+        $file =$request->file('imagen');
         $path = public_path() . '/img/imagenes_estudiantes/';
         $fileName = uniqid() . $file->getClientOriginalName();
-        $file->move($path,$fileName);
+        $moved = $file->move($path,$fileName);
         //guardar el nombre de la imagen en la base de datos
+       }
+       if($moved){
         $student->imagen = $fileName;
        }
-       
 
        $student->save();
 
-        $studen_actl = student_actLevel::find($id);
+        $studen_actl = new Student_actLevel();
         $studen_actl->student_id =$student->id;
         $studen_actl->actlevel_id =$request->input('level_id');
         $studen_actl->save();
@@ -330,6 +335,27 @@ class Alumnocontroller extends Controller
 
 
         $student->save();
+
+        return back();
+    }
+
+    public function destroyimagen($id)
+    {
+        
+        
+        $student = student::find($id);
+        if(substr($this->imagen, 0, 4) === "http")
+        {
+            $delete=true;
+        }else{
+            $fullpath = public_path() . '/img/imagenes_estudiantes/'. $student->imagen;
+            $delete = File::delete($fullpath);
+        }
+        if($delete)
+        {
+            $student->imagen = "null";
+            $student->save();
+        }
 
         return back();
     }

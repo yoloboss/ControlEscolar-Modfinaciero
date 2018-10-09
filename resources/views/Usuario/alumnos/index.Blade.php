@@ -113,6 +113,7 @@
             				    <td >
                             <FORM method="post" action="{{url('/Usuario/alumno/'.$student->id.'/eliminar')}}" class="form-inline">
                               @csrf
+                              {{method_field('DELETE')}}
                                 <a href="{{url('/Usuario/alumno/'.$student->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
                                   <i class="now-ui-icons ui-2_settings-90"></i>
                                 </a>

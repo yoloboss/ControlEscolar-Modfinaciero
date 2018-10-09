@@ -12,13 +12,13 @@
                 <!-- Stepper -->
                 <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
                     <div class="steps-step-2">
-                        <a href="#step-1" type="button" class="btn btn-amber btn-circle-2 waves-effect ml-0" data-toggle="tooltip" data-placement="top" title="Basic Information"><i class="fa fa-folder-open-o" aria-hidden="true"></i></a>
+                        <a href="#step-1" type="button" class="btn btn-blue-grey  btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Asignar grupos activos"><i class="now-ui-icons business_bank"></i> </a>
                     </div>
                     <div class="steps-step-2">
-                        <a href="#step-2" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Personal Data"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="#step-2" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Promover alumnos"><i class="now-ui-icons users_circle-08" aria-hidden="true"></i></a>
                     </div>
                     <div class="steps-step-2">
-                        <a href="#step-3" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Terms and Conditions"><i class="fa fa-photo" aria-hidden="true"></i></a>
+                        <a href="#step-3" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Cartera de pago"><i class="now-ui-icons business_money-coins" aria-hidden="true"></i></a>
                     </div>
                     <div class="steps-step-2">
                         <a href="#step-4" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top" title="Finish"><i class="fa fa-check" aria-hidden="true"></i></a>
@@ -30,35 +30,50 @@
     <div class="section section-about-us">
         <div class="container">
             <div class="row">
-                <!-- First Step -->
-                <form role="form" action="" method="post">
+                <div class="col-md-12 text-center">
+                   <form role="form" action="" method="post">
                     <div class="row setup-content-2" id="step-1">
                         <div class="col-md-12">
-                            <h3 class="font-weight-bold pl-0 my-4"><strong>Basic Information</strong></h3>
-                            <div class="form-group md-form">
-                                <label for="yourEmail-2" data-error="wrong" data-success="right">Email</label>
-                                <input id="yourEmail-2" type="email" required="required" class="form-control validate">
-                            </div>
-                            <div class="form-group md-form">
-                                <label for="yourUsername-2" data-error="wrong" data-success="right">Username</label>
-                                <input id="yourUsername-2" type="text" required="required" class="form-control validate">
-                            </div>
-                            <div class="form-group md-form mt-3">
-                                <label for="yourPassword-2" data-error="wrong" data-success="right">Password</label>
-                                <input id="yourPassword-2" type="password" required="required" class="form-control validate">
-                            </div>
-                            <div class="form-group md-form mt-3">
-                                <label for="repeatPassword-2" data-error="wrong" data-success="right">Repeat Password</label>
-                                <input id="repeatPassword-2" type="password" required="required" class="form-control validate">
-                            </div>
-                            <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Next</button>
+                            @php
+                            $actlevels=App\Actlevel::all();
+                             @endphp
+                            <h3 class="font-weight-bold pl-0 my-4"><strong>Asignar grupos activos</strong></h3>
+                                <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Nombre del nivel</th>
+                                    <th class="text-center">Grado</th>
+                                    <th class="text-center">Grupo</th>
+                                    <th class="text-center">Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($actlevels as $actlevel)
+                                    <tr>
+                                    <td class="text-center">{{ $actlevel->id}}</td>
+                                        <td>{{ $actlevel->level->nivel_educativo}} </td>
+                                        <td>{{ $actlevel->grade->grado ? $actlevel->grade->grado :'sin grado' }}</td>
+                                        <td>{{ $actlevel->group->grupo ? $actlevel->group->grupo :'sin grupo'}}</td>
+                                        <td class="td-actions text-right">  
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox">
+                                                <span class="form-check-sign"></span>
+                                                Check me out
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
                         </div>
                     </div>
 
                     <!-- Second Step -->
                     <div class="row setup-content-2" id="step-2">
                         <div class="col-md-12">
-                            <h3 class="font-weight-bold pl-0 my-4"><strong>Personal Data</strong></h3>
+                            <h3 class="font-weight-bold pl-0 my-4"><strong>Promover alumnos</strong></h3>
                             <div class="form-group md-form">
                                 <label for="yourName-2" data-error="wrong" data-success="right">First Name</label>
                                 <input id="yourName-2" type="text" required="required" class="form-control validate">
@@ -75,15 +90,15 @@
                                 <label for="yourAddress-2" data-error="wrong" data-success="right">Address</label>
                                 <textarea id="yourAddress-2" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
                             </div>
-                            <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Previous</button>
-                            <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Next</button>
+                            <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Regresar</button>
+                            <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
                         </div>
                     </div>
 
                     <!-- Third Step -->
                     <div class="row setup-content-2" id="step-3">
                         <div class="col-md-12">
-                            <h3 class="font-weight-bold pl-0 my-4"><strong>Terms and conditions</strong></h3>
+                            <h3 class="font-weight-bold pl-0 my-4"><strong>Crear cartera de pago</strong></h3>
                             <div class="form-check">
                                 <input type="checkbox" id="checkbox111" class="form-check-input">
                             <label for="checkbox111" class="form-check-label">I agree to the terms and conditions</label>
@@ -92,8 +107,8 @@
                                 <input type="checkbox" id="checkbox112" class="form-check-input">
                                 <label for="checkbox112" class="form-check-label">I want to receive newsletter</label>
                             </div>
-                            <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Previous</button>
-                            <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Next</button>
+                            <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Regresar</button>
+                            <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
                         </div>
                     </div>
 
@@ -106,7 +121,9 @@
                          <button class="btn btn-success btn-rounded float-right" type="submit">Submit</button>
                         </div>
                     </div>
-                </form>
+                </form> 
+                </div>
+                <!-- First Step -->  
             </div>
         </div>
     </div>

@@ -34,7 +34,7 @@
             @csrf
             <div class="card card-nav-tabs card-plain">
               <div class="card-header card-header-danger">
-              <div class="text-left">
+              <div class="text-right">
                 <a href="{{ url('/Usuario/alumno/')}}" type="button" class="btn btn-primary now-ui-icons arrows-1_minimal-left">&nbsp;Regresar</a>
               </div>
                 <div class="nav-tabs-navigation">

@@ -24,7 +24,7 @@
             @csrf
             <div class="card card-nav-tabs card-plain">
               <div class="card-header card-header-danger">
-              <div class="text-left">
+              <div class="text-right">
                 <a href="{{ url('/Usuario/alumno/')}}" type="button" class="btn btn-primary now-ui-icons arrows-1_minimal-left">&nbsp;Regresar</a>
               </div>
                 <div class="nav-tabs-navigation">
@@ -107,9 +107,12 @@
                           <div>
                             <span class="btn btn-raised btn-round btn-default btn-file">
                               <span class="fileinput-exists">cambiar</span>
-                              <input type="file" name="imagen" />
+                              <input type="file" name="imagen">
                             </span>
-                            <a href="" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                            <form method="post" action="{{url('/Usuario/alumno/'.$student->id.'/eliminar/imagen')}}" class="form-inline">
+                               @csrf
+                              <button type="submit" class="btn btn-danger btn-round fileinput-exists"><i class="fa fa-times"></i>Eliminar</button>
+                            </form>
                           </div>
                         </div>
                       </div>

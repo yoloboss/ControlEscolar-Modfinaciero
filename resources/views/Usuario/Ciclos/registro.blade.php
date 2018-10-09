@@ -18,6 +18,9 @@
   <div class="section section-about-us">
     <div class="container">
       <div class="row">
+        <div class="col-md-12 text-right">
+          <a href="{{ url('/Usuario/ciclo_escolar/')}}" type="button" class="btn btn-primary now-ui-icons arrows-1_minimal-left">&nbsp;Regresar</a>
+        </div>
         <div class="col-md-8 ml-auto mr-auto text-center">
           <h2 class="title">Registro de ciclo</h2>
            <form method="post" action{{ url('/Usuario/ciclo_escolar/resgistrar')}}>
