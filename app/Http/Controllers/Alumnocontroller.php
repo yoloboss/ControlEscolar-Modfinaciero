@@ -55,11 +55,15 @@ class Alumnocontroller extends Controller
 
                 $students = \DB::table('students')
                     ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
-                    ->join('act_Levels', 'student_act_Levels.student_id', '=', 'act_Levels.id')
+                    ->join('act_Levels', 'student_act_Levels.actlevel_id', '=', 'act_Levels.id')
+                    ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
+                    ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
                     ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
-                     ->where('Levels.nivel_educativo','like',"%$nivel_educativo%")->get()->first();
-
+                     ->where('Levels.nivel_educativo','like',"%$nivel_educativo%")
+                     ->select('students.id', 'students.apellido_p', 'students.apellidos_m', 'students.nombre', 'grades.grado', 'groups.grupo', 'students.telefono', 'students.Telefono_p', 'students.Telefono_m', 'students.baja')
+                     ->get();
                      dd($students);
+                     
             }
 
             if(!empty($grado)/* OR !empty($grado) or !empty($grupo) */)
@@ -68,11 +72,32 @@ class Alumnocontroller extends Controller
 
                 $students = \DB::table('students')
                     ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
-                    ->join('act_Levels', 'student_act_Levels.student_id', '=', 'act_Levels.id')
-                    ->join('grades', 'act_Levels.level_id', '=', 'grades.id')
-                     ->where('grades.grado','like',"%$grado%")->get()->first();
+                    ->join('act_Levels', 'student_act_Levels.actlevel_id', '=', 'act_Levels.id')
+                    ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
+                    ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
+                    ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
+                     ->where('grades.grado','like',"%$grado%")
+                     ->select('students.id', 'students.apellido_p', 'students.apellidos_m', 'students.nombre', 'grades.grado', 'groups.grupo', 'students.telefono', 'students.Telefono_p', 'students.Telefono_m', 'students.baja')
+                     ->get();   
 
-                     dd($grado);
+                     dd($students); 
+            }
+
+             if(!empty($grupo)/* OR !empty($grado) or !empty($grupo) */)
+            {
+
+
+                $students = \DB::table('students')
+                    ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
+                    ->join('act_Levels', 'student_act_Levels.actlevel_id', '=', 'act_Levels.id')
+                    ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
+                    ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
+                    ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
+                     ->where('groups.grupo','like',"%$grupo%")
+                     ->select('students.id', 'students.apellido_P', 'students.apellidos_M', 'students.nombre', 'grades.grado', 'groups.grupo', 'students.telefono', 'students.Telefono_p', 'students.Telefono_m', 'students.baja')
+                     ->get();
+
+                    dd($students);
             }
 
             return view('Usuario.alumnos.index',compact('students'));   

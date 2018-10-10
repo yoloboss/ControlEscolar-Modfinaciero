@@ -60,12 +60,14 @@
                                                 <label class="form-check-label">
                                                 <input class="form-check-input" type="checkbox">
                                                 <span class="form-check-sign"></span>
-                                                Check me out
+                                                Asignar
                                                 </label>
                                             </div>
                                         </td>
                                     </tr>
                                 @endforeach
+                                </tbody>
+                            </table>
                             <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
                         </div>
                     </div>
