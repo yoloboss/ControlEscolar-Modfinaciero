@@ -31,11 +31,72 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                   <form role="form" action="" method="post">
+                <form role="form" action="" method="post">
                     <div class="row setup-content-2" id="step-1">
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-center">
+                            <form method="post" action{{ url('/Usuario/Nivel/resgistrar')}}>
+                                @csrf
+                                <div class="card card-nav-tabs card-plain">
+                                <div class="card-header card-header-danger">
+                                    <div class="nav-tabs-navigation">
+                                        <div class="nav-tabs-wrapper">
+                                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                             <li class="nav-item">
+                                                    <a class="nav-link active" href="#datos_g" data-toggle="tab">Ingresar niveles</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                @php
+                                $grades=App\grade::all();
+                                $groups=App\group::all();
+                                $levels=App\level::all();
+                                $Turns=App\Turn::all();
+                                @endphp
+                                <div class="card-body ">
+                                    <div class="tab-content text-center">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Nivel escolar</label>
+                                                <select class="form-control" name="level_id" id="exampleFormControlSelect1">
+                                                    @foreach($levels as $level)
+                                                    <option value="{{$level->id}}">{{$level->nivel_educativo}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Turno</label>
+                                                <select class="form-control"  name="turno_id" id="exampleFormControlSelect1">
+                                                    @foreach($Turns as $Turn)
+                                                    <option value="{{$Turn->id}}">{{$Turn->Turno}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Grado</label>
+                                                <select class="form-control" name="grado_id" id="exampleFormControlSelect1">
+                                                    @foreach($grades as $grade)
+                                                    <option value="{{$grade->id}}">{{$grade->grado}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Grupo</label>
+                                                <select class="form-control" name="grupo_id" id="exampleFormControlSelect1">
+                                                    @foreach($groups as $group)
+                                                    <option value="{{$group->id}}">{{$group->grupo}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Registrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-12"> 
                             @php
-                            $actlevels=App\Actlevel::all();
+                            $actlevels=App\Actlevel::latest()->take(5)->get();
                              @endphp
                             <h3 class="font-weight-bold pl-0 my-4"><strong>Asignar grupos activos</strong></h3>
                                 <table class="table">

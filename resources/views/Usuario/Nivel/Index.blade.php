@@ -17,7 +17,7 @@
   <div class="section section-about-us">
       <div class="container">
         <div class="row">
-          <div class="nav-tabs-wrapper col-md-16 ml-auto mr-auto text-left">
+          <div class="nav-tabs-wrapper col-md-16 ml-auto mr-auto text-center">
                 <div>
                   <label for="exampleFormControlSelect1">Filtrar por:</label>
                 </div>
@@ -34,10 +34,10 @@
                 </ul>
           </div>
           <div class="form-inline col-md-16 ml-auto mr-auto text-center"><!– Barra de busqueda — >
-            <div class="form-inline col-md-12">
-              <h6 class="title">Barra de busqueda</h6>
-                      <form method="post" action="/Usuario/alumno/busqueda" class="form-inline  col-md-16 ml-auto mr-auto text-left blockquote">
-                     {{csrf_field()}}
+                    <div class="form-inline col-md-12 text-center">
+                      <h6 class="title">Barra de busqueda</h6>
+                      <form method="post" action="/Usuario/alumno/busqueda" class="form-inline  col-md-16 ml-auto mr-auto  blockquote">
+                        {{csrf_field()}}
                         @php
                         $levels=App\level::all();
                         $groups=App\group::all();
@@ -76,9 +76,9 @@
           </div>
           <div class="col-md-8 ml-auto mr-auto text-center"><!– Tabla de despliegue— >
             <h2 class="title">Lista de Niveles</h2>
-              <div class="ml-auto mr-auto text-right" >
+              <!--<div class="ml-auto mr-auto text-right" >
                 <a href="{{ url('/Usuario/Nivel/resgistrar')}}" type="button" class="btn btn-primary now-ui-icons ui-1_simple-add">&nbsp;nivel educativo</a>
-              </div>
+              </div>-->
                 <table class="table">
                   <thead>
                     <tr>
@@ -112,7 +112,7 @@
                 </tbody>
                </table>
             </div>
-        </div>
+          </div>
       </div>
   </div>
 </div>
