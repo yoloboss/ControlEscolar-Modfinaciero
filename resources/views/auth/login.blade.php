@@ -23,7 +23,7 @@
                 </span>
               </div>
               <!-- ingresar el email del usuario -->
-             <input id="email" type="email" placeholder="Email..." class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus  >
+             <input id="email" type="email" placeholder="Correo" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus  >
                  @if ($errors->has('email'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('email') }}</strong>
@@ -37,7 +37,7 @@
                 </span>
               </div>
                 <!-- ingresar la contraseña del usuario -->
-              <input id="password" type="password" placeholder="Contraseña..." class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+              <input id="password" type="password" placeholder="Contraseña" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                 @if ($errors->has('password'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('password') }}</strong>
@@ -46,13 +46,13 @@
             </div>
           </div>
           <div class="card-footer text-center">
-            <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Entrar</button>
+            <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Iniciar sesión</button>
             <div class="pull-right">
               <h6>
                 <!-- CAmbiar la contraseña del usuario -->
                <!-- <a href="#pablo" class="link">Olvidaste la contraseña!</a>-->
                 <a class="link" href="{{ route('password.request') }}">
-                    {{ __('Olvidaste la contraseña!') }} </a>
+                    {{ __('¿Olvidaste tu contraseña?') }} </a>
               </h6>
             </div>
         </form>

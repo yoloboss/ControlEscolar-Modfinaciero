@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="{{asset('/img/favicon.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Servicio Finaciero
+    Servicios Finacieros
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -59,7 +59,7 @@
             <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrate') }}</a>
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
         </li>
     @else
         <li class="nav-item dropdown">
