@@ -33,10 +33,10 @@ class ActLevelcontroller extends Controller
         $actlevels->grado_id = $request->input('grado_id');
         $actlevels->grupo_id = $request->input('grupo_id');
         $actlevels->turno_id = $request->input('turno_id');
-        
+        $actlevels->eliminarlogica = 'alta';
         $actlevels->save();
         
-        return redirect('/Usuario/Nivel/');											
+        return back();											
     }
 
     public function edit($id)
