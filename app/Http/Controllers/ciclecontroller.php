@@ -14,10 +14,11 @@ class ciclecontroller extends Controller
         return view('Usuario.Ciclos.index',compact('cycles'));
 
     }
-        public function indexp()
+        public function indexp($id)
     {
 
-        return view('Usuario.Ciclos.steps');
+        $cycles = cycle::find($id);
+        return view('Usuario.Ciclos.steps',compact('cycles'));
 
     }
     public function create()

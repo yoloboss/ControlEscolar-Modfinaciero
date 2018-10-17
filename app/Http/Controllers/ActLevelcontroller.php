@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ActLevel;
+use app\cycles_actlevs;
 
 class ActLevelcontroller extends Controller
 {
@@ -52,8 +53,6 @@ class ActLevelcontroller extends Controller
             $grado=0;
             $tr=$tr+1;
         }
-        dd($actlevels);
-    	
         
         return back();											
     }

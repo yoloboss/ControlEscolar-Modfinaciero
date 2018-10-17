@@ -8,6 +8,9 @@
         <div class="page-header-image" data-parallax="false" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
         </div>
         <div class="content-center">
+            <div>
+                <h2 class="title">"{{$cycles->ciclo}}"</h2>
+            </div>
             <div class="steps-form-2">
                 <!-- Stepper -->
                 <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
@@ -123,10 +126,10 @@
                         </div>
                         <div class="col-md-12"> 
                             @php
-                            $actlevels=App\Actlevel::latest()->take(5)->get();
+                            $actlevels=App\Actlevel::latest()->paginate(10);
                              @endphp
                             <h3 class="font-weight-bold pl-0 my-4"><strong>Asignar grupos activos</strong></h3>
-                                <table class="table">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                     <th class="text-center">ID</th>
@@ -156,6 +159,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{$actlevels -> links()}}
                             <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
                         </div>
                     </div>
