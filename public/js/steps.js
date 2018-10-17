@@ -55,3 +55,6 @@ $(document).ready(function () {
 
   $('div.setup-panel-2 div a.btn-amber').trigger('click');
 });
+
+
+

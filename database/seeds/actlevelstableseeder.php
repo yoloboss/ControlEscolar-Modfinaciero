@@ -18,7 +18,7 @@ class actlevelstableseeder extends Seeder
             'turno_id'=> 2,
             'eliminarlogica'=> 'alta',
         ]);
-        DB::table('act_levels')->insert([
+        /*DB::table('act_levels')->insert([
         	'level_id' => 2,
             'grado_id'=> 3,
             'grupo_id'=> 5,
@@ -38,6 +38,6 @@ class actlevelstableseeder extends Seeder
             'grupo_id'=> 3,
             'turno_id'=> 2,
             'eliminarlogica'=> 'alta',
-        ]);
+        ]);*/
     }
 }

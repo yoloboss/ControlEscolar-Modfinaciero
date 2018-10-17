@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="{{asset('/iconos/svgs"')}}">
   <!-- CSS Files -->
   <link href="{{asset('/css/steps.css')}}" rel="stylesheet" />
+  <link href="{{asset('/css/bootstrap-multiselect.css')}}" rel="stylesheet" />
   <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" />
   <link href="{{asset('/css/now-ui-kit.css?v=1.2.0')}}" rel="stylesheet" />
 
@@ -95,6 +96,7 @@
   <script src="{{asset('/js/core/popper.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('/js/steps.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/js/bootstrap-multiselect.js')}}" type="text/javascript"></script>
   <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
   <script src="{{asset('/js/plugins/bootstrap-switch.js')}}"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
