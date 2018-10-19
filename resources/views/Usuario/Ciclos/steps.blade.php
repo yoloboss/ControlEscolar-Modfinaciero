@@ -8,6 +8,9 @@
         <div class="page-header-image" data-parallax="false" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
         </div>
         <div class="content-center">
+            <div>
+                <h2 class="title">"{{$cycles->ciclo}}"</h2>
+            </div>
             <div class="steps-form-2">
                 <!-- Stepper -->
                 <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
@@ -31,7 +34,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                <form role="form" action="" method="post">
+                <form role="form" action="/Usuario/Nivel/resgistrar" method="post">
                     <div class="row setup-content-2" id="step-1">
                         <div class="col-md-12 text-center">
                             <form method="post" action{{ url('/Usuario/Nivel/resgistrar')}}>
@@ -66,27 +69,54 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Turno</label>
-                                                <select class="form-control"  name="turno_id" id="exampleFormControlSelect1">
+                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;" >None selected <b class="caret">
+                                                </b>
+                                                </button>
+                                                <ul class="multiselect-container dropdown-menu">
                                                     @foreach($Turns as $Turn)
-                                                    <option value="{{$Turn->id}}">{{$Turn->Turno}}</option>
+                                                    <li class="">
+                                                        <a href="javascript:void(0);">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" name="turnos[]" value="{{$Turn->id}}">{{$Turn->Turno}}
+                                                            </label>
+                                                        </a>
+                                                    </li>
                                                     @endforeach
-                                                </select>
+                                                </ul>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Grado</label>
-                                                <select class="form-control" name="grado_id" id="exampleFormControlSelect1">
-                                                    @foreach($grades as $grade)
-                                                    <option value="{{$grade->id}}">{{$grade->grado}}</option>
+                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">None selected <b class="caret">
+                                                </b>
+                                                </button>
+                                                <ul class="multiselect-container dropdown-menu">
+                                                     @foreach($grades as $grade)
+                                                    <li class="">
+                                                        <a href="javascript:void(0);">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" name="grados[]" value="{{$grade->id}}">{{$grade->grado}}
+                                                            </label>
+                                                        </a>
+                                                    </li>
                                                     @endforeach
-                                                </select>
+                                                </ul>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Grupo</label>
-                                                <select class="form-control" name="grupo_id" id="exampleFormControlSelect1">
-                                                    @foreach($groups as $group)
-                                                    <option value="{{$group->id}}">{{$group->grupo}}</option>
+                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">None selected <b class="caret">
+                                                </b>
+                                                </button>
+                                                <ul class="multiselect-container dropdown-menu">
+                                                     @foreach($groups as $group)
+                                                    <li class="">
+                                                        <a href="javascript:void(0);">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" name="grupos[]"  value="{{$group->id}}">{{$group->grupo}}
+                                                            </label>
+                                                        </a>
+                                                    </li>
                                                     @endforeach
-                                                </select>
+                                                </ul>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Registrar</button>
                                         </div>
@@ -96,10 +126,10 @@
                         </div>
                         <div class="col-md-12"> 
                             @php
-                            $actlevels=App\Actlevel::latest()->take(5)->get();
+                            $actlevels=App\Actlevel::latest()->paginate(10);
                              @endphp
                             <h3 class="font-weight-bold pl-0 my-4"><strong>Asignar grupos activos</strong></h3>
-                                <table class="table">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                     <th class="text-center">ID</th>
@@ -129,6 +159,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{$actlevels -> links()}}
                             <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
                         </div>
                     </div>

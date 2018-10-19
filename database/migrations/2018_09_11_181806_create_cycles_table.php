@@ -17,8 +17,6 @@ class CreateCyclesTable extends Migration
             $table->increments('id');
             $table->string('ciclo');
             $table->string('status');
-            $table->integer('actlevel_id')->unsigned()->nullable();
-            $table->foreign('actlevel_id')->references('id')->on('act_levels');
             $table->timestamps();
         });
     }

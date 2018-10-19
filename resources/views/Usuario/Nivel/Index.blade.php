@@ -75,6 +75,7 @@
                     </div>
           </div>
           <div class="col-md-8 ml-auto mr-auto text-center"><!– Tabla de despliegue— >
+            
             <h2 class="title">Lista de Niveles</h2>
               <!--<div class="ml-auto mr-auto text-right" >
                 <a href="{{ url('/Usuario/Nivel/resgistrar')}}" type="button" class="btn btn-primary now-ui-icons ui-1_simple-add">&nbsp;nivel educativo</a>

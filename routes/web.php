@@ -33,7 +33,9 @@ Route::post('/Usuario/alumno/{id}/eliminar/imagen','Alumnocontroller@destroyimag
 Route::get('/Usuario/Nivel/','ActLevelcontroller@index'); //ver niveles escolares
 Route::get('/Usuario/Nivel/baja','ActLevelcontroller@indexbaja');
 Route::get('/Usuario/Nivel/resgistrar','ActLevelcontroller@create');//ver formulario de niveles escolares
+
 Route::post('/Usuario/Nivel/resgistrar','ActLevelcontroller@store');
+
 Route::get('/Usuario/Nivel/{id}/edicion','ActLevelcontroller@edit');
 Route::post('/Usuario/Nivel/{id}/edicion','ActLevelcontroller@update');
 Route::post('/Usuario/Nivel/{id}/eliminar','ActLevelcontroller@destroy');
@@ -44,7 +46,7 @@ Route::get('/Usuario/ciclo_escolar/resgistrar','ciclecontroller@create');//ver f
 Route::post('/Usuario/ciclo_escolar/resgistrar','ciclecontroller@store');//crear un nuevo ciclo
 Route::get('/Usuario/ciclo_escolar/{id}/edicion','ciclecontroller@edit');
 Route::post('/Usuario/ciclo_escolar/{id}/edicion','ciclecontroller@update');
-Route::get('/Usuario/ciclo_escolar/pasos','ciclecontroller@indexp');
+Route::get('/Usuario/ciclo_escolar/{id}/pasos','ciclecontroller@indexp');
 
 
 Route::get('/Usuario/concepto_pago/','paymentconceptscontroller@index');//ver conceptos de pago
