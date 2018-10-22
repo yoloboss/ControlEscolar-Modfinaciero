@@ -20,35 +20,28 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
-
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-
             .position-ref {
                 position: relative;
             }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
-
             .content {
                 text-align: center;
             }
-
             .title {
                 font-size: 84px;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -58,7 +51,6 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -69,10 +61,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/welcome') }}">Home</a>
+                        <a href="{{ url('/welcome') }}">Inicio</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">Iniciar sesión</a>
+                        <a href="{{ route('register') }}">Registrarse</a>
                     @endauth
                 </div>
             @endif 
@@ -81,17 +73,16 @@
                 <div class="title m-b-md">
                     Sistema de Control Escolar
                 </div>
-
                 <div class="links">
                     @auth
                         <a href="{{ url('/Usuario/alumno/')}}">Alumnos</a>
-                        <a href="https://laracasts.com">usuarios</a>
                         <a href="{{ url('/Usuario/concepto_pago/')}}">Conceptos de pago</a>
                         <a href="{{ url('/Usuario/ciclo_escolar')}}">Ciclos escolares</a>
-                        <a href="{{ url('/Usuario/Nivel/')}}">Niveles</a>
+                        <a href="{{ url('/Usuario/Nivel/')}}">Niveles Educativos</a>
+                        <a href="https://laracasts.com">Usuarios</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">Iniciar sesión</a>
+                        <a href="{{ route('register') }}">Registrarse</a>
                     @endauth
                 </div>
             </div>

@@ -12,7 +12,11 @@
       <div class="content-center">
         <div class="container">
             <h1 class="title">Alumnos</h1>
+<<<<<<< HEAD
         </div> 
+=======
+        </div>
+>>>>>>> cb96491650571715b81f81af4675802525a1d765
       </div>
   </div>
  -->

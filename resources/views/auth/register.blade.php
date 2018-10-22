@@ -3,7 +3,7 @@
 @section('body-class','login-page sidebar-collapse')
 
 @section('content')
-<div class="page-header-image" style="background-image:url({{asset('/img/login.jpg')}})"></div>
+<div class="page-header-image" style="background-image:url({{asset('/img/fondo.jpeg')}})"></div>
 <div class="content">
   <div class="container">
     <div class="col-md-4 ml-auto mr-auto">

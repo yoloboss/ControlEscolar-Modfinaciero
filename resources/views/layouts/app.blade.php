@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="{{asset('/img/favicon.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Servicios Finacieros
+    Finaciero
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -23,8 +23,9 @@
 </head>
 <body class="@yield('body-class')">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="350">
+  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-primary " color-on-scroll="350">
     <div class="container">
+      <!--
       <div class="dropdown button-dropdown">
         <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
           <span class="button-bar"></span>
@@ -43,6 +44,7 @@
           <a class="dropdown-item" href="#">One more separated link</a>
         </div>
       </div>
+       -->
       <div class="navbar-translate">
         <a class="navbar-brand" href="{{ url('welcome')}}" rel="tooltip"  data-placement="bottom" >
           Servicios Financieros
@@ -72,9 +74,8 @@
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                    {{ __('Cerrar sesion') }}
+                    {{ __('Cerrar sesión') }}
                 </a>
-
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
