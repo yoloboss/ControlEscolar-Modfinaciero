@@ -23,7 +23,7 @@
 </head>
 <body class="@yield('body-class')">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-primary " color-on-scroll="350">
+  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-primary " color-on-scroll="0">
     <div class="container">
       <!--
       <div class="dropdown button-dropdown">

@@ -28,7 +28,7 @@
                 <h2 class="title">Lista de ciclos escolares</h2>
               </div>
               <div class="col-md-12 ml-auto mr-auto text-right">
-                <a href="{{ url('/Usuario/ciclo_escolar/resgistrar')}}" type="button" class="btn btn-primary now-ui-icons ui-1_simple-add">&nbsp;Ciclo</a>
+                <a href="{{ url('/Usuario/ciclo_escolar/resgistrar')}}" type="button" class="btn btn-secondary now-ui-icons ui-1_simple-add">&nbsp;Ciclo</a>
               </div>
                  <table class="table table-condensed">
                    <thead>
