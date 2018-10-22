@@ -45,6 +45,8 @@ class ActLevelcontroller extends Controller
                     $actlevels->eliminarlogica = 'alta';
                     $actlevels->save();
 
+                    
+
                     $grupo=$grupo+1;
                 }
                 $grupo=0;

@@ -226,6 +226,7 @@ class Alumnocontroller extends Controller
         $studen_actl = new Student_actLevel();
         $studen_actl->student_id =$student->id;
         $studen_actl->actlevel_id =$request->input('level_id');
+        $studen_actl->status ='activo';
         $studen_actl->save();
 
         return redirect('/Usuario/alumno/');
@@ -346,6 +347,7 @@ class Alumnocontroller extends Controller
         $studen_actl = new Student_actLevel();
         $studen_actl->student_id =$student->id;
         $studen_actl->actlevel_id =$request->input('level_id');
+         $studen_actl->status ='activo';
         $studen_actl->save();
 
         return redirect('/Usuario/alumno/');

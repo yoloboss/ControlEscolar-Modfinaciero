@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\cycle;
+use App\ActLevel;
+use App\cycles_actlevs;
 
 class ciclecontroller extends Controller
 {
@@ -38,6 +40,46 @@ class ciclecontroller extends Controller
         return redirect('/Usuario/ciclo_escolar/');
 
     }
+
+    public function storeActGrp(Request $request,$id)
+    {
+        $turnos = $request->turnos;
+        $grados = $request->grados;
+        $grupos = $request->grupos;
+        $tr=0;
+        $grado=0;
+        $grupo=0;
+        while ($tr < count($turnos)) {
+            while ($grado < count($grados)) {
+                while ($grupo < count($grupos)) {
+                    $actlevels = new ActLevel();
+                    $actlevels->level_id = $request->input('level_id');
+                    $actlevels->turno_id = $turnos[$tr];
+                    $actlevels->grado_id = $grados[$grado];
+                    $actlevels->grupo_id = $grupos[$grupo];
+                    $actlevels->eliminarlogica = 'alta';
+                    $actlevels->save();
+
+
+                    $cycle_actlevel = new cycles_actlevs();
+                    $cycle= cycle::find($id);
+                    $cycle_actlevel->cycle_id = $cycle->id;
+                    $cycle_actlevel->actlevel_id =  $actlevels->id;
+
+                    $cycle_actlevel->save();
+
+                    $grupo=$grupo+1;
+                }
+                $grupo=0;
+                $grado=$grado+1;
+            }
+            $grado=0;
+            $tr=$tr+1;
+        }
+        
+        return back();                                          
+    }
+
     public function edit($id)
     {
         $cycle = cycle::find($id);
@@ -54,5 +96,13 @@ class ciclecontroller extends Controller
         $cycles->save();
         
         return redirect('/Usuario/ciclo_escolar/');                                         
+    }
+
+
+    public function  updatestudents()
+    {
+        
+        
+        return back();                                         
     }
 }

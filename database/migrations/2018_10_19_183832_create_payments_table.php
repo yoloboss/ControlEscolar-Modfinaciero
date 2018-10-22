@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStudentActLevelsTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,18 @@ class CreateStudentActLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_act_levels', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('student_id')->unsigned()->nullable();
             $table->foreign('student_id')->references('id')->on('students');
             $table->integer('actlevel_id')->unsigned()->nullable();
             $table->foreign('actlevel_id')->references('id')->on('act_levels');
-            $table->text('status');
+            $table->integer('paymentconceps_id')->unsigned()->nullable();
+            $table->foreign('paymentconceps_id')->references('id')->on('payment_concepts');
+            $table->integer('monto')->unsigned()->nullable();
+            $table->date('Fecha_creacion');
+            $table->date('Fecha_venciminto');
+            $table->string('estatus');
             $table->timestamps();
         });
     }
@@ -31,6 +36,6 @@ class CreateStudentActLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_act_levels');
+        Schema::dropIfExists('payments');
     }
 }

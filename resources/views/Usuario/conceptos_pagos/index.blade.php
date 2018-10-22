@@ -5,6 +5,7 @@
 
 @section('content')
 <div class="wrapper">
+  <!--
   <div class="page-header page-header-small">
       <div class="page-header-image" data-parallax="true" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
       </div>
@@ -14,8 +15,13 @@
         </div>
       </div>
   </div>
+-->
   <div class="section section-about-us">
       <div class="container">
+        <div class="row justify-content-center" style="margin-top: 30px;">
+                <h3>Conceptos de pago</h3>         
+          </div>
+          <hr class="style13">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
               <div>

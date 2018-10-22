@@ -34,10 +34,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                <form role="form" action="/Usuario/Nivel/resgistrar" method="post">
+                
                     <div class="row setup-content-2" id="step-1">
                         <div class="col-md-12 text-center">
-                            <form method="post" action{{ url('/Usuario/Nivel/resgistrar')}}>
+                            <form  method="post" action="{{ url('/Usuario/ciclo_escolar/'.$cycles->id.'/pasos')}}">
                                 @csrf
                                 <div class="card card-nav-tabs card-plain">
                                 <div class="card-header card-header-danger">
@@ -169,21 +169,9 @@
                         <div class="col-md-12">
                             <h3 class="font-weight-bold pl-0 my-4"><strong>Promover alumnos</strong></h3>
                             <div class="form-group md-form">
-                                <label for="yourName-2" data-error="wrong" data-success="right">First Name</label>
-                                <input id="yourName-2" type="text" required="required" class="form-control validate">
+                                <button class="btn btn-mdb-color btn-rounded float-center" type="button">Promover</button>
                             </div>
-                            <div class="form-group md-form mt-3">
-                                <label for="secondName-2" data-error="wrong" data-success="right">Second Name</label>
-                                <input id="secondName-2" type="text" required="required" class="form-control validate">
-                            </div>
-                            <div class="form-group md-form">
-                                <label for="surname-2" data-error="wrong" data-success="right">Surname</label>
-                                <input id="surname-2" type="text" required="required" class="form-control validate">
-                            </div>
-                            <div class="form-group md-form mt-3">
-                                <label for="yourAddress-2" data-error="wrong" data-success="right">Address</label>
-                                <textarea id="yourAddress-2" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                            </div>
+                           
                             <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Regresar</button>
                             <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
                         </div>
@@ -215,7 +203,7 @@
                          <button class="btn btn-success btn-rounded float-right" type="submit">Submit</button>
                         </div>
                     </div>
-                </form> 
+                
                 </div>
                 <!-- First Step -->  
             </div>

@@ -47,6 +47,7 @@ Route::post('/Usuario/ciclo_escolar/resgistrar','ciclecontroller@store');//crear
 Route::get('/Usuario/ciclo_escolar/{id}/edicion','ciclecontroller@edit');
 Route::post('/Usuario/ciclo_escolar/{id}/edicion','ciclecontroller@update');
 Route::get('/Usuario/ciclo_escolar/{id}/pasos','ciclecontroller@indexp');
+Route::post('/Usuario/ciclo_escolar/{id}/pasos','ciclecontroller@storeActGrp');
 
 
 Route::get('/Usuario/concepto_pago/','paymentconceptscontroller@index');//ver conceptos de pago
