@@ -58,7 +58,7 @@
                             @endforeach
                           </select>
                         </div>
-                        <button type="submit" class="btn btn-primary now-ui-icons ui-1_zoom-bold"></button>
+                        <button type="submit" class="btn btn-info now-ui-icons ui-1_zoom-bold"></button>
                       </form>
           </div>
           <div class="row">
@@ -99,7 +99,7 @@
                         <td class="td-actions text-right">
                           <FORM method="post" action="{{url('/Usuario/Nivel/'.$actlevel->id.'/eliminar')}}">
                           @csrf
-                            <a href="{{url('/Usuario/Nivel/'.$actlevel->id.'/edicion')}}" rel="tooltip" class="btn btn-info">
+                            <a href="{{url('/Usuario/Nivel/'.$actlevel->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
                               <i class="now-ui-icons ui-2_settings-90"></i>
                             </a>
                             <button type="submit" rel="tooltip" class="btn btn-danger">

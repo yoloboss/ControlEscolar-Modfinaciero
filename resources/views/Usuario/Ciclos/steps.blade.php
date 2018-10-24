@@ -4,46 +4,38 @@
 
 @section('content')
 <div class="wrapper">
-    <!--
     <div class="page-header page-header-small">
-     
         <div class="page-header-image" data-parallax="false" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
         </div>
         <div class="content-center">
             <div>
-                <h2 class="title">""</h2>
+                <h2 class="title">"{{$cycles->ciclo}}"</h2>
             </div>
-
-        </div>
-    -->
-    </div>
-    <div class="section section-about-us">
-        <div class="container">
-            <div class="row justify-content-center" style="margin-top: 30px;">
-                <h3>{{$cycles->ciclo}}</h3>         
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="steps-form-2">
-                        <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
-                            <div class="steps-step-2">
-                                <a href="#step-1" type="button" class="btn btn-blue-grey  btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Asignar grupos activos"><i class="now-ui-icons business_bank"></i> </a>
-                            </div>
-                            <div class="steps-step-2">
-                                <a href="#step-2" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Promover alumnos"><i class="now-ui-icons users_circle-08" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="steps-step-2">
-                                <a href="#step-3" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Cartera de pago"><i class="now-ui-icons business_money-coins" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="steps-step-2">
-                                <a href="#step-4" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top" title="Finish"><i class="fa fa-check" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
+            <div class="steps-form-2">
+                <!-- Stepper -->
+                <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+                    <div class="steps-step-2">
+                        <a href="#step-1" type="button" class="btn btn-blue-grey  btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Asignar grupos activos"><i class="now-ui-icons business_bank"></i> </a>
+                    </div>
+                    <div class="steps-step-2">
+                        <a href="#step-2" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Promover alumnos"><i class="now-ui-icons users_circle-08" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="steps-step-2">
+                        <a href="#step-3" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Cartera de pago"><i class="now-ui-icons business_money-coins" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="steps-step-2">
+                        <a href="#step-4" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top" title="Finish"><i class="fa fa-check" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
-            <hr class="style13">
-                <div class="row setup-content-2" id="step-1">
+        </div>
+    </div>
+    <div class="section section-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                
+                    <div class="row setup-content-2" id="step-1">
                         <div class="col-md-12 text-center">
                             <form  method="post" action="{{ url('/Usuario/ciclo_escolar/'.$cycles->id.'/pasos')}}">
                                 @csrf
@@ -77,7 +69,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Turno</label>
-                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;" >Sin Selecionar <b class="caret">
+                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;" >None selected <b class="caret">
                                                 </b>
                                                 </button>
                                                 <ul class="multiselect-container dropdown-menu">
@@ -94,7 +86,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Grado</label>
-                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">Sin Selecionar <b class="caret">
+                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">None selected <b class="caret">
                                                 </b>
                                                 </button>
                                                 <ul class="multiselect-container dropdown-menu">
@@ -111,7 +103,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Grupo</label>
-                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">Sin Selecionar <b class="caret">
+                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">None selected <b class="caret">
                                                 </b>
                                                 </button>
                                                 <ul class="multiselect-container dropdown-menu">
@@ -170,7 +162,8 @@
                             {{$actlevels -> links()}}
                             <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
                         </div>
-                </div>
+                    </div>
+
                     <!-- Second Step -->
                     <div class="row setup-content-2" id="step-2">
                         <div class="col-md-12">

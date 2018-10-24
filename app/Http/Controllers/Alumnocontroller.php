@@ -14,14 +14,14 @@ class Alumnocontroller extends Controller
     public function index()
     {
 
-        $students = student::where('baja','=','Alta')->paginate(10);
+        $students = student::where('baja','=','Alta')->get();
         
     	return view('Usuario.alumnos.index',compact('students')); 
 
     }
     public function indexbaja()
     {
-        $students = student::where('baja','=','Baja')->paginate(10);
+        $students = student::where('baja','=','Baja')->get();
         return view('Usuario.alumnos.index',compact('students')); 
     }
     public function busqueda(Request $request)
