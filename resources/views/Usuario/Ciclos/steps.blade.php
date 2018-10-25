@@ -169,7 +169,10 @@
                         <div class="col-md-12">
                             <h3 class="font-weight-bold pl-0 my-4"><strong>Promover alumnos</strong></h3>
                             <div class="form-group md-form">
-                                <button class="btn btn-mdb-color btn-rounded float-center" type="button">Promover</button>
+                                <form  method="post" action="{{ url('/Usuario/ciclo_escolar/'.$cycles->id.'/pasos/promover')}}">
+                                @csrf
+                                <button class="btn btn-mdb-color btn-rounded float-center" type="submit">Promover</button>
+                            </form>
                             </div>
                            
                             <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Regresar</button>

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\cycle;
 use App\ActLevel;
 use App\cycles_actlevs;
+use App\student;
+use App\student_actlevel;
+use App\grade;
 
 class ciclecontroller extends Controller
 {
@@ -57,7 +60,7 @@ class ciclecontroller extends Controller
                     $actlevels->turno_id = $turnos[$tr];
                     $actlevels->grado_id = $grados[$grado];
                     $actlevels->grupo_id = $grupos[$grupo];
-                    $actlevels->eliminarlogica = 'alta';
+                    $actlevels->estado = 'activo';
                     $actlevels->save();
 
 
@@ -99,9 +102,28 @@ class ciclecontroller extends Controller
     }
 
 
-    public function  updatestudents()
+    public function  updatestudents($id)
     {
-        
+        $cycles = cycle::find($id);
+        if ($cycles->status = "activo") {
+         $alumnosAct = student::where('baja', 'alta')->get();
+         //dd($alumnosAct);
+        // $todos = Students::all();  # code...
+         foreach ($alumnosAct as $alumnos) {
+            $salonact = student_actlevel::where('student_id',$alumnos->id)->get();
+            //dd($salonact);
+            foreach ($salonact as $salon) {
+               $grupoAct = ActLevel::where('id',$salon->actlevel_id) ->orWhere('estado','activo')->get();
+               foreach ($grupoAct as $grupo) {
+                  $grupo->estado = "inactivo";
+                  $studen_actl = new Student_actLevel();  
+                  $studen_actl->student_id = $alumnos->id;
+                 // $studen_actl->actlevel_id =  
+               }
+               
+            }
+         }
+        }
         
         return back();                                         
     }

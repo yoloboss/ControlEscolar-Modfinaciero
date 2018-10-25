@@ -16,7 +16,7 @@ class actlevelstableseeder extends Seeder
             'grado_id'=> 2,
             'grupo_id'=> 1,
             'turno_id'=> 2,
-            'eliminarlogica'=> 'alta',
+            'estado'=> 'activo',
         ]);
         /*DB::table('act_levels')->insert([
         	'level_id' => 2,

@@ -24,7 +24,7 @@ class CreateActLevelsTable extends Migration
             $table->foreign('grupo_id')->references('id')->on('groups');
             $table->integer('turno_id')->unsigned()->nullable();
             $table->foreign('turno_id')->references('id')->on('turns');
-            $table->string('eliminarlogica')->nullable();
+            $table->string('estado')->nullable();
             $table->timestamps();
         });
     }

@@ -12,24 +12,24 @@ class gradestableseeder extends Seeder
     public function run()
     {
         DB::table('grades')->insert([
-        	'grado' => '1ER',
+        	'grado' => 1,
         ]);
 
         DB::table('grades')->insert([
-        	'grado' => '2DO',
+        	'grado' => 2,
         ]);
         DB::table('grades')->insert([
-        	'grado' => '3ER',
+        	'grado' => 3,
         ]);
   
         DB::table('grades')->insert([
-        	'grado' => '4TO',
+        	'grado' => 4,
         ]);
         DB::table('grades')->insert([
-        	'grado' => '5TO',
+        	'grado' => 5,
         ]);
         DB::table('grades')->insert([
-        	'grado' => '6T0',
+        	'grado' => 6,
             
         ]);
     }

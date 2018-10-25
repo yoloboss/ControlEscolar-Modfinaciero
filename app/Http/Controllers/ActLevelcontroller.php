@@ -10,14 +10,14 @@ class ActLevelcontroller extends Controller
 {
     public function index()
     {
-        $actlevels = ActLevel::where('eliminarlogica','=','alta')->get();
+        $actlevels = ActLevel::where('estado','=','activo')->get();
         return view('Usuario.Nivel.index',compact('actlevels')); 
 
     }
 
     public function indexbaja()
     {
-        $actlevels = ActLevel::where('eliminarlogica','=','Baja')->get();
+        $actlevels = ActLevel::where('estado','=','inactivo')->get();
         return view('Usuario.Nivel.index',compact('actlevels')); 
     }
 
