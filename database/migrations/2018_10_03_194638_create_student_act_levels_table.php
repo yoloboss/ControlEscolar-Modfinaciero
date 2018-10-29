@@ -19,7 +19,7 @@ class CreateStudentActLevelsTable extends Migration
             $table->foreign('student_id')->references('id')->on('students');
             $table->integer('actlevel_id')->unsigned()->nullable();
             $table->foreign('actlevel_id')->references('id')->on('act_levels');
-            $table->text('status');
+            $table->string('status');
             $table->timestamps();
         });
     }

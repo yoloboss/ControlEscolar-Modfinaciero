@@ -14,7 +14,12 @@ class Alumnocontroller extends Controller
     public function index()
     {
 
-        $students = student::where('baja','=','Alta')->get();
+        $students = \DB::table('students')
+                    ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
+                    ->where('student_act_Levels.status','=','cursando')
+                    ->where('students.baja','=','Alta')
+                     ->get();
+        //$students = student::where('baja','=','Alta')->get();
         
     	return view('Usuario.alumnos.index',compact('students')); 
 
@@ -226,7 +231,7 @@ class Alumnocontroller extends Controller
         $studen_actl = new Student_actLevel();
         $studen_actl->student_id =$student->id;
         $studen_actl->actlevel_id =$request->input('level_id');
-        $studen_actl->status ='activo';
+        $studen_actl->status ='cursando';
         $studen_actl->save();
 
         return redirect('/Usuario/alumno/');
@@ -347,7 +352,7 @@ class Alumnocontroller extends Controller
         $studen_actl = new Student_actLevel();
         $studen_actl->student_id =$student->id;
         $studen_actl->actlevel_id =$request->input('level_id');
-         $studen_actl->status ='activo';
+         $studen_actl->status ='cursando';
         $studen_actl->save();
 
         return redirect('/Usuario/alumno/');
