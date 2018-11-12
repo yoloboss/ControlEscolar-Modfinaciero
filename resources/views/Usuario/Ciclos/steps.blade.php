@@ -4,13 +4,13 @@
 
 @section('content')
 <div class="wrapper">
-    <div class="page-header page-header-small">
-        <div class="page-header-image" data-parallax="false" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
-        </div>
+    <div class="section section-about-us">
+      <div class="container">
+          <div class="row justify-content-center" style="margin-top: 30px;">
+                <h3>{{$cycles->ciclo}}</h3>         
+          </div>
+          <hr class="style13">
         <div class="content-center">
-            <div>
-                <h2 class="title">"{{$cycles->ciclo}}"</h2>
-            </div>
             <div class="steps-form-2">
                 <!-- Stepper -->
                 <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
@@ -183,17 +183,65 @@
                     <!-- Third Step -->
                     <div class="row setup-content-2" id="step-3">
                         <div class="col-md-12">
+                            <form  method="post" action="{{ url('')}}">
+                            @php
+                                $conceptos=App\payment_concept::all();
+                                @endphp
                             <h3 class="font-weight-bold pl-0 my-4"><strong>Crear cartera de pago</strong></h3>
-                            <div class="form-check">
-                                <input type="checkbox" id="checkbox111" class="form-check-input">
-                            <label for="checkbox111" class="form-check-label">I agree to the terms and conditions</label>
+                            <div class="form-group">
+
+                               <label for="exampleFormControlSelect1">Concepto de pago</label>
+                               <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;" >None selected <b class="caret">
+                               </b>
+                               </button>
+                               <ul class="multiselect-container dropdown-menu">
+                                   @foreach($conceptos as $concepto)
+                                   <li class="">
+                                       <a href="javascript:void(0);">
+                                           <label class="checkbox">
+                                               <input type="checkbox" name="conceptos[]" value="{{$concepto->id}}">{{$concepto->nombre}}
+                                           </label>
+                                       </a>
+                                   </li>
+                                   @endforeach
+                               </ul>
+                               <button type="submit" class="btn btn-primary">Registrar</button>
                             </div>
-                            <div class="form-check">
-                                <input type="checkbox" id="checkbox112" class="form-check-input">
-                                <label for="checkbox112" class="form-check-label">I want to receive newsletter</label>
+                            <div  class="col-md-12">
+                                <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th class="text-center">Nombre</th>
+                                    <th class="text-center">Periodiocidad</th>
+                                    <th class="text-center">Fechas de Pago</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center"></td>
+                                        <td>
+                                            <div class="text-center">
+                                                <select class="form-control" name="level_id" id="exampleFormControlSelect1">
+                                                    <option value="">seleccione periodiocidad</option>
+                                                    <option value="1">1</option>
+                                                    <option value="3">3</option>
+                                                    <option value="6">6</option>
+                                                    <option value="12">12</option>
+                                             </select>
+                                            </div>
+                                        </td>
+                                        <td class="td-actions text-right">
+                                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            Ingresar fechas
+                                          </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             </div>
                             <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Regresar</button>
                             <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
+                        </form>
                         </div>
                     </div>
 
@@ -208,9 +256,9 @@
                     </div>
                 
                 </div>
-                <!-- First Step -->  
             </div>
         </div>
+    </div>
     </div>
 </div>
 @endsection

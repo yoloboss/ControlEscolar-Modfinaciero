@@ -23,7 +23,7 @@
 </head>
 <body class="@yield('body-class')">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-primary " color-on-scroll="350">
+  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-primary " color-on-scroll="0">
     <div class="container">
       <!--
       <div class="dropdown button-dropdown">
@@ -92,6 +92,29 @@
           @yield('content')
 
   </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Fechas de pago</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <h5>Ingresar fechas</h5>
+              <div class="form-group">
+                <input type="text" class="form-control date-picker" value="10/05/2016" data-datepicker-color="primary">
+              </div>
+              <hr>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+      </div>
+  </div>
+</div>
   <!--   Core JS Files   -->
   <script src="{{asset('/js/core/jquery.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('/js/core/popper.min.js')}}" type="text/javascript"></script>
