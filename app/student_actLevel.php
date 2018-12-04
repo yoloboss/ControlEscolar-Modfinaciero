@@ -8,7 +8,7 @@ class student_actLevel extends Model
 {
     public function student()
     {
-        return $this-> belongsTo(student::class,'student_id');
+        return $this->belongsTo(student::class);
     }
    	public function act()
     {

@@ -16,9 +16,14 @@ class Alumnocontroller extends Controller
 
         $students = \DB::table('students')
                     ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
+                    ->join('act_levels', 'student_act_Levels.id', '=', 'act_levels.id')
+                    ->join('groups', 'act_levels.grupo_id', '=', 'groups.id')
+                    ->join('grades', 'act_levels.grado_id', '=', 'grades.id')
                     ->where('student_act_Levels.status','=','cursando')
                     ->where('students.baja','=','Alta')
+                    ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
                      ->get();
+
         //$students = student::where('baja','=','Alta')->get();
         
     	return view('Usuario.alumnos.index',compact('students')); 
@@ -26,7 +31,17 @@ class Alumnocontroller extends Controller
     }
     public function indexbaja()
     {
-        $students = student::where('baja','=','Baja')->get();
+        $students = \DB::table('students')
+                    ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
+                    ->join('act_levels', 'student_act_Levels.id', '=', 'act_levels.id')
+                    ->join('groups', 'act_levels.grupo_id', '=', 'groups.id')
+                    ->join('grades', 'act_levels.grado_id', '=', 'grades.id')
+                    ->where('student_act_Levels.status','=','cursando')
+                    ->where('students.baja','=','baja')
+
+                    ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
+                     ->get();
+
         return view('Usuario.alumnos.index',compact('students')); 
     }
     public function busqueda(Request $request)
@@ -65,7 +80,7 @@ class Alumnocontroller extends Controller
                     ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
                     ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
                      ->where('Levels.nivel_educativo','like',"%$nivel_educativo%")
-                     ->select('students.id', 'students.apellido_p', 'students.apellidos_m', 'students.nombre', 'grades.grado', 'groups.grupo', 'students.telefono', 'students.Telefono_p', 'students.Telefono_m', 'students.baja')
+                     ->select('students.id as matricula', 'students.apellido_p', 'students.apellidos_m', 'students.nombre', 'grades.grado', 'groups.grupo', 'students.telefono', 'students.Telefono_p', 'students.Telefono_m', 'students.baja')
                      ->get();
                      dd($students);
                      
@@ -358,11 +373,11 @@ class Alumnocontroller extends Controller
         return redirect('/Usuario/alumno/');
     }
 
-    public function destroy( $id)
+    public function destroy(Request $request)
     {
         
         //$request->all();
-        $student = student::find($id);
+        $student = student::find($request->student_id);
         $student->baja = 'baja';
 
 

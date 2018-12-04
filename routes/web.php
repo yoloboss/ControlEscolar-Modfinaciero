@@ -25,7 +25,9 @@ Route::get('/Usuario/alumno/resgistrar','Alumnocontroller@create');//ver formula
 Route::post('/Usuario/alumno/resgistrar','Alumnocontroller@store');//guardar nuevo registro
 Route::get('/Usuario/alumno/{id}/edicion','Alumnocontroller@edit');//ver formulario de edicion de alumno
 Route::post('/Usuario/alumno/{id}/edicion','Alumnocontroller@update');//actualizar alumno
-Route::post('/Usuario/alumno/{id}/eliminar','Alumnocontroller@destroy');//eliminar alumno
+
+Route::post('/Usuario/alumno/eliminar','Alumnocontroller@destroy');//eliminar alumno
+
 Route::post('/Usuario/alumno/busqueda', 'Alumnocontroller@busqueda');//actualizar alumno
 Route::post('/Usuario/alumno/{id}/eliminar/imagen','Alumnocontroller@destroyimagen');
 

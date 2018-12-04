@@ -108,24 +108,28 @@
                  <tbody>
                   @foreach($students as $student)
                   <tr>
-                    <td class="text-center" style="text-align: center; vertical-align: middle;">{{ $student->id}}</td>
+                    <td class="text-center" style="text-align: center; vertical-align: middle;">{{ $student->matricula}}</td>
                       <td class="text-center" style="text-align: center; vertical-align: middle;">{{ $student->apellido_P}} </td>
                       <td class="text-center" style="text-align: center; vertical-align: middle;">{{ $student->apellido_M}}</td>
                       <td class="text-center" style="text-align: center; vertical-align: middle;">{{ $student->nombre}}</td>
                       <td style="text-align: center; vertical-align: middle;">{{ $student->telefono}}</td>
-                      <td style="text-align: center; vertical-align: middle;">{{ $student->actstudent->act->grade->grado}}</td>
-                      <td style="text-align: center; vertical-align: middle;">{{ $student->actstudent->act->group->grupo}}</td>
+
+                      <td style="text-align: center; vertical-align: middle;">{{ $student->grado}}</td>
+                      <td style="text-align: center; vertical-align: middle;">{{ $student->grupo}}</td>
                       <td style="text-align: center; vertical-align: middle;">{{ $student->baja}}</td>
                       <td>
-                          <form method="post" action="{{url('/Usuario/alumno/'.$student->id.'/eliminar')}}">
+                          <form method="post" action="/Usuario/alumno/eliminar">
                             @csrf
-                            {{method_field('DELETE')}}
-                              <a href="{{url('/Usuario/alumno/'.$student->id.'/edicion')}}" rel="tooltip" class="btn btn-info">
+
+                            <input type="hidden" name="student_id" value="{{$student->matricula}}">
+                              <a href="{{url('/Usuario/alumno/'.$student->matricula.'/edicion')}}" rel="tooltip" class="btn btn-info">
                                 <i class="now-ui-icons ui-2_settings-90"></i>
                               </a>
-                              <button type="submit" rel="tooltip" class="btn btn-danger">
+
+                              <button type="submit" class="btn btn-danger">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                               </button> 
+
                           </form>
                       </td>
                   </tr>

@@ -8,7 +8,7 @@ class student extends Model
 {
       public function actstudent()
     {
-    	return $this->belongsTo(student_actLevel::class,'id', 'student_id');
+    	return 'holi';
     }
 
     public function getUrlAttribute()

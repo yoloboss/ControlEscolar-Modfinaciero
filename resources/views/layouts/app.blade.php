@@ -23,7 +23,7 @@
 </head>
 <body class="@yield('body-class')">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-primary " color-on-scroll="0">
+  <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-primary " >
     <div class="container">
       <!--
       <div class="dropdown button-dropdown">
@@ -92,6 +92,9 @@
           @yield('content')
 
   </div>
+  <script type="text/javascript">
+    
+  </script>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -101,12 +104,12 @@
               <span aria-hidden="true">&times;</span>
               </button>
           </div>
-          <div class="modal-body">
+
+
+          <div id="pagos" class="modal-body">
             <h5>Ingresar fechas</h5>
-              <div class="form-group">
-                <input type="text" class="form-control date-picker" value="10/05/2016" data-datepicker-color="primary">
-              </div>
-              <hr>
+
+              
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -114,6 +117,8 @@
           </div>
       </div>
   </div>
+
+
 </div>
   <!--   Core JS Files   -->
   <script src="{{asset('/js/core/jquery.min.js')}}" type="text/javascript"></script>
@@ -131,6 +136,9 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
   <script src="{{asset('/js/now-ui-kit.js?v=1.2.0')}}" type="text/javascript"></script>
+
+     @stack('scripts')
+
 </body>
 
 </html>

@@ -221,7 +221,7 @@
                                         <td class="text-center"></td>
                                         <td>
                                             <div class="text-center">
-                                                <select class="form-control" name="level_id" id="exampleFormControlSelect1">
+                                                <select id="fechas" class="form-control" name="level_id" id="exampleFormControlSelect1">
                                                     <option value="">seleccione periodiocidad</option>
                                                     <option value="1">1</option>
                                                     <option value="3">3</option>
@@ -230,7 +230,7 @@
                                              </select>
                                             </div>
                                         </td>
-                                        <td class="td-actions text-right">
+                                        <td class="td-actions text-center">
                                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                             Ingresar fechas
                                           </button>
@@ -262,3 +262,28 @@
     </div>
 </div>
 @endsection
+
+
+@push('scripts')
+<script>
+    $(document).ready( function(){
+        var fechapagos = [];
+
+        $('#fechas').blur(function(){
+            var cont = $(this).val();
+
+                $('#pagos').empty();
+            for (var i=0; i<cont; i++) {
+            $('#pagos').append('<div class="form-group"><input type="text" class="form-control date-picker"  value="10/05/2016" data-datepicker-color="primary"></div><hr>')
+                 }
+
+                fechapagos.push("$('#pagos')");
+                print_r ($('#pagos'));
+        })
+    });
+
+
+</script>
+@endpush
+
+
