@@ -205,7 +205,7 @@
                                    </li>
                                    @endforeach
                                </ul>
-                               <button type="submit" class="btn btn-primary">Registrar</button>
+                               <button type="submit" class="btn btn-primary">Agregar</button>
                             </div>
                             <div  class="col-md-12">
                                 <table class="table">

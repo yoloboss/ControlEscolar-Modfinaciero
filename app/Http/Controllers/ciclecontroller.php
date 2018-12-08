@@ -115,14 +115,34 @@ class ciclecontroller extends Controller
             foreach ($salonact as $salon) {
                 $salon->status = 'cursado';
                 $grupoAct = ActLevel::where('id',$salon->actlevel_id) ->Where('estado','activo')->get();
+                //dd($grupoAct);
                 foreach ($grupoAct as $grupo) {
+
                 $fununcia= grade::find($grupo->grado_id);
-                $gradorela = grade::where('grado',$fununcia->grado)->first();
+
+               // dd($fununcia);
+                $gradoreal = grade::where('grado',$fununcia->grado+1)->first();
+
+                //dd($gradoreal);
+                //if ($grupo->grado_id+1 == $gradoreal->id) {
+
+                    //dd($gradoreal->id);
+                   //$grupoAc = ActLevel::find( $gradoreal->id );
+                  $grupoAc = ActLevel::where('grado_id', $gradoreal->id)->Where('estado','activo')->first();
                   $studen_actl = new Student_actLevel();  
                   $studen_actl->student_id = $alumno->id;
-                  $studen_actl->actlevel_id = $gradorela->id ;
+                  //dd($grupoAc);
+                  $studen_actl->actlevel_id = $grupoAc->id;
                   $studen_actl->status ="cursando";
+
+                  //dd($studen_actl);
                   $studen_actl->save();
+               // } 
+               
+
+                //dd($grupo);
+                //dd($grupoAc->id);
+                  
                }
                $salon->save();
             }

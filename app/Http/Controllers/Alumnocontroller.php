@@ -16,15 +16,17 @@ class Alumnocontroller extends Controller
 
         $students = \DB::table('students')
                     ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
-                    ->join('act_levels', 'student_act_Levels.id', '=', 'act_levels.id')
+                    ->join('act_levels', 'student_act_Levels.actlevel_id', '=', 'act_levels.id')
                     ->join('groups', 'act_levels.grupo_id', '=', 'groups.id')
                     ->join('grades', 'act_levels.grado_id', '=', 'grades.id')
                     ->where('student_act_Levels.status','=','cursando')
                     ->where('students.baja','=','Alta')
                     ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
+                    
                      ->get();
 
         //$students = student::where('baja','=','Alta')->get();
+                     //dd($students);
         
     	return view('Usuario.alumnos.index',compact('students')); 
 
@@ -36,7 +38,7 @@ class Alumnocontroller extends Controller
                     ->join('act_levels', 'student_act_Levels.id', '=', 'act_levels.id')
                     ->join('groups', 'act_levels.grupo_id', '=', 'groups.id')
                     ->join('grades', 'act_levels.grado_id', '=', 'grades.id')
-                    ->where('student_act_Levels.status','=','cursando')
+                    ->where('student_act_Levels.status','=','cursado')
                     ->where('students.baja','=','baja')
 
                     ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')

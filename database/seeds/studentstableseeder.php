@@ -35,5 +35,30 @@ class studentstableseeder extends Seeder
             'imagen' =>'null',
             'baja' =>'Alta',
         ]);
+
+        DB::table('students')->insert([
+            'nombre' =>'pancho',
+            'apellido_P' =>'villa',
+            'apellido_M' =>'arango',
+            'genero' =>'Masculino',
+            'fecha_nacimineto' =>'1885-08-15',
+            'estado' =>'zacat',
+            'Nacionalidad' =>'Mexicana',
+            'telefono' =>'6121668649',
+            'direccion' =>'durango',
+            'colonia' =>'durango',
+            'c_p' =>'123',
+            'numre_casa' =>'13121',
+            'nombre_p'=>'jose',
+            'apellidos_P' =>'maria',
+            'direccion_p'=>'pavon',
+            'Telefono_p'=>'61212121212',
+            'nombre_m'=>'benito',
+            'direccion_m' =>'juarez',
+            'apellidos_m' =>'aaaa',
+            'Telefono_m' =>'6123568945',
+            'imagen' =>'null',
+            'baja' =>'Alta',
+        ]);
     }
 }

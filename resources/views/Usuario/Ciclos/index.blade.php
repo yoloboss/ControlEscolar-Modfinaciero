@@ -50,7 +50,7 @@
                       <td class="text-center">{{ $cycle->ciclo}}</td>
                       <td>{{ $cycle->status}} </td>
                       <td class="td-actions text-center">
-                        <a href="{{url('/Usuario/ciclo_escolar/'.$cycle->id.'/pasos')}}" rel="tooltip" class="btn btn-success">
+                        <a href="{{url('/Usuario/ciclo_escolar/'.$cycle->id.'/pasos')}}" class="btn btn-success">
                             <i class="now-ui-icons check-circle-07"></i>
                         </a>
                       </td>
