@@ -265,25 +265,6 @@
 
 
 @push('scripts')
-<script>
-    $(document).ready( function(){
-        var fechapagos = [];
-
-        $('#fechas').blur(function(){
-            var cont = $(this).val();
-
-                $('#pagos').empty();
-            for (var i=0; i<cont; i++) {
-            $('#pagos').append('<div class="form-group"><input type="text" class="form-control date-picker"  value="10/05/2016" data-datepicker-color="primary"></div><hr>')
-                 }
-
-                fechapagos.push("$('#pagos')");
-                print_r ($('#pagos'));
-        })
-    });
-
-
-</script>
 @endpush
 
 

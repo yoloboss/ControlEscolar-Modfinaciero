@@ -84,7 +84,7 @@
                         </div>
                         <div class="form-group col-4">
                           <label for="inputAddress2">Fecha de nacimiento</label>
-                          <input type="text" name="fecha_nacimineto" class="form-control" id="inputAddress2" placeholder="AAAA/MM/DD" value="{{$student->fecha_nacimineto}}">
+                          <input type="text" name="fecha_nacimineto" class="form-control date-picker" placeholder="AAAA/MM/DD"  data-datepicker-color="primary" value="{{$student->fecha_nacimineto}}">
                         </div>
                       </div>
                       <div class="form-row">

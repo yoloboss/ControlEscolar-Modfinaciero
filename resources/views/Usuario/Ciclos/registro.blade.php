@@ -4,19 +4,23 @@
 
 @section('content')
 <div class="wrapper">
+  <!--
   <div class="page-header page-header-small">
-    <div class="page-header-image" data-parallax="true" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
-    </div>
+      <div class="page-header-image" data-parallax="true" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
+      </div>
       <div class="content-center">
         <div class="container">
-          <h1 class="title">Vista de ciclos escolares</h1>
-        <div class="text-center">
+            <h1 class="title">Ciclos escolaress</h1>
+        </div>
       </div>
-      </div>
-    </div>
   </div>
+-->
   <div class="section section-about-us">
     <div class="container">
+      <div class="row justify-content-center" style="margin-top: 30px;">
+                <h3>Editar ciclos escolares</h3>         
+          </div>
+          <hr class="style13"
       <div class="row">
         <div class="col-md-12 text-right">
           <a href="{{ url('/Usuario/ciclo_escolar/')}}" type="button" class="btn btn-primary now-ui-icons arrows-1_minimal-left">&nbsp;Regresar</a>

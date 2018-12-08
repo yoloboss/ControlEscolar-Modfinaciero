@@ -28,7 +28,7 @@
                 <h2 class="title">Lista de conceptos de pago</h2>
               </div>
               <div class="col-md-12 ml-auto mr-auto text-right">
-                <a href="{{ url('/Usuario/concepto_pago/resgistrar')}}" type="button" class="btn btn-primary now-ui-icons ui-1_simple-add">&nbsp;concepto de pago</a>
+                <a href="{{ url('/Usuario/concepto_pago/resgistrar')}}" type="button" class="btn btn-secondary now-ui-icons ui-1_simple-add">&nbsp;Nuevo</a>
               </div>
                  <table class="table table-condensed">
                    <thead>
@@ -50,7 +50,7 @@
                       <td class="td-actions text-right">
                         <FORM method="post" action="{{url('/Usuario/concepto_pago/'.$concept->id.'/eliminar')}}" class="form-inline">
                           @csrf
-                            <a href="{{url('/Usuario/concepto_pago/'.$concept->id.'/edicion')}}" rel="tooltip" class="btn btn-success">
+                            <a href="{{url('/Usuario/concepto_pago/'.$concept->id.'/edicion')}}" rel="tooltip" class="btn btn-info">
                             <i class="now-ui-icons ui-2_settings-90"></i>
                             </a>  
                             <button type="submit" rel="tooltip" class="btn btn-danger">
