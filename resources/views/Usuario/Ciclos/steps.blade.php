@@ -136,7 +136,6 @@
                                     <th class="text-center">Nombre del nivel</th>
                                     <th class="text-center">Grado</th>
                                     <th class="text-center">Grupo</th>
-                                    <th class="text-center">Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -146,15 +145,6 @@
                                         <td>{{ $actlevel->level->nivel_educativo}} </td>
                                         <td>{{ $actlevel->grade->grado ? $actlevel->grade->grado :'sin grado' }}</td>
                                         <td>{{ $actlevel->group->grupo ? $actlevel->group->grupo :'sin grupo'}}</td>
-                                        <td class="td-actions text-right">  
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox">
-                                                <span class="form-check-sign"></span>
-                                                Asignar
-                                                </label>
-                                            </div>
-                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -184,41 +174,28 @@
                     <div class="row setup-content-2" id="step-3">
                         <div class="col-md-12">
                             <form  method="post" action="{{ url('')}}">
-                            @php
-                                $conceptos=App\payment_concept::all();
-                                @endphp
                             <h3 class="font-weight-bold pl-0 my-4"><strong>Crear cartera de pago</strong></h3>
                             <div class="form-group">
-
-                               <label for="exampleFormControlSelect1">Concepto de pago</label>
-                               <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;" >None selected <b class="caret">
-                               </b>
-                               </button>
-                               <ul class="multiselect-container dropdown-menu">
-                                   @foreach($conceptos as $concepto)
-                                   <li class="">
-                                       <a href="javascript:void(0);">
-                                           <label class="checkbox">
-                                               <input type="checkbox" name="conceptos[]" value="{{$concepto->id}}">{{$concepto->nombre}}
-                                           </label>
-                                       </a>
-                                   </li>
-                                   @endforeach
-                               </ul>
-                               <button type="submit" class="btn btn-primary">Agregar</button>
                             </div>
+                            @php
+                            $conceptos =App\payment_concept::latest()->paginate(10);
+                            @endphp
                             <div  class="col-md-12">
+                            
                                 <table class="table">
                                 <thead>
                                     <tr>
                                     <th class="text-center">Nombre</th>
                                     <th class="text-center">Periodiocidad</th>
                                     <th class="text-center">Fechas de Pago</th>
+                                    <th class="text-center">seleccionar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($conceptos as $concepto)
                                     <tr>
-                                        <td class="text-center"></td>
+                                        
+                                        <td class="text-center">{{$concepto->nombre}}</td>
                                         <td>
                                             <div class="text-center">
                                                 <select id="fechas" class="form-control" name="level_id" id="exampleFormControlSelect1">
@@ -235,9 +212,20 @@
                                             Ingresar fechas
                                           </button>
                                         </td>
+                                        <td class="td-actions text-right">  
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox">
+                                                <span class="form-check-sign"></span>
+                                                Asignar
+                                                </label>
+                                            </div></td>
+                                        @endforeach
                                     </tr>
+                                    
                                 </tbody>
                             </table>
+                            {{$conceptos -> links()}}
                             </div>
                             <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Regresar</button>
                             <button class="btn btn-mdb-color btn-rounded nextBtn-2 float-right" type="button">Siguiente</button>
@@ -262,9 +250,7 @@
     </div>
 </div>
 @endsection
-
-
-@push('scripts')
+@push('scripts') 
 @endpush
-
+ 
 

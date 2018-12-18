@@ -79,7 +79,7 @@
                         <a href="{{ url('/Usuario/concepto_pago/')}}">Conceptos de pago</a>
                         <a href="{{ url('/Usuario/ciclo_escolar')}}">Ciclos escolares</a>
                         <a href="{{ url('/Usuario/Nivel/')}}">Niveles Educativos</a>
-                        <a href="https://laracasts.com">Usuarios</a>
+                        <a href="{{ url('/Usuario/Caja/')}}">Caja</a>
                     @else
                         <a href="{{ route('login') }}">Iniciar sesión</a>
                         <a href="{{ route('register') }}">Registrarse</a>

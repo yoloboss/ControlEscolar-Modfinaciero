@@ -9,6 +9,7 @@ use App\cycles_actlevs;
 use App\student;
 use App\student_actlevel;
 use App\grade;
+use App\level;
 
 class ciclecontroller extends Controller
 {
@@ -107,48 +108,118 @@ class ciclecontroller extends Controller
         $cycles = cycle::find($id);
         if ($cycles->status = "activo") {
          $alumnosAct = student::where('baja', 'alta')->get();
-         //dd($alumnosAct);
-        // $todos = Students::all();  # code...
          foreach ($alumnosAct as $alumno) {
             $salonact = student_actlevel::where('student_id',$alumno->id)->Where('status','cursando')->get();
-            //dd($salonact);
             foreach ($salonact as $salon) {
                 $salon->status = 'cursado';
                 $grupoAct = ActLevel::where('id',$salon->actlevel_id) ->Where('estado','activo')->get();
-                //dd($grupoAct);
                 foreach ($grupoAct as $grupo) {
+                 $ultimonivel = level::find($grupo->level_id);
+                 $ultimogrado= grade::find($grupo->grado_id);
+                  //dd($ultimonivel);
+                  if ($ultimonivel->nivel_educativo == 'Prescolar' ) {
+                    $ultimogrado= grade::find($grupo->grado_id);
 
-                $fununcia= grade::find($grupo->grado_id);
+                    $gradoreal = grade::where('grado',$ultimogrado->grado)->first();
+                    if ($ultimogrado->grado < 3) {
 
-               // dd($fununcia);
-                $gradoreal = grade::where('grado',$fununcia->grado+1)->first();
 
-                //dd($gradoreal);
-                //if ($grupo->grado_id+1 == $gradoreal->id) {
+                        $gradoreal = grade::where('grado',$ultimogrado->grado+1)->first();
+                   
+                    }
+                     dd($gradoreal);
+                   if ($gradoreal->grado <= 3) {
+                       $siguientenivel = level::where('nivel_educativo','Primaria')->first();
+                      // dd($siguientenivel);
+                       $grupoAc = ActLevel::where('grado_id', $siguientenivel->id)->Where('estado','activo')->first();
+                      // dd($grupoAc);
+                       $studen_actl = new Student_actLevel();  
+                       $studen_actl->student_id = $alumno->id;
+                       $studen_actl->actlevel_id = $grupoAc->id;
+                       $studen_actl->status ="cursando";
+                       $studen_actl->save(); 
+                       
+                   }else  {
+                       $grupoAc = ActLevel::where('grado_id', $gradoreal->id)->Where('estado','activo')->first();
+                       $studen_actl = new Student_actLevel();  
+                       $studen_actl->student_id = $alumno->id;
+                       $studen_actl->actlevel_id = $grupoAc->id;
+                       $studen_actl->status ="cursando";
+                       $studen_actl->save(); 
+                   }
+                    
+                  }
+                  if ($ultimonivel->nivel_educativo == 'Primaria' ) {
+                    $ultimogrado= grade::find($grupo->grado_id);
 
-                    //dd($gradoreal->id);
-                   //$grupoAc = ActLevel::find( $gradoreal->id );
-                  $grupoAc = ActLevel::where('grado_id', $gradoreal->id)->Where('estado','activo')->first();
-                  $studen_actl = new Student_actLevel();  
-                  $studen_actl->student_id = $alumno->id;
-                  //dd($grupoAc);
-                  $studen_actl->actlevel_id = $grupoAc->id;
-                  $studen_actl->status ="cursando";
+                    $gradoreal = grade::where('grado',$ultimogrado->grado)->first();
+                    if ($ultimogrado->grado < 6) {
 
-                  //dd($studen_actl);
-                  $studen_actl->save();
-               // } 
-               
 
-                //dd($grupo);
-                //dd($grupoAc->id);
+                        $gradoreal = grade::where('grado',$ultimogrado->grado+1)->first();
+                   
+                    }
+
+                     if ($gradoreal->grado <= 6) {
+                        
+                       $siguientenivel = level::where('nivel_educativo','Secundaria')->first();
+                       $grupoAc = ActLevel::where('grado_id', $siguientenivel->id)->Where('estado','activo')->first();
+                       dd($grupoAc);
+                       $studen_actl = new Student_actLevel();  
+                       $studen_actl->student_id = $alumno->id;
+                       $studen_actl->actlevel_id = $grupoAc->id;
+                       $studen_actl->status ="cursando";
+                       $studen_actl->save(); 
+                       
+                   }else {
+                       $grupoAc = ActLevel::where('grado_id', $gradoreal->id)->Where('estado','activo')->first();
+                       $studen_actl = new Student_actLevel();  
+                       $studen_actl->student_id = $alumno->id;
+                       $studen_actl->actlevel_id = $grupoAc->id;
+                       $studen_actl->status ="cursando";
+                       $studen_actl->save();  
+                   }
+                   
+                  } 
                   
-               }
+                  if ($ultimonivel->nivel_educativo == 'Secundaria' ) {
+                    $ultimogrado= grade::find($grupo->grado_id);
+
+                    $gradoreal = grade::where('grado',$ultimogrado->grado)->first();
+                    if ($ultimogrado->grado < 3) {
+
+
+                        $gradoreal = grade::where('grado',$ultimogrado->grado+1)->first();
+                   
+                    }
+                    if ($gradoreal->grado <= 3) {
+                        $siguientenivel = level::where('nivel_educativo','Secundaria')->first();
+                       $grupoAc = ActLevel::where('grado_id', $siguientenivel->id)->Where('estado','activo')->first();
+                       dd($grupoAc);
+                       $studen_actl = new Student_actLevel();  
+                       $studen_actl->student_id = $alumno->id;
+                       $studen_actl->actlevel_id = $grupoAc->id;
+                       $studen_actl->status ="cursando";
+                       $studen_actl->save();
+                    }else{
+                   $grupoAc = ActLevel::where('grado_id', $gradoreal->id)->Where('estado','activo')->first();
+                   $studen_actl = new Student_actLevel();  
+                   $studen_actl->student_id = $alumno->id;
+                   $studen_actl->actlevel_id = $grupoAc->id;
+                   $studen_actl->status ="cursando";
+                   $studen_actl->save(); 
+                  }
+                     
+                  }
+                                 
+               
                $salon->save();
             }
          }
+
         }
-        
-        return back();                                         
     }
+    return back();  
+ }
+     
 }

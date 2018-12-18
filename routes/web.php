@@ -59,3 +59,6 @@ Route::post('/Usuario/concepto_pago/resgistrar','paymentconceptscontroller@store
 Route::get('/Usuario/concepto_pago/{id}/edicion','paymentconceptscontroller@edit');//ver formulario de ecicion de conceptos de pago
 Route::post('/Usuario/concepto_pago/{id}/edicion','paymentconceptscontroller@update');
 Route::post('/Usuario/concepto_pago/{id}/eliminar','paymentconceptscontroller@destroy');
+
+
+Route::get('/Usuario/Caja/','caja@index');

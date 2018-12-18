@@ -46,7 +46,7 @@
                 <option>Inactivo</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="submit" class="btn btn-primary">GUARDAR</button>
           </form>
         </div>
       </div>

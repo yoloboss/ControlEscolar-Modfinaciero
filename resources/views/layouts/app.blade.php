@@ -105,12 +105,13 @@
 
           <div id="pagos" class="modal-body">
             <h5>Ingresar fechas</h5>
-
+            
+            <input type="text" name="fecha_nacimineto" class="form-control date-picker"  data-datepicker-color="primary">
               
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary">Guardar fechas</button>
           </div>
       </div>
   </div>
