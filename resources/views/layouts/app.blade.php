@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -115,7 +115,43 @@
           </div>
       </div>
   </div>
+</div>
 
+  <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Pago de "Nombrepago"</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+
+          <div id="pagos" class="modal-body">
+            <div class="form-group">
+             <h5>Total</h5>
+             <input type="text" >
+            <div class="form-group" class="form-control">
+            <h5>Forma de pago</h5>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <h5>Monto recivido</h5>
+            <input type="text" name="Pago" >
+              
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Guardar e imprimir</button>
+          </div>
+      </div>
+  </div>
 
 </div>
   <!--   Core JS Files   -->
@@ -136,6 +172,12 @@
   <script src="{{asset('/js/now-ui-kit.js?v=1.2.0')}}" type="text/javascript"></script>
 
      @stack('scripts')
+
+                     <SCRIPT type="text/javascript">
+                      $(document).on('click', '#Crear', function() {
+                       $('#ModalCrear').modal('show');
+                      });
+                    </SCRIPT>   
 
 </body>
 

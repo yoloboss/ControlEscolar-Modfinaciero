@@ -164,7 +164,7 @@ class ciclecontroller extends Controller
                         
                        $siguientenivel = level::where('nivel_educativo','Secundaria')->first();
                        $grupoAc = ActLevel::where('grado_id', $siguientenivel->id)->Where('estado','activo')->first();
-                       dd($grupoAc);
+                      // dd($grupoAc);
                        $studen_actl = new Student_actLevel();  
                        $studen_actl->student_id = $alumno->id;
                        $studen_actl->actlevel_id = $grupoAc->id;
@@ -195,7 +195,7 @@ class ciclecontroller extends Controller
                     if ($gradoreal->grado <= 3) {
                         $siguientenivel = level::where('nivel_educativo','Secundaria')->first();
                        $grupoAc = ActLevel::where('grado_id', $siguientenivel->id)->Where('estado','activo')->first();
-                       dd($grupoAc);
+                       //dd($grupoAc);
                        $studen_actl = new Student_actLevel();  
                        $studen_actl->student_id = $alumno->id;
                        $studen_actl->actlevel_id = $grupoAc->id;
@@ -221,5 +221,35 @@ class ciclecontroller extends Controller
     }
     return back();  
  }
+
+ public function  AddPayment(Request $request)
+  {
+        
+        
+        $cycles = cycle::find($id);
+        if ($cycles->status = "activo") {$id
+
+          foreach ($request as $requests => $request) {
+            $pago = new payments();
+
+            $pago->paymentconceps_id =$id->id;
+            $pago->student_id =
+            $pago->actlevel_id =
+            $pago->monto = payment_concepts::where('precio',$id->precio x 'numero de veces que se cobrara ' );
+
+            foreach ($request as $requests => $request) {
+              $pago->Fecha_creacion
+              $pago->Fecha_venciminto
+              $pago->estatus
+            }
+          }
+          
+          
+
+        }
+
+        
+        return back();                                        
+  }
      
 }
