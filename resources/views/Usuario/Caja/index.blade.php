@@ -113,7 +113,6 @@
                           <th class="text-center">Grupo</th>
                           <th class="text-center">Total</th>
                           <th class="text-center">Status</th>
-                          <th class="text-center">Status</th>
                           <th class="text-center"></th>
                         </tr>
                       </thead>

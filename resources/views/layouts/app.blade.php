@@ -101,13 +101,16 @@
               <span aria-hidden="true">&times;</span>
               </button>
           </div>
-
-
           <div id="pagos" class="modal-body">
-            <h5>Ingresar fechas</h5>
-            
-            <input type="text" name="fecha_nacimineto" class="form-control date-picker"  data-datepicker-color="primary">
-              
+            <div class="form-group col-md-6">
+              <div class="text-left">
+                <h5>Fecha inicial</h5>
+              <input type="text" name="fecha_inicial" class="form-control date-picker"  data-datepicker-color="primary">
+              </div>
+              <div class="text-right">
+                <h5>Fecha final</h5>
+              <input type="text" name="fecha_final" class="form-control date-picker"  data-datepicker-color="primary">
+              </div>
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -115,6 +118,7 @@
           </div>
       </div>
   </div>
+</div>
 </div>
 
   <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-hidden="true">
@@ -130,10 +134,16 @@
 
           <div id="pagos" class="modal-body">
             <div class="form-group">
-             <h5>Total</h5>
-             <input type="text" >
-            <div class="form-group" class="form-control">
-            <h5>Forma de pago</h5>
+              <div class="form-group col-md-6">
+                <h5>Total</h5>
+                <input type="text" class="form-control" >
+              </div>
+              <div class="form-group">
+                
+              </div>
+             </div>
+            <div class="form-group col-md-6">
+             <h5>Forma de pago</h5>
               <select class="form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
@@ -142,9 +152,10 @@
                 <option>5</option>
               </select>
             </div>
-            <h5>Monto recivido</h5>
-            <input type="text" name="Pago" >
-              
+            <div class="form-group col-md-6">
+              <h5>Monto recivido</h5>
+              <input type="text" name="Pago" >
+            </div> 
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

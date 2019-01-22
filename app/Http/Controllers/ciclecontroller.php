@@ -222,7 +222,7 @@ class ciclecontroller extends Controller
     return back();  
  }
 
- public function  AddPayment(Request $request)
+/* public function  AddPayment(Request $request)
   {
         
         
@@ -250,6 +250,6 @@ class ciclecontroller extends Controller
 
         
         return back();                                        
-  }
+  }*/
      
 }

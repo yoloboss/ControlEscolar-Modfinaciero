@@ -72,7 +72,7 @@
                       </div>
                       <div class="form-group col-8">
                         <label for="inputPassword4">Apellido Materno</label>
-                        <input type="text" name="apellido_M" class="form-control" id="inputApem" value="{{$student->apellido_M)}}">
+                        <input type="text" name="apellido_M" class="form-control" id="inputApem" value="{{$student->apellido_M}}">
                       </div>
                       <div class="form-row">
                         <div class="form-group col-4">
