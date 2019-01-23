@@ -28,7 +28,7 @@
                 <h2 class="title">Lista de ciclos escolares</h2>
               </div>
               <div class="col-md-12 ml-auto mr-auto text-right">
-                <a href="{{ url('/Usuario/ciclo_escolar/resgistrar')}}" type="button" class="btn btn-secondary now-ui-icons ui-1_simple-add">&nbsp;Nuevo</a>
+                <a href="{{ url('/Usuario/ciclo_escolar/resgistrar')}}" type="button" class="btn btn-secondary"><i class="far fa-calendar-plus"></i>&nbsp;Nuevo</a>
               </div>
                  <table class="table table-condensed">
                    <thead>
@@ -44,14 +44,14 @@
                     <tr>
                       <td class="td-actions text-right">
                         <a href="{{url('/Usuario/ciclo_escolar/'.$cycle->id.'/edicion')}}" rel="tooltip" class="btn btn-info">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
+                            <i class="far fa-edit"></i>
                         </a>
                       </td>
                       <td class="text-center">{{ $cycle->ciclo}}</td>
                       <td>{{ $cycle->status}} </td>
                       <td class="td-actions text-center">
                         <a href="{{url('/Usuario/ciclo_escolar/'.$cycle->id.'/pasos')}}" class="btn btn-success">
-                            <i class="now-ui-icons check-circle-07"></i>
+                            <i class="fas fa-chart-bar"></i>
                         </a>
                       </td>
                     </tr>

@@ -87,7 +87,7 @@
                 </ul>
             </div>
             <div class="col-md-2 offset-md-6">
-              <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-secondary now-ui-icons ui-1_simple-add">&nbsp;Nuevo</a>
+              <a href="{{ url('/Usuario/alumno/resgistrar')}}" type="button" class="btn btn-secondary "><i class="fa fa-user-plus"></i></a>
             </div>    
           </div>
           <div class="row">
@@ -123,11 +123,11 @@
 
                             <input type="hidden" name="student_id" value="{{$student->matricula}}">
                               <a href="{{url('/Usuario/alumno/'.$student->matricula.'/edicion')}}" rel="tooltip" class="btn btn-info">
-                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                <i class="fa fa-user-edit"></i>
                               </a>
 
                               <button type="submit" class="btn btn-danger">
-                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                <i class="fa fa-user-times"></i>
                               </button> 
 
                           </form>

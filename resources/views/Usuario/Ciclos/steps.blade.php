@@ -15,16 +15,16 @@
                 <!-- Stepper -->
                 <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
                     <div class="steps-step-2">
-                        <a href="#step-1" type="button" class="btn btn-blue-grey  btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Asignar grupos activos"><i class="now-ui-icons business_bank"></i> </a>
+                        <a href="#step-1" type="button" class="btn btn-blue-grey  btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Asignar grupos activos"><i class="fa fa-landmark" aria-hidden="true"></i> </a>
                     </div>
                     <div class="steps-step-2">
-                        <a href="#step-2" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Promover alumnos"><i class="now-ui-icons users_circle-08" aria-hidden="true"></i></a>
+                        <a href="#step-2" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Promover alumnos"><i class="fa fa-user-graduate" aria-hidden="true"></i></a>
                     </div>
                     <div class="steps-step-2">
-                        <a href="#step-3" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Cartera de pago"><i class="now-ui-icons business_money-coins" aria-hidden="true"></i></a>
+                        <a href="#step-3" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Cartera de pago"><i class="fa fa-money-check-alt" aria-hidden="true"></i></a>
                     </div>
                     <div class="steps-step-2">
-                        <a href="#step-4" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top" title="Finish"><i class="fa fa-check" aria-hidden="true"></i></a>
+                        <a href="#step-4" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top" title="Finalizar"><i class="fa fa-check" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                                 $levels=App\level::all();
                                 $Turns=App\Turn::all();
                                 @endphp
-                                <div class="card-body ">
+                                <div class="form-control">
                                     <div class="tab-content text-center">
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Nivel escolar</label>
@@ -67,9 +67,10 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-inline col-md-12">
+                                               <div class="form-group col-md-4">
                                                 <label for="exampleFormControlSelect1">Turno</label>
-                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;" >None selected <b class="caret">
+                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;" >Seleccione uno <b class="caret">
                                                 </b>
                                                 </button>
                                                 <ul class="multiselect-container dropdown-menu">
@@ -84,9 +85,9 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-md-4">
                                                 <label for="exampleFormControlSelect1">Grado</label>
-                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">None selected <b class="caret">
+                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">Seleccione uno <b class="caret">
                                                 </b>
                                                 </button>
                                                 <ul class="multiselect-container dropdown-menu">
@@ -101,9 +102,9 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-md-4">
                                                 <label for="exampleFormControlSelect1">Grupo</label>
-                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">None selected <b class="caret">
+                                                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" style="width: auto;">Seleccione uno <b class="caret">
                                                 </b>
                                                 </button>
                                                 <ul class="multiselect-container dropdown-menu">
@@ -118,7 +119,9 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Registrar</button>
+                                            
+                                            </div>
+                                            <button type="submit" class="btn btn-primary float-right">Registrar</button> 
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +164,7 @@
                             <div class="form-group md-form">
                                 <form  method="post" action="{{ url('/Usuario/ciclo_escolar/'.$cycles->id.'/pasos/promover')}}">
                                 @csrf
-                                <button class="btn btn-mdb-color btn-rounded float-center" type="submit">Promover</button>
+                                <button class="btn btn-success btn-mdb-color btn-rounded float-center" type="submit">Promover</button>
                             </form>
                             </div>
                            
@@ -192,13 +195,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($conceptos as $concepto)
+                                    @foreach($conceptos as $key=> $concepto)
                                     <tr>
                                         
                                         <td class="text-center">{{$concepto->nombre}}</td>
                                         <td>
                                             <div class="text-center">
-                                                <select id="fechas" class="form-control" name="level_id" id="exampleFormControlSelect1">
+                                                <select id="fechas" class="form-control" name="fecha">
                                                     <option value="">seleccione periodiocidad</option>
                                                     <option value="1">1</option>
                                                     <option value="3">3</option>
@@ -208,7 +211,7 @@
                                             </div>
                                         </td>
                                         <td class="td-actions text-center">
-                                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                          <button type="button" class="btn btn-primary abrirmodal"   data-toggle="modal" data-target="#{{$key}}">
                                             Ingresar fechas
                                           </button>
                                         </td>
@@ -220,6 +223,36 @@
                                                 Asignar
                                                 </label>
                                             </div></td>
+                                            @push('modal')
+                                            <div class="modal fade" id="{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Fechas de pago de {{$concepto->nombre}}</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div id="pagos" class="modal-body">
+                                                            <div class="form-group col-md-6">
+                                                            <div class="text-left">
+                                                                <h5>Fecha inicial</h5>
+                                                            <input type="text" name="fecha_inicial" class="form-control date-picker"  data-datepicker-color="primary">
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <h5>Fecha final</h5>
+                                                            <input type="text" name="fecha_final" class="form-control date-picker"  data-datepicker-color="primary">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Guardar fechas</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                </div>
+                                            @endpush
                                         @endforeach
                                     </tr>
                                     
@@ -237,8 +270,8 @@
                     <div class="row setup-content-2" id="step-4">
                         <div class="col-md-12">
                             <h3 class="font-weight-bold pl-0 my-4"><strong>Finalisar registro de ciclo</strong></h3>
-                            <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Previous</button>
-                         <button class="btn btn-success btn-rounded float-right" type="submit">Submit</button>
+                            <button class="btn btn-mdb-color btn-rounded prevBtn-2 float-left" type="button">Regresar</button>
+                         <button class="btn btn-success btn-rounded float-right" type="submit">Terminar</button>
                         </div>
                     </div>
                 
@@ -250,6 +283,17 @@
 </div>
 @endsection
 @push('scripts') 
+<script >
+    $( document ).ready(function() {
+    console.log( "ready!" );
+     $('.abrirmodal').click(function(){
+            var index=$(this).attr('data-target');
+            alert($("fechas").length);
+            console.log(index)
+        })
+});
+    
+       
+</script>
 @endpush
  
-

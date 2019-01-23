@@ -28,7 +28,7 @@
                 <h2 class="title">Lista de conceptos de pago</h2>
               </div>
               <div class="col-md-12 ml-auto mr-auto text-right">
-                <a href="{{ url('/Usuario/concepto_pago/resgistrar')}}" type="button" class="btn btn-secondary now-ui-icons ui-1_simple-add">&nbsp;Nuevo</a>
+                <a href="{{ url('/Usuario/concepto_pago/resgistrar')}}" type="button" class="btn btn-secondary "> <i class="far fa-calendar-plus"></i>&nbsp;Nuevo</a>
               </div>
                  <table class="table table-condensed">
                    <thead>
@@ -51,10 +51,10 @@
                         <FORM method="post" action="{{url('/Usuario/concepto_pago/'.$concept->id.'/eliminar')}}" class="form-inline">
                           @csrf
                             <a href="{{url('/Usuario/concepto_pago/'.$concept->id.'/edicion')}}" rel="tooltip" class="btn btn-info">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
+                            <i class="far fa-edit"></i>
                             </a>  
                             <button type="submit" rel="tooltip" class="btn btn-danger">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                            <i class="far fa-calendar-times"></i>
                             </button>
                         </FORM>
                       </td>

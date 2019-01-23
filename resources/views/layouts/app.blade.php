@@ -12,7 +12,7 @@
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="{{asset('https://fonts.googleapis.com/css?family=Montserrat:400,700,200')}}" rel="stylesheet" />
-  <link href="{{asset('https://use.fontawesome.com/releases/v5.0.6/css/all.css"')}} rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('https://use.fontawesome.com/releases/v5.6.3/css/all.css')}}" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="{{asset('/iconos/svgs"')}}">
   <!-- CSS Files -->
   <link href="{{asset('/css/steps.css')}}" rel="stylesheet" />
@@ -92,34 +92,7 @@
           @yield('content')
 
   </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Fechas de pago</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div id="pagos" class="modal-body">
-            <div class="form-group col-md-6">
-              <div class="text-left">
-                <h5>Fecha inicial</h5>
-              <input type="text" name="fecha_inicial" class="form-control date-picker"  data-datepicker-color="primary">
-              </div>
-              <div class="text-right">
-                <h5>Fecha final</h5>
-              <input type="text" name="fecha_final" class="form-control date-picker"  data-datepicker-color="primary">
-              </div>
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Guardar fechas</button>
-          </div>
-      </div>
-  </div>
-</div>
-</div>
+   
 
   <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -145,9 +118,9 @@
             <div class="form-group col-md-6">
              <h5>Forma de pago</h5>
               <select class="form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                <option>EFECTIVO</option>
+                <option>TARJETA BANCARIA</option>
+                <option>CHEQUE</option>
                 <option>4</option>
                 <option>5</option>
               </select>
@@ -177,18 +150,13 @@
   <script src="{{asset('/js/plugins/nouislider.min.js')}}" type="text/javascript"></script>
   <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
   <script src="{{asset('/js/plugins/bootstrap-datepicker.js')}}" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
   <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
   <script src="{{asset('/js/now-ui-kit.js?v=1.2.0')}}" type="text/javascript"></script>
 
-     @stack('scripts')
+    @stack('scripts')
 
-                     <SCRIPT type="text/javascript">
-                      $(document).on('click', '#Crear', function() {
-                       $('#ModalCrear').modal('show');
-                      });
-                    </SCRIPT>   
+    @stack('modal')  
 
 </body>
 
