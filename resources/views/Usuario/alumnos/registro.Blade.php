@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app') 
 
 @section('body-class','landing-page sidebar-collapse')
 

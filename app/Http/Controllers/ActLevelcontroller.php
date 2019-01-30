@@ -10,14 +10,32 @@ class ActLevelcontroller extends Controller
 {
     public function index()
     {
-        $actlevels = ActLevel::where('estado','=','activo')->get();
+
+        $actlevels = \DB::table('act_levels')
+                    ->join('levels','act_levels.level_id','=','levels.id')
+                    ->join('grades','act_levels.grado_id','=','grades.id')
+                    ->join('groups','act_levels.grupo_id','=','groups.id')
+                    ->where('act_levels.estado','=','activo')
+                    ->select('act_levels.id as id','levels.nivel_educativo as nivel','grades.grado as grado','groups.grupo as grupo')
+                    ->get();
+
+                    //dd($actlevels);
         return view('Usuario.Nivel.index',compact('actlevels')); 
+      /*  $actlevels = ActLevel::where('estado','=','activo')->get();
+        return view('Usuario.Nivel.index',compact('actlevels')); */
 
     }
 
     public function indexbaja()
     {
-        $actlevels = ActLevel::where('estado','=','inactivo')->get();
+        $actlevels = \DB::table('act_levels')
+                    ->join('levels','act_levels.level_id','=','levels.id')
+                    ->join('grades','act_levels.grado_id','=','grades.id')
+                    ->join('groups','act_levels.grupo_id','=','groups.id')
+                    ->where('act_levels.estado','=','baja')
+                    ->select('act_levels.id as id','levels.nivel_educativo as nivel','grades.grado as grado','groups.grupo as grupo')
+                    ->get();
+                    //dd($actlevels);
         return view('Usuario.Nivel.index',compact('actlevels')); 
     }
 
@@ -83,7 +101,7 @@ class ActLevelcontroller extends Controller
         
         //$request->all();
         $actlevel = ActLevel::find($id);
-        $actlevel->eliminarlogica = 'baja';
+        $actlevel->estado = 'baja';
 
 
         $actlevel->save();

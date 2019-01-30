@@ -25,7 +25,7 @@
             <div class="card card-nav-tabs card-plain">
               <div class="card-header card-header-danger">
                 <div class="text-right">
-                <a href="{{ url('/Usuario/Nivel/')}}" type="button" class="btn btn-primary now-ui-icons arrows-1_minimal-left">&nbsp;Regresar</a>
+                <a href="{{ url('/Usuario/Nivel/')}}" type="button" class="btn btn-secondary"> <i class="fa fa-angle-left"></i>&nbsp;Regresar</a>
                 </div>
                 <div class="nav-tabs-navigation">
                   <div class="nav-tabs-wrapper">

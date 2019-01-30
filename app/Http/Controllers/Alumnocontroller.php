@@ -14,7 +14,7 @@ class Alumnocontroller extends Controller
     public function index()
     {
 
-        $students = \DB::table('students')
+        $students = \DB::table('students') 
                     ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
                     ->join('act_levels', 'student_act_Levels.actlevel_id', '=', 'act_levels.id')
                     ->join('groups', 'act_levels.grupo_id', '=', 'groups.id')
@@ -22,7 +22,6 @@ class Alumnocontroller extends Controller
                     ->where('student_act_Levels.status','=','cursando')
                     ->where('students.baja','=','Alta')
                     ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
-                    
                      ->get();
 
         //$students = student::where('baja','=','Alta')->get();
@@ -66,7 +65,16 @@ class Alumnocontroller extends Controller
 
             if($nombre)
             {
-                $students = $students->where('students.nombre','like',"%$nombre%");
+                $students = \DB::table('students')
+                    ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
+                    ->join('act_Levels', 'student_act_Levels.actlevel_id', '=', 'act_Levels.id')
+                    ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
+                    ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
+                    ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
+                     ->where('students.nombre','like',"%$nombre%")
+                    ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
+                     ->get();
+                    // dd($students);
         
 
             }
@@ -82,9 +90,10 @@ class Alumnocontroller extends Controller
                     ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
                     ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
                      ->where('Levels.nivel_educativo','like',"%$nivel_educativo%")
-                     ->select('students.id as matricula', 'students.apellido_p', 'students.apellidos_m', 'students.nombre', 'grades.grado', 'groups.grupo', 'students.telefono', 'students.Telefono_p', 'students.Telefono_m', 'students.baja')
+                     
+                    ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
                      ->get();
-                     dd($students);
+                     //dd($students);
                      
             }
 
@@ -99,7 +108,8 @@ class Alumnocontroller extends Controller
                     ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
                     ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
                      ->where('grades.grado','like',"%$grado%")
-                     ->select('students.id', 'students.apellido_p', 'students.apellidos_m', 'students.nombre', 'grades.grado', 'groups.grupo', 'students.telefono', 'students.Telefono_p', 'students.Telefono_m', 'students.baja')
+                     
+                    ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
                      ->get();   
 
                      dd($students); 
@@ -116,7 +126,8 @@ class Alumnocontroller extends Controller
                     ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
                     ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
                      ->where('groups.grupo','like',"%$grupo%")
-                     ->select('students.id', 'students.apellido_P', 'students.apellidos_M', 'students.nombre', 'grades.grado', 'groups.grupo', 'students.telefono', 'students.Telefono_p', 'students.Telefono_m', 'students.baja')
+                     
+                    ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
                      ->get();
 
                     dd($students);
@@ -198,6 +209,8 @@ class Alumnocontroller extends Controller
 
         ];
         $this->validate($request,$rules,$messages);
+
+        $fecha = 0;
     
         $student = new student();
        
@@ -205,7 +218,10 @@ class Alumnocontroller extends Controller
         $student->apellido_P = $request->input('apellido_P');
         $student->apellido_M = $request->input('apellido_M');
         $student->genero = $request->input('genero');
-        $student->fecha_nacimineto = $request->input('fecha_nacimineto');
+
+        $fecha= $request->input('fecha_nacimineto');
+        $fehcacorrecta = date("y/m/d",strtotime($fecha));
+        $student->fecha_nacimineto = $fehcacorrecta;
         $student->estado = $request->input('estado');
         $student->Nacionalidad = $request->input('Nacionalidad');
         $student->telefono = $request->input('telefono');

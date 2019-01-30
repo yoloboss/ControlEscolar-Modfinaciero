@@ -29,7 +29,7 @@
           <hr class="style13">
           <div class="row">
               <form method="post" action="/Usuario/alumno/busqueda" class="form-inline col-md-12 ml-auto mr-auto text-left">
-                  <div class="form-row">
+                  <div class="form-row"> 
                     {{csrf_field()}}
                       @php
                         $levels=App\level::all();
@@ -91,8 +91,11 @@
             </div>    
           </div>
           <div class="row">
+            @php
+            $estudiates=App\student::latest()->paginate(10);
+            @endphp
             <table class="table  table-condensed">
-                 <thead>
+                 <thead> 
                    <tr>
                     <th class="text-center">Matrícula</th>
                     <th class="text-center">Apellido Paterno</th>
@@ -105,7 +108,7 @@
                     <th class="text-center">Opciones</th>
                    </tr>
                  </thead>
-                 <tbody>
+                 <tbody> 
                   @foreach($students as $student)
                   <tr>
                     <td class="text-center" style="text-align: center; vertical-align: middle;">{{ $student->matricula}}</td>
@@ -136,8 +139,9 @@
                   @endforeach
                  </tbody>
             </table>
+             {{$estudiates -> links()}}
           </div>
-          <div class="row justify-content-center">
+         <!-- <div class="row justify-content-center">
               <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                   <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
@@ -147,7 +151,7 @@
                   <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
                 </ul>
               </nav>
-          </div>
+          </div>-->
       </div>
   </div>
 </div>

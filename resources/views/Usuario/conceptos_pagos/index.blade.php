@@ -4,7 +4,7 @@
 
 
 @section('content')
-<div class="wrapper">
+<div class="wrapper"> 
   <!--
   <div class="page-header page-header-small">
       <div class="page-header-image" data-parallax="true" style="background-image: url('{{asset('/img/bg6.jpg')}}');">
@@ -30,6 +30,9 @@
               <div class="col-md-12 ml-auto mr-auto text-right">
                 <a href="{{ url('/Usuario/concepto_pago/resgistrar')}}" type="button" class="btn btn-secondary "> <i class="far fa-calendar-plus"></i>&nbsp;Nuevo</a>
               </div>
+              @php
+               $conceptos=App\payment_concept::paginate(5);
+              @endphp
                  <table class="table table-condensed">
                    <thead>
                      <tr>
@@ -62,6 +65,7 @@
                  @endforeach
                     </tbody>
                </table>
+               {{$conceptos -> links()}}
             </div>
         </div>
         <div class="separator separator-primary"></div>

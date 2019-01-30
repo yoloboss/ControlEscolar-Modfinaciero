@@ -15,7 +15,7 @@
         </div>
       </div>
   </div>
--->
+  -->
   <div class="section section-about-us">
       <div class="container">
         <div class="row justify-content-center" style="margin-top: 30px;">
@@ -63,7 +63,7 @@
           </div>
           <div class="row">
             <div class="col-md-4">
-            <ul class="nav nav-tabs" data-tabs="tabs">
+                <ul class="nav nav-tabs" data-tabs="tabs">
                   <li class="nav-item">
                     <a href="{{ url('/Usuario/Nivel/')}}" class="nav-link active" >Activos</a>
                   </li>
@@ -71,7 +71,7 @@
                     <a href="{{ url('/Usuario/Nivel/baja')}}" class="nav-link active" >Baja</a>
                   </li>
                 </ul>
-           </div>
+            </div>
           </div>
 
         <div class="row">
@@ -79,6 +79,10 @@
               <!--<div class="ml-auto mr-auto text-right" >
                 <a href="{{ url('/Usuario/Nivel/resgistrar')}}" type="button" class="btn btn-primary now-ui-icons ui-1_simple-add">&nbsp;nivel educativo</a>
               </div>-->
+
+              @php
+                $niveles=App\Actlevel::latest()->paginate(10);
+              @endphp
                 <table class="table">
                   <thead>
                     <tr>
@@ -93,17 +97,17 @@
                   @foreach($actlevels as $actlevel)
                     <tr>
                       <td class="text-center">{{ $actlevel->id}}</td>
-                        <td>{{ $actlevel->level->nivel_educativo}} </td>
-                        <td>{{ $actlevel->grade->grado ? $actlevel->grade->grado :'sin grado' }}</td>
-                        <td>{{ $actlevel->group->grupo ? $actlevel->group->grupo :'sin grupo'}}</td>
+                        <td>{{ $actlevel->nivel}} </td>
+                        <td>{{ $actlevel->grado ? $actlevel->grado :'sin grado' }}</td>
+                        <td>{{ $actlevel->grupo ? $actlevel->grupo :'sin grupo'}}</td>
                         <td class="td-actions text-right">
                           <FORM method="post" action="{{url('/Usuario/Nivel/'.$actlevel->id.'/eliminar')}}">
                           @csrf
                             <a href="{{url('/Usuario/Nivel/'.$actlevel->id.'/edicion')}}" rel="tooltip" class="btn btn-info">
-                              <i class="now-ui-icons ui-2_settings-90"></i>
+                              <i class="far fa-edit"></i>
                             </a>
                             <button type="submit" rel="tooltip" class="btn btn-danger">
-                              <i class="now-ui-icons ui-1_simple-remove"></i>
+                              <i class="far fa-calendar-times"></i>
                             </button>
                           </FORM>
                         </td>
@@ -111,7 +115,7 @@
                  @endforeach
                 </tbody>
                </table>
-            </div>
+               {{$niveles -> links()}}
           </div>
         </div>
       </div>

@@ -288,7 +288,7 @@
     console.log( "ready!" );
      $('.abrirmodal').click(function(){
             var index=$(this).attr('data-target');
-            alert($("fechas").length);
+            alert($("fecha").length);
             console.log(index)
         })
 });
