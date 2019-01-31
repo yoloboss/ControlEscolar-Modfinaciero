@@ -219,7 +219,7 @@
                     $actlevels=App\Actlevel::all();
                     @endphp
                     <div class="col-md-12">
-                      <form method="post" action="/Usuario/alumno/busqueda" class="form-inline  col-md-16 ml-auto mr-auto text-left">
+                      <form method="post" action="/Usuario/Nivel/busqueda" class="form-inline  col-md-16 ml-auto mr-auto text-left">
                      {{csrf_field()}}
                         @php
                         $levels=App\level::all();
@@ -254,12 +254,13 @@
                           <div class="form-group col-md-1">
                             <button type="submit" class="btn btn-primary now-ui-icons ui-1_zoom-bold"></button>
                           </div>
-                          <div class="form-group col-md-1">
-                            <button type="submit" class="btn btn-info">Guardar</button>
-                          </div>
+                          
                          
                         </div>
                       </form>
+                      <div class="form-group col-md-1">
+                            <button type="submit" class="btn btn-info">Guardar</button>
+                          </div>
                     </div>
                     <div class="form-group col-md-12">
                         <label for="inputState">Nivel educativo</label>

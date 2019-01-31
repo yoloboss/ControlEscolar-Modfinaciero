@@ -17,7 +17,8 @@ class ActLevelcontroller extends Controller
                     ->join('groups','act_levels.grupo_id','=','groups.id')
                     ->where('act_levels.estado','=','activo')
                     ->select('act_levels.id as id','levels.nivel_educativo as nivel','grades.grado as grado','groups.grupo as grupo')
-                    ->get();
+                    ->orderBy('id','DESC')->paginate(10);
+                   // ->get();
 
                     //dd($actlevels);
         return view('Usuario.Nivel.index',compact('actlevels')); 
@@ -34,8 +35,40 @@ class ActLevelcontroller extends Controller
                     ->join('groups','act_levels.grupo_id','=','groups.id')
                     ->where('act_levels.estado','=','baja')
                     ->select('act_levels.id as id','levels.nivel_educativo as nivel','grades.grado as grado','groups.grupo as grupo')
-                    ->get();
+                    ->orderBy('id','DESC')->paginate(10);
+                    //->get();
                     //dd($actlevels);
+        return view('Usuario.Nivel.index',compact('actlevels')); 
+    }
+
+    public function busqueda(Request $request)
+    {
+        $id = $request->id;
+        $nivel_educativo = $request->nivel;
+        $grado = $request->grado;
+        $grupo = $request->grupo;
+        if (!empty($id)) {
+            $actlevels = actlevel::where('actlevels.id',$id)->orderBy('created_at', 'desc')->get();
+        }
+
+        $actlevels = actlevel::select();
+        if (!empty($nivel_educativo) or !empty($grado) or !empty($grupo)) {
+            $actlevels = \DB::table('act_levels')
+                    ->join('levels','act_levels.level_id','=','levels.id')
+                    ->join('grades','act_levels.grado_id','=','grades.id')
+                    ->join('groups','act_levels.grupo_id','=','groups.id')
+                    ->where('act_levels.estado','=','activo ')
+                    ->where('Levels.nivel_educativo','like',"%$nivel_educativo%")
+                     ->where('grades.grado','like',"%$grado%")
+                     ->where('groups.grupo','like',"%$grupo%")
+                    ->select('act_levels.id as id','levels.nivel_educativo as nivel','grades.grado as grado','groups.grupo as grupo')
+                    ->orderBy('id','DESC')->paginate(10);
+                    //->get();
+
+                    //dd($actlevels);
+        }
+        
+                    
         return view('Usuario.Nivel.index',compact('actlevels')); 
     }
 

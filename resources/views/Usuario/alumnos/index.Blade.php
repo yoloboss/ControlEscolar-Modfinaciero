@@ -91,9 +91,6 @@
             </div>    
           </div>
           <div class="row">
-            @php
-            $estudiates=App\student::latest()->paginate(10);
-            @endphp
             <table class="table  table-condensed">
                  <thead> 
                    <tr>
@@ -139,7 +136,7 @@
                   @endforeach
                  </tbody>
             </table>
-             {{$estudiates -> links()}}
+             {{$students -> render()}}
           </div>
          <!-- <div class="row justify-content-center">
               <nav aria-label="Page navigation example">

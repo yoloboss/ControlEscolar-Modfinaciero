@@ -35,12 +35,12 @@ Route::post('/Usuario/alumno/{id}/eliminar/imagen','Alumnocontroller@destroyimag
 Route::get('/Usuario/Nivel/','ActLevelcontroller@index'); //ver niveles escolares
 Route::get('/Usuario/Nivel/baja','ActLevelcontroller@indexbaja');
 Route::get('/Usuario/Nivel/resgistrar','ActLevelcontroller@create');//ver formulario de niveles escolares
-
 Route::post('/Usuario/Nivel/resgistrar','ActLevelcontroller@store');
-
 Route::get('/Usuario/Nivel/{id}/edicion','ActLevelcontroller@edit');
 Route::post('/Usuario/Nivel/{id}/edicion','ActLevelcontroller@update');
 Route::post('/Usuario/Nivel/{id}/eliminar','ActLevelcontroller@destroy');
+
+Route::post('/Usuario/Nivel/busqueda','ActLevelcontroller@busqueda');
 
 
 Route::get('/Usuario/ciclo_escolar/','ciclecontroller@index');//ver ciclos

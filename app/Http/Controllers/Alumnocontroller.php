@@ -22,7 +22,8 @@ class Alumnocontroller extends Controller
                     ->where('student_act_Levels.status','=','cursando')
                     ->where('students.baja','=','Alta')
                     ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
-                     ->get();
+                    ->orderBy('matricula','DESC')->paginate(10);
+                     //->get();
 
         //$students = student::where('baja','=','Alta')->get();
                      //dd($students);
@@ -41,7 +42,8 @@ class Alumnocontroller extends Controller
                     ->where('students.baja','=','baja')
 
                     ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
-                     ->get();
+                     ->orderBy('matricula','DESC')->paginate(10);
+                     //->get();
 
         return view('Usuario.alumnos.index',compact('students')); 
     }
@@ -63,7 +65,7 @@ class Alumnocontroller extends Controller
         $students = student::select();
 
 
-            if($nombre)
+            if(!empty($nombre) or !empty($nivel_educativo) or !empty($grado) OR !empty($grado) or !empty($grupo))
             {
                 $students = \DB::table('students')
                     ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
@@ -71,67 +73,19 @@ class Alumnocontroller extends Controller
                     ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
                     ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
                     ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
+                    ->where('student_act_Levels.status','=','cursando')
                      ->where('students.nombre','like',"%$nombre%")
+                     ->where('Levels.nivel_educativo','like',"%$nivel_educativo%")
+                     ->where('grades.grado','like',"%$grado%")
+                     ->where('groups.grupo','like',"%$grupo%")
                     ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
-                     ->get();
-                    // dd($students);
+                     ->orderBy('matricula','DESC')->paginate(10);
+                 
         
 
             }
 
-             if(!empty($nivel_educativo)/* OR !empty($grado) or !empty($grupo) */)
-            {
-
-
-                $students = \DB::table('students')
-                    ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
-                    ->join('act_Levels', 'student_act_Levels.actlevel_id', '=', 'act_Levels.id')
-                    ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
-                    ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
-                    ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
-                     ->where('Levels.nivel_educativo','like',"%$nivel_educativo%")
-                     
-                    ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
-                     ->get();
-                     //dd($students);
-                     
-            }
-
-            if(!empty($grado)/* OR !empty($grado) or !empty($grupo) */)
-            {
-
-
-                $students = \DB::table('students')
-                    ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
-                    ->join('act_Levels', 'student_act_Levels.actlevel_id', '=', 'act_Levels.id')
-                    ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
-                    ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
-                    ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
-                     ->where('grades.grado','like',"%$grado%")
-                     
-                    ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
-                     ->get();   
-
-                     dd($students); 
-            }
-
-             if(!empty($grupo)/* OR !empty($grado) or !empty($grupo) */)
-            {
-
-
-                $students = \DB::table('students')
-                    ->join('student_act_Levels', 'students.id', '=', 'student_act_Levels.student_id')
-                    ->join('act_Levels', 'student_act_Levels.actlevel_id', '=', 'act_Levels.id')
-                    ->join('Levels', 'act_Levels.level_id', '=', 'Levels.id')
-                    ->join('groups', 'act_Levels.grupo_id', '=', 'groups.id')
-                    ->join('grades', 'act_Levels.grado_id', '=', 'grades.id')
-                     ->where('groups.grupo','like',"%$grupo%")
-                     
-                    ->select('students.id as matricula','students.apellido_P','students.apellido_M','students.nombre','students.telefono','grades.grado as grado','groups.grupo as grupo','students.baja')
-                     ->get();
-
-                    dd($students);
-            }
+            
 
             return view('Usuario.alumnos.index',compact('students'));   
         }

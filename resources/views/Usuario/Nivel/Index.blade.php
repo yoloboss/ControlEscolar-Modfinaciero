@@ -24,7 +24,7 @@
           <hr class="style13">
         <div class="row">
           <!– Barra de busqueda — >
-                      <form method="post" action="/Usuario/alumno/busqueda" class="form-inline  col-md-16 ml-auto mr-auto ">
+                      <form method="post" action="/Usuario/Nivel/busqueda" class="form-inline  col-md-16 ml-auto mr-auto ">
                         {{csrf_field()}}
                         @php
                         $levels=App\level::all();
@@ -79,10 +79,7 @@
               <!--<div class="ml-auto mr-auto text-right" >
                 <a href="{{ url('/Usuario/Nivel/resgistrar')}}" type="button" class="btn btn-primary now-ui-icons ui-1_simple-add">&nbsp;nivel educativo</a>
               </div>-->
-
-              @php
-                $niveles=App\Actlevel::latest()->paginate(10);
-              @endphp
+              
                 <table class="table">
                   <thead>
                     <tr>
@@ -96,6 +93,7 @@
                 <tbody>
                   @foreach($actlevels as $actlevel)
                     <tr>
+                      
                       <td class="text-center">{{ $actlevel->id}}</td>
                         <td>{{ $actlevel->nivel}} </td>
                         <td>{{ $actlevel->grado ? $actlevel->grado :'sin grado' }}</td>
@@ -111,11 +109,12 @@
                             </button>
                           </FORM>
                         </td>
+                      
                     </tr>
                  @endforeach
                 </tbody>
                </table>
-               {{$niveles -> links()}}
+               {{$actlevels -> render()}}
           </div>
         </div>
       </div>
