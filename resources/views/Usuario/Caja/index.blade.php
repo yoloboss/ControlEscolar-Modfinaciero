@@ -75,7 +75,7 @@
                       <div class="form-group col-md-1">
                         <button type="submit" class="btn btn-primary now-ui-icons ui-1_zoom-bold"></button>
                       </div>
-                    </div>
+                    </div> 
 
           <form method="post" action{{ url('/Usuario/alumno/resgistrar')}} enctype="multipart/form-data">
             @csrf
@@ -84,7 +84,6 @@
               <div class="text-left">
                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">Pagar
 
- 
                  </button>
               </div>
                 <div class="nav-tabs-navigation">

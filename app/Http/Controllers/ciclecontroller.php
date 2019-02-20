@@ -10,6 +10,7 @@ use App\student;
 use App\student_actlevel;
 use App\grade;
 use App\level;
+use App\payment_concept;
 
 class ciclecontroller extends Controller
 {
@@ -220,6 +221,19 @@ class ciclecontroller extends Controller
         }
     }
     return back();  
+ }
+
+
+ public function mostrarpagos()
+ {
+
+     $actlevels = \DB::table('payments')
+       ->join('students','payments.student_id','=','students.id')
+       ->join('act_levels','payments.actlevel_id','=','act_levels.id')
+       ->join('payment_concepts','payments.paymentconceps_id','=','payment_concepts.id')
+       ->where('payments.estatus','=','activo ')
+       ->select('payments.id as folio','payment_concepts.nombre as nombre','payments.Fecha_venciminto as grado','groups.fecha as grupo','payments.monto as monto')
+       ->orderBy('id','DESC')->paginate(10);
  }
 
 /* public function  AddPayment(Request $request)

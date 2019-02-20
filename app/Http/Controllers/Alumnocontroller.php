@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\student;
 use App\Actlevel;
 use App\Student_actLevel;
+use App\level;
+use App\group;
+use App\grade;
 use File;
 
 class Alumnocontroller extends Controller

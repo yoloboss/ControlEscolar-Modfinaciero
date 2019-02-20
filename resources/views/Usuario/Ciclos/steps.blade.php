@@ -177,8 +177,11 @@
                     <div class="row setup-content-2" id="step-3">
                         <div class="col-md-12">
                             <form  method="post" action="{{ url('')}}">
-                            <h3 class="font-weight-bold pl-0 my-4"><strong>Crear cartera de pago</strong></h3>
-                            <div class="form-group">
+                            <h3 class="font-weight-bold pl-0 my-4"><strong>Cartera de pago de ciclo:{{$cycles->ciclo}}</strong></h3>
+                            <div>
+                                <button type="button" class="btn btn-primary abrirmodal"   data-toggle="modal" data-target="#modal">
+                                            Ingresar cobros
+                                          </button>
                             </div>
                             @php
                             $conceptos =App\payment_concept::latest()->paginate(10);
@@ -188,8 +191,8 @@
                                 <table class="table">
                                 <thead>
                                     <tr>
+                                    <th class="text-center">Id</th>
                                     <th class="text-center">Nombre</th>
-                                    <th class="text-center">Periodiocidad</th>
                                     <th class="text-center">Fechas de Pago</th>
                                     <th class="text-center">seleccionar</th>
                                     </tr>
@@ -211,9 +214,7 @@
                                             </div>
                                         </td>
                                         <td class="td-actions text-center">
-                                          <button type="button" class="btn btn-primary abrirmodal"   data-toggle="modal" data-target="#{{$key}}">
-                                            Ingresar fechas
-                                          </button>
+                                          
                                         </td>
                                         <td class="td-actions text-right">  
                                             <div class="form-check">
@@ -223,36 +224,7 @@
                                                 Asignar
                                                 </label>
                                             </div></td>
-                                            @push('modal')
-                                            <div class="modal fade" id="{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Fechas de pago de {{$concepto->nombre}}</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div id="pagos" class="modal-body">
-                                                            <div class="form-group col-md-6">
-                                                            <div class="text-left">
-                                                                <h5>Fecha inicial</h5>
-                                                            <input type="text" name="fecha_inicial" class="form-control date-picker"  data-datepicker-color="primary">
-                                                            </div>
-                                                            <div class="text-right">
-                                                                <h5>Fecha final</h5>
-                                                            <input type="text" name="fecha_final" class="form-control date-picker"  data-datepicker-color="primary">
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Guardar fechas</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                </div>
-                                            @endpush
+
                                         @endforeach
                                     </tr>
                                     
@@ -282,18 +254,4 @@
     </div>
 </div>
 @endsection
-@push('scripts') 
-<script >
-    $( document ).ready(function() {
-    console.log( "ready!" );
-     $('.abrirmodal').click(function(){
-            var index=$(this).attr('data-target');
-            alert($("fecha").length);
-            console.log(index)
-        })
-});
-    
-       
-</script>
-@endpush
  

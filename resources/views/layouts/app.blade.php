@@ -92,7 +92,48 @@
           @yield('content')
 
   </div>
-   
+  <div class="form-group">
+     @php
+        $pagos=App\payment_concept::all();
+    @endphp
+    @push('modal')
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Cobros</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div id="pagos" class="modal-body">
+                  <div class="form-group col-md-4">
+                    <label class="sr-only" for="exampleFormControlSelect1">Nombre del pago</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="nivel">
+                    <option value="">Pago</option>
+                    @foreach($pagos as $pago)
+                      <option value="{{$pago->id}}">{{$pago->nombre}}</option>
+                    @endforeach 
+                    </select>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="sr-only" for="exampleFormControlSelect1">Descripcion</label>
+                    <input type="text" name="descripcion" class="form-control" id="inputNombre"  value="Nombre">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="sr-only" for="exampleFormControlSelect1">Precio</label>
+                    <input type="text" name="precio" class="form-control" id="inputNombre"  value="precio">
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Guardar fechas</button>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    @endpush
+  </div>
 
   <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
