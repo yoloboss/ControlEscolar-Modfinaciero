@@ -23,6 +23,9 @@
                 <h3>Conceptos de pago</h3>         
           </div>
           <hr class="style13">
+      @php
+        $niveles=App\level::all();
+      @endphp
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto text-center">
            <form method="post" action{{ url('/Usuario/ciclo_escolar/resgistrar')}}>
@@ -44,6 +47,15 @@
               <select class="form-control" id="exampleFormControlSelect1" name="status">
                 <option>Activo</option>
                 <option>Inactivo</option>
+              </select>
+            </div>
+             <div class="form-group">
+              <label for="exampleFormControlSelect1">Nivel donde se aplicara</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="nivel">
+              <option value="">selecciona nivel</option>
+              @foreach($niveles as $nivel)
+                <option value="{{$nivel->id}}">{{$nivel->nivel_educativo}}</option>
+              @endforeach 
               </select>
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>

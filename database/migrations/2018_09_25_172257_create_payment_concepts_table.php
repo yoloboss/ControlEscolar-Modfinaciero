@@ -19,6 +19,8 @@ class CreatePaymentConceptsTable extends Migration
             $table->string('nombre');
             $table->text('concepto');
             $table->text('status');
+            $table->integer('nivel_id')->unsigned()->nullable();
+            $table->foreign('nivel_id')->references('id')->on('levels');
             $table->timestamps();
         });
     }

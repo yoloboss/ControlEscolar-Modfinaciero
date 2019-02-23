@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\payment_concept;
+use App\levels;
 
 class paymentconceptscontroller extends Controller
 {
     public function index()
     {
 
-        $concepts = payment_concept::all();
-        return view('Usuario.conceptos_pagos.index',compact('concepts')); 
+       $concepts = \DB::table('payment_concepts')
+       ->join('levels','payment_concepts.nivel_id','=','levels.id')
+       ->where('payment_concepts.status','=','Activo ')
+       ->select('payment_concepts.id','payment_concepts.nombre as nombre','payment_concepts.concepto as concepto','payment_concepts.precio as precio','payment_concepts.status as estado','levels.nivel_educativo as nivel')
+       ->get();
+
+       return view('Usuario.conceptos_pagos.index',compact('concepts')); 
 
     }
 
@@ -29,7 +35,8 @@ class paymentconceptscontroller extends Controller
         $concept->nombre = $request->input('nombre');
         $concept->precio = $request->input('precio');
         $concept->concepto = $request->input('concepto');
-        $concept->status = $request->input('status');
+        $concept->status = $request->input('status'); 
+        $concept->nivel_id = $request->input('nivel'); 
         $concept->save();
         return redirect('/Usuario/concepto_pago/');
 
@@ -49,7 +56,7 @@ class paymentconceptscontroller extends Controller
         $concepts->precio = $request->input('precio');
         $concepts->concepto = $request->input('concepto');
         $concepts->status = $request->input('status');
-        
+        $concept->nivel_id = $request->input('nivel'); 
         $concepts->save();
         
         return redirect('/Usuario/concepto_pago/');											

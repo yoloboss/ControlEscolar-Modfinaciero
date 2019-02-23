@@ -23,16 +23,19 @@
           </div>
           <hr class="style13">
         <div class="row">
-            <div class="col-md-8 ml-auto mr-auto text-center">
+            <div class="col-md-16 ml-auto mr-auto text-center">
               <div>
                 <h2 class="title">Lista de conceptos de pago</h2>
               </div>
-              <div class="col-md-12 ml-auto mr-auto text-right">
+              <div class="col-md-16 ml-auto mr-auto text-right">
                 <a href="{{ url('/Usuario/concepto_pago/resgistrar')}}" type="button" class="btn btn-secondary "> <i class="far fa-calendar-plus"></i>&nbsp;Nuevo</a>
               </div>
               @php
                $conceptos=App\payment_concept::paginate(5);
               @endphp
+              <div>
+                
+              </div>
                  <table class="table table-condensed">
                    <thead>
                      <tr>
@@ -40,6 +43,7 @@
                       <th class="text-center">Descipcion del concepto</th>
                       <th class="text-center">Precio</th>
                       <th class="text-center">Estatus</th>
+                      <th class="text-center">Nivel donde se aplica</th>
                       <th class="text-center">Opciones</th>
                      </tr>
                    </thead>
@@ -47,11 +51,13 @@
                   @foreach($concepts as $concept)
                     <tr>
                       <td class="text-center">{{ $concept->nombre}}</td>
-                      <td>{{ $concept->concepto}} </td>
-                      <td>{{ $concept->precio}} </td>
-                      <td>{{ $concept->status}} </td>
+                      <td class="text-center">{{ $concept->concepto}} </td>
+                      <td class="text-center">{{ $concept->precio}} $</td>
+                      <td class="text-center">{{ $concept->estado}} </td>
+                      <td class="text-center">{{ $concept->nivel}} </td>
                       <td class="td-actions text-right">
-                        <FORM method="post" action="{{url('/Usuario/concepto_pago/'.$concept->id.'/eliminar')}}" class="form-inline">
+                        <div class="form-inline">
+                          <FORM method="post" action="{{url('/Usuario/concepto_pago/'.$concept->id.'/eliminar')}}" class="form-inline">
                           @csrf
                             <a href="{{url('/Usuario/concepto_pago/'.$concept->id.'/edicion')}}" rel="tooltip" class="btn btn-info">
                             <i class="far fa-edit"></i>
@@ -60,6 +66,7 @@
                             <i class="far fa-calendar-times"></i>
                             </button>
                         </FORM>
+                        </div>
                       </td>
                     </tr>
                  @endforeach

@@ -191,43 +191,15 @@
                                 <table class="table">
                                 <thead>
                                     <tr>
-                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Folio</th>
                                     <th class="text-center">Nombre</th>
-                                    <th class="text-center">Fechas de Pago</th>
-                                    <th class="text-center">seleccionar</th>
+                                    <th class="text-center">Siguiente fecha de pago</th>
+                                    <th class="text-center">siguiente pago</th>
+                                    <th class="text-center">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($conceptos as $key=> $concepto)
-                                    <tr>
-                                        
-                                        <td class="text-center">{{$concepto->nombre}}</td>
-                                        <td>
-                                            <div class="text-center">
-                                                <select id="fechas" class="form-control" name="fecha">
-                                                    <option value="">seleccione periodiocidad</option>
-                                                    <option value="1">1</option>
-                                                    <option value="3">3</option>
-                                                    <option value="6">6</option>
-                                                    <option value="12">12</option>
-                                             </select>
-                                            </div>
-                                        </td>
-                                        <td class="td-actions text-center">
-                                          
-                                        </td>
-                                        <td class="td-actions text-right">  
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox">
-                                                <span class="form-check-sign"></span>
-                                                Asignar
-                                                </label>
-                                            </div></td>
-
-                                        @endforeach
-                                    </tr>
-                                    
+                                   
                                 </tbody>
                             </table>
                             {{$conceptos -> links()}}

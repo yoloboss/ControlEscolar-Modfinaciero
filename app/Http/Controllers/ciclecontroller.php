@@ -11,6 +11,7 @@ use App\student_actlevel;
 use App\grade;
 use App\level;
 use App\payment_concept;
+use App\payment;
 
 class ciclecontroller extends Controller
 {
@@ -236,34 +237,20 @@ class ciclecontroller extends Controller
        ->orderBy('id','DESC')->paginate(10);
  }
 
-/* public function  AddPayment(Request $request)
+public function  AddPayment(Request $request, $id)
   {
-        
-        
-        $cycles = cycle::find($id);
-        if ($cycles->status = "activo") {$id
+    $turnos = $request->turnos;
+    $grados = $request->grados;
+    $grupos = $request->grupos;
+    $cycles = cycle::find($id);
+    if ($cycles->status = "activo"){
+      $cobro = new payment();
+      $grupos = student_actlevel::where('status', 'cursando')->get();
+      $cycles->student_id = $grupos->student_id;
 
-          foreach ($request as $requests => $request) {
-            $pago = new payments();
+    }
 
-            $pago->paymentconceps_id =$id->id;
-            $pago->student_id =
-            $pago->actlevel_id =
-            $pago->monto = payment_concepts::where('precio',$id->precio x 'numero de veces que se cobrara ' );
-
-            foreach ($request as $requests => $request) {
-              $pago->Fecha_creacion
-              $pago->Fecha_venciminto
-              $pago->estatus
-            }
-          }
-          
-          
-
-        }
-
-        
         return back();                                        
-  }*/
+  }
      
 }
