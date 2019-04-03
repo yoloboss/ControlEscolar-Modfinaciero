@@ -51,6 +51,7 @@ Route::post('/Usuario/ciclo_escolar/{id}/edicion','ciclecontroller@update');
 Route::get('/Usuario/ciclo_escolar/{id}/pasos','ciclecontroller@indexp');
 Route::post('/Usuario/ciclo_escolar/{id}/pasos','ciclecontroller@storeActGrp');
 Route::post('/Usuario/ciclo_escolar/{id}/pasos/promover','ciclecontroller@updatestudents');
+Route::post('/Usuario/ciclo_escolar/{id}/pasos/cartera','ciclecontroller@AddPayment');
 
 
 Route::get('/Usuario/concepto_pago/','paymentconceptscontroller@index');//ver conceptos de pago

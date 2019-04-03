@@ -176,7 +176,7 @@
                     <!-- Third Step -->
                     <div class="row setup-content-2" id="step-3">
                         <div class="col-md-12">
-                            <form  method="post" action="{{ url('')}}">
+                            <form >
                             <h3 class="font-weight-bold pl-0 my-4"><strong>Cartera de pago de ciclo:{{$cycles->ciclo}}</strong></h3>
                             <div>
                                 <button type="button" class="btn btn-primary abrirmodal"   data-toggle="modal" data-target="#modal">

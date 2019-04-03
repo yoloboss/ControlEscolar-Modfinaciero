@@ -133,7 +133,7 @@ class ciclecontroller extends Controller
                    
                     }
                      dd($gradoreal);
-                   if ($gradoreal->grado <= 3) {
+                   if ($gradoreal->grado >= 3) {
                        $siguientenivel = level::where('nivel_educativo','Primaria')->first();
                       // dd($siguientenivel);
                        $grupoAc = ActLevel::where('grado_id', $siguientenivel->id)->Where('estado','activo')->first();
@@ -155,25 +155,31 @@ class ciclecontroller extends Controller
                     
                   }
                   if ($ultimonivel->nivel_educativo == 'Primaria' ) {
+
                     $ultimogrado= grade::find($grupo->grado_id);
+                    //dd($ultimogrado);
 
                     $gradoreal = grade::where('grado',$ultimogrado->grado)->first();
+                    //dd($gradoreal);
+
                     if ($ultimogrado->grado < 6) {
 
 
                         $gradoreal = grade::where('grado',$ultimogrado->grado+1)->first();
-                   
+                        //dd($gradoreal);
                     }
 
-                     if ($gradoreal->grado <= 6) {
+                     if ($gradoreal->grado >= 6) {
                         
                        $siguientenivel = level::where('nivel_educativo','Secundaria')->first();
                        $grupoAc = ActLevel::where('grado_id', $siguientenivel->id)->Where('estado','activo')->first();
-                      // dd($grupoAc);
+                      //dd($grupoAc);
                        $studen_actl = new Student_actLevel();  
                        $studen_actl->student_id = $alumno->id;
+
                        $studen_actl->actlevel_id = $grupoAc->id;
                        $studen_actl->status ="cursando";
+                       //dd($studen_actl);
                        $studen_actl->save(); 
                        
                    }else {
@@ -182,6 +188,7 @@ class ciclecontroller extends Controller
                        $studen_actl->student_id = $alumno->id;
                        $studen_actl->actlevel_id = $grupoAc->id;
                        $studen_actl->status ="cursando";
+                       //dd($studen_actl);
                        $studen_actl->save();  
                    }
                    
@@ -197,7 +204,7 @@ class ciclecontroller extends Controller
                         $gradoreal = grade::where('grado',$ultimogrado->grado+1)->first();
                    
                     }
-                    if ($gradoreal->grado <= 3) {
+                    if ($gradoreal->grado >= 3) {
                         $siguientenivel = level::where('nivel_educativo','Secundaria')->first();
                        $grupoAc = ActLevel::where('grado_id', $siguientenivel->id)->Where('estado','activo')->first();
                        //dd($grupoAc);
@@ -256,7 +263,7 @@ public function  AddPayment(Request $request, $id)
             $cobro ->monto = $pago1;
             $cobro -> save();
           }
-          elseif(periodicidad = 3){
+          elseif($periodicidad = 3){
             $cobro -> Fecha_creacion1 = $date;
             $cobro -> Fecha_venciminto1 =  $date-> addMonth(1);
             $cobro -> status= "pendiente";
@@ -275,7 +282,7 @@ public function  AddPayment(Request $request, $id)
             $cobro ->monto = $pago1 + $pago2 + $pago3;
             $cobro -> save();
           }
-          elseif (periodicidad = 6) {
+          elseif ($periodicidad = 6) {
             $cobro -> Fecha_creacion1 = $date;
             $cobro -> Fecha_venciminto1 =  $date-> addMonth(1);
             $cobro -> status= "pendiente";
@@ -309,7 +316,7 @@ public function  AddPayment(Request $request, $id)
              $cobro ->monto = $pago1 + $pago2 + $pago3 + $pago4 + $pago5 + $pago6;
              $cobro -> save();
           }
-          elseif (periodicidad = 12) {
+          elseif ($periodicidad = 12) {
             $cobro -> Fecha_creacion1 = $date;
             $cobro -> Fecha_venciminto1 =  $date-> addMonth(1);
             $cobro -> status= "pendiente";
@@ -376,11 +383,9 @@ public function  AddPayment(Request $request, $id)
         }
       }
       
-
-
     }
 
-        return back();                                        
+        return redirect('/Usuario/ciclo_escolar/');                                        
   }
      
 }
