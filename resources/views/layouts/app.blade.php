@@ -96,68 +96,8 @@
      @php
         $pagos=App\payment_concept::all();
     @endphp
-    @push('modal')
-      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title">Agregar cobros</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div id="pagos" class="modal-body">
-                <div class="form-row"> 
-                  <div class="form-group col-md-4">
-                    <label class="sr-only" for="exampleFormControlSelect1">Nombre del pago</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="nivel">
-                    <option value="">Pago</option>
-                    @foreach($pagos as $pago)
-                      <option value="{{$pago->id}}">{{$pago->nombre}}</option>
-                    @endforeach 
-                    </select>
-                  </div>
-                  <div class="form-group col-md-8">
-                    <label class="sr-only" for="exampleFormControlSelect1">Descripcion</label>
-                    <input type="text" name="descripcion" class="form-control" id="inputNombre"  value="Nombre">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label class="sr-only" for="exampleFormControlSelect1">Precio</label>
-                    <input type="text" name="precio" class="form-control" id="inputNombre"  value="precio">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label class="sr-only" for="exampleFormControlSelect1">Nivel</label>
-                    <input type="text" name="nivel" class="form-control" id="inputNombre"  value="Nivel">
-                  </div>
-                </div>
-                <div class="form-inline">
-                  <div class="form-group col-md-4">
-                    <label class="sr-only" for="exampleFormControlSelect1">Periodicidad</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="pero">
-                    <option value="1">un solo pago</option>
-                      <option value="3">a 3 Meses</option>
-                      <option value="6">a 3 Meses</option> 
-                      <option value="12">a 3 Meses</option>  
-                    </select>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label class="sr-only" for="exampleFormControlSelect1">Primera fecha de pago</label>
-                    <input type="text" name="fecha_nacimineto" class="form-control date-picker" placeholder="AAAA/MM/DD"  data-datepicker-color="primary" value="">
-                        </div>
-                  </div>
-                </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Guardar cobro</button>
-                  </div>
-            </div>
-         
-        </div>
-      </div>
-    @endpush
+    
   </div>
-
   <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">

@@ -384,7 +384,7 @@ public function  AddPayment(Request $request, $id)
       }
       
     }
-
+    dd($cycles);
         return redirect('/Usuario/ciclo_escolar/');                                        
   }
      

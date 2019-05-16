@@ -80,6 +80,8 @@
                         <a href="{{ url('/Usuario/ciclo_escolar')}}">Ciclos escolares</a>
                         <a href="{{ url('/Usuario/Nivel/')}}">Niveles Educativos</a>
                         <a href="{{ url('/Usuario/Caja/')}}">Caja</a>
+                        <a href="{{ url('/Usuario/Caja/')}}">Usuarios</a>
+                        <a href="{{ url('/Usuario/Caja/')}}">Reportes</a>
                     @else
                         <a href="{{ route('login') }}">Iniciar sesión</a>
                         <a href="{{ route('register') }}">Registrarse</a>
