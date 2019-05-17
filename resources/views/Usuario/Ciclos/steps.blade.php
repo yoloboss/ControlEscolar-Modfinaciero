@@ -233,10 +233,11 @@
     @endphp
       <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <form method="post" action="{{ url('/Usuario/ciclo_escolar/'.$cycles->id.'/pasos/cartera')}}">
+          <form method="POST" action="{{ url('/Usuario/ciclo_escolar/'.$cycles->id.'/pasos/cartera')}}">
+           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title">Agregar cobros</h5>
+                  <h5 class="modal-title">Agregar cobros .</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>

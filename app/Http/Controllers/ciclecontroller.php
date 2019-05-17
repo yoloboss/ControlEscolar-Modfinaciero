@@ -239,27 +239,36 @@ class ciclecontroller extends Controller
 
 public function  AddPayment(Request $request, $id)
   {
+
+    $Primerafecha = $request->pfecha;
+
     $date = new Carbon($Primerafecha);
     $turnos = $request->turnos;
     $grados = $request->grados;
     $grupos = $request->grupos;
     $periodicidad = $request->periodicidad;
-    $Primerafecha = $request->pfecha;
+    
     $cycles = cycle::find($id);
     if ($cycles->status = "activo"){
+
       $cobro = new payment();
+
       $grupos = student_actlevel::where('status', 'cursando')->get();
       foreach ($grupos as $grupo ) {
-        $cobro->student_id = $grupos->student_id;
-        $pagos = payment_concepts::where('status', 'Activo')->get();
+        $cobro->student_id = $grupo->student_id;
+        $pagos = payment_concept::where('status', 'Activo')->get();
+
         foreach ($pagos as $pago) {
-          $cobro ->paymentconceps_id = $pagos->id;
+          $cobro ->paymentconceps_id = $pago->id;
           if ($periodicidad = 1) {
 
             $cobro -> Fecha_creacion1 = $date;
             $cobro -> Fecha_venciminto1 =  $date-> addMonth(1);
-            $cobro -> status= "pendiente";
-            $cobro -> pago1= $pago->precio;
+            $cobro -> estatus1 = "pendiente";
+            $cobro -> pago1 = $pago->precio;
+
+            $pago1 = $pago->precio;
+
             $cobro ->monto = $pago1;
             $cobro -> save();
           }
@@ -385,7 +394,7 @@ public function  AddPayment(Request $request, $id)
       
     }
     dd($cycles);
-        return redirect('/Usuario/ciclo_escolar/');                                        
+        // return redirect('/Usuario/ciclo_escolar/');                                        
   }
      
 }
